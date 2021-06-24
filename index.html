@@ -25,11 +25,14 @@
     -->
     <p> Click Me to get your coordinates! </p>
     <button onclick="getLocation()"> Try It</button>
+    <p id="demo"></p>
+    <button onclick="enableCamera()">Click Me to Enable Camera!</button>
     <div id="ar"></div>
     </fieldset>
     
 
     <script>
+        var x = document.getElementById("demo");
         var lat;
         var long;
         function getLocation() {
@@ -43,7 +46,8 @@
         function showPosition(position) {
             lat = position.coords.latitude;
             long = position.coords.longitude;
-            enableCamera();
+            x.innerHTML = lat + "; " + long;
+            //enableCamera();
         }
 
         function enableCamera() {
