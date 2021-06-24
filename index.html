@@ -10,14 +10,34 @@
     <script>
         THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
     </script>
+    <script>
+        var x = document.getElementById("demo");
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            }
+            else {
+                x.innerHTML = "Geolocation not supported";
+            }
+        }
+        function showPosition(position) {
+            x.innerHTML = "Lattitude: " + position.coords.latitude +
+            "<br>Longitude: " + position.coords.longitude;
+        }
+    </script>
 </head>
 
 <body style='margin: 0; overflow: hidden;'>
-    <a-scene
+    <!--
+<a-scene
         vr-mode-ui="enabled: false"
 		embedded
         arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
         <a-entity gltf-model="./assets/magnemite/scene.gltf" rotation="0 180 0" scale="0.015 0.015 0.015" gps-entity-place="longitude: 117.129361; latitude: 31.829736;" animation-mixer/>
         <a-camera gps-camera rotation-reader></a-camera>
 	</a-scene>
+    -->
+    <p> Click Me to get your coordinates! </p>
+    <button onclick="getLocation()"> Try It</button>
+    <p id="demo"></p>
 </body>
