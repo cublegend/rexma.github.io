@@ -14,50 +14,27 @@
 </head>
 
 <body style='margin: 0; overflow: hidden;'>
-    <p> Click Me to get your coordinates! </p>
-    <button onclick="getLocation()"> Try It</button>
-    <p id="demo"></p>
-    <button onclick="enableCamera()">Click Me to Enable Camera!(Testing)</button>
-    <br>
-    <a href="./marker.html"> Another Simple Example of Marker Detection</a>
-    <div id="ar"></div>
-    <a-scene
-        vr-mode-ui="enabled: false"
-		embedded
-        arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
-        <a-entity gltf-model="./assets/magnemite/scene.gltf" rotation="0 180 0" scale="0.015 0.015 0.015" gps-entity-place="longitude: 117.129361; latitude: 31.829736;" animation-mixer/>
-        <a-camera gps-camera rotation-reader></a-camera>
-	</a-scene>
-    
-    </fieldset>
-    
-
-    <script>
-        var x = document.getElementById("demo");
-        var lat;
-        var long;
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition);
-            }
-            else {
-                x.innerHTML = "Geolocation not supported";
-            }
-        }
-        function showPosition(position) {
-            lat = position.coords.latitude;
-            long = position.coords.longitude;
-            var msg = document.querySelector('[gps-entity-place]').getAttribute('distanceMsg');
-            x.innerHTML = "Your position is at: " + long + "; " + lat +
-                          "\nYou are " + msg + " away from the Magnemite!";
-        }
-
-        function enableCamera() {
-            document.getElementById("ar").innerHTML = 
-            '<a-scene vr-mode-ui="enabled: false" embedded arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;">' +
-        '<a-entity gltf-model="./assets/magnemite/scene.gltf" rotation="0 180 0" scale="0.15 0.15 0.15" gps-entity-place="longitude: ' + long + '; latitude: '
-        + lat + ';" animation-mixer/>' +
-        '<a-camera gps-camera rotation-reader></a-camera> </a-scene>';
-        }
-    </script>
+    <div style="position:fixed; margin:10px;">
+        <a href="./marker.html"> Another Simple Example of Marker Detection</a>
+        <button onclick="onMouseClick()">Click Me to Enter Camera Mode</button>
+    </div>
+    <div id="arMode"></div>
 </body>
+
+<script>
+    function onMouseClick() {
+        let div = document.getElementById("arMode");
+        div.innerHTML = 
+        '<a-scene vr-mode-ui="enabled:false" embeded arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;">' +
+            '<a-camera gps-camera rotation-reader></a-camera>' +
+            '<a-box position="0 0 0" gps-entity-place></a-box>' +
+        '</a-scene>';
+        if (navigator.geolocation)
+            navigator.geolocation.getCurrentPosition((position) => {
+                console.log(position);
+                let gpsEntity = document.querySelector('a-box');
+                gpsEntity.setAttribute("gps-entity-place",{latitude: position.coords.latitude, longitude: position.coords.longitude});
+                console.log(gpsEntity.getAttribute("gps-entity-place"));
+            });
+        }
+</script>
