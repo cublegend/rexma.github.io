@@ -1,0 +1,20 @@
+<html class="">
+    <head>
+        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+        <!-- we import arjs version without NFT but with marker + location based support -->
+        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+        
+    </head>
+    <body style="margin:0px; overflow: hidden;">
+        <a-scene vr-mode-ui="enabled:false" embedded arjs>
+            <a-marker preset="hiro" >
+                <a-entity position="0 0 1" scale="2 2 2"
+                text="anchor: left; width: 1.5; color: red; value: [LEFT ANCHOR] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam">
+      </a-entity>
+                <a-entity geometry="primitive:box" scale="1 0.02 1" material="color: yellow"></a-entity>
+            </a-marker>
+            <a-entity camera></a-entity>
+            <a-entity cursor="fuse: false" raycaster="objects: .clickable"></a-entity>
+        </a-scene>
+    </body>
+</html>
