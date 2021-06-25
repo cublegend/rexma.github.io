@@ -23,7 +23,7 @@
             navigator.geolocation.getCurrentPosition((position) => {
                 console.log(position);
                 let gpsEntity = document.querySelector('a-box');
-                gpsEntity.setAttribute("gps-projected-entity-place",{latitude: 0, longitude: 0});
+                gpsEntity.setAttribute("gps-projected-entity-place",{latitude: position.coords.latitude, longitude: position.coords.longitude});
                 console.log(gpsEntity.getAttribute("gps-projected-entity-place"));
             });
     }, 1000);
