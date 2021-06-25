@@ -30,7 +30,7 @@
             navigator.geolocation.getCurrentPosition((position) => {
                 console.log(position);
                 let gpsEntity = document.querySelector('a-box');
-                gpsEntity.setAttribute("gps-entity-place",{latitude: position.coords.latitude, longitude: position.coords.longitude});
+                gpsEntity.setAttribute("gps-entity-place",{latitude: 0, longitude: 0});
                 console.log(gpsEntity.getAttribute("gps-entity-place"));
             });
         }
