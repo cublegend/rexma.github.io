@@ -3,12 +3,30 @@
         <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
         <!-- we import arjs version without NFT but with marker + location based support -->
         <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
     </head>
+    <script>
+        AFRAME.registerComponent('clickhandler', {
+            schema:{
+                text:{default:'default'}
+            },
+            init:function() {
+                var index = 0;
+                var COLORS = ['red', 'green', 'yellow', 'blue'];
+                this.el.addEventListener('click', function(event) {
+                    index = (index+1) % COLORS.length;
+                    this.setAttribute('material', 'color', COLORS[index]);
+                });
+            }
+
+        });
+    </script>
     <body style="margin:0px; overflow: hidden;">
-        <div id="cube">
+        <div>
             <a-scene vr-mode-ui="enabled:false" embeded arjs>
                 <a-marker preset="hiro">
-                    <a-entity geometry="primitive: box;"
+                    <a-entity class="clickable" clickhandler="text:img1" geometry="primitive: box;"
                               position=" 0 0.5 0"
                               scale="1 1 1"
                               material="color: red;"
@@ -17,17 +35,9 @@
                                 to: 360 360 0;
                                 loop: true;
                                 easing: linear;">
-                        <!--
-                        <a-animation attribute="rotation"
-                            dur="3000"
-                            to="360 360 0"
-                            repeat="indefinite"
-                            easing="linear">
-                    </a-animation>
-                    -->
-                    </a-box>
                 </a-marker>
                 <a-entity camera></a-entity>
+                <a-entity cursor position="0 0 -1" raycaster="objects: .clickable"></a-entity>
             </a-scene>
         </div>
     </body>
