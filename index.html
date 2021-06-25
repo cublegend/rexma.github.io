@@ -22,14 +22,15 @@
     function onMouseClick() {
         let div = document.getElementById("arMode");
         div.innerHTML = 
-        '<a-scene vr-mode-ui="enabled:false" embeded arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;">' +
+        '<a-scene vr-mode-ui="enabled:false" embeded arjs="sourceType: webcam; debugUIEnabled: false;">' +
+            '<a-text value="This content will always face you." look-at="[gps-camera]" scale="120 120 120";></a-text>' +
             '<a-camera gps-camera rotation-reader></a-camera>' +
             '<a-box position="0 0 0" gps-entity-place></a-box>' +
         '</a-scene>';
         if (navigator.geolocation)
             navigator.geolocation.getCurrentPosition((position) => {
                 console.log(position);
-                let gpsEntity = document.querySelector('a-box');
+                let gpsEntity = document.querySelector('a-text');
                 gpsEntity.setAttribute("gps-entity-place",{latitude: position.coords.latitude, longitude: position.coords.longitude});
                 console.log(gpsEntity.getAttribute("gps-entity-place"));
             });
