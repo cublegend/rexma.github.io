@@ -28,9 +28,9 @@
 </html>
 <script>
     function GetInput () {
+        var input = document.getElementById("note_input");
         var iframe = document.getElementById("iframe");
-        iframe.contentWindow.document.getElementById("note_text").setAttribute('value', event.detail.value);
-        change_text_event.value = {value: input.value};
+        iframe.contentWindow.document.getElementById("note_text").setAttribute('value', input.value);
     }
     
 </script>
