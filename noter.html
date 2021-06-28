@@ -19,10 +19,18 @@
     <body style="margin: 0px;">
         <div id="inputfield">
             <label>Type Here:</label><br>
-            <input type="text">
+            <input oninput="GetInput()" type="text" id="note_input">
         </div>
         <div>
-            <iframe style="width: 100%; height: 100%;" src="./noter_cam.html" frameborder="0"></iframe>
+            <iframe id="iframe" style="width: 100%; height: 100%;" src="./noter_cam.html" frameborder="0"></iframe>
         </div>
     </body>
 </html>
+<script>
+    function GetInput () {
+        var iframe = document.getElementById("iframe");
+        iframe.contentWindow.document.getElementById("note_text").setAttribute('value', event.detail.value);
+        change_text_event.value = {value: input.value};
+    }
+    
+</script>
