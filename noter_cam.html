@@ -4,15 +4,57 @@
         <!-- we import arjs version without NFT but with marker + location based support -->
         <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
         
+<script>
+    AFRAME.registerComponent('scene-control', {
+        init: function() {
+            var active = false;
+            document.addEventListener("keypress", function() {
+                if (active) {
+                    let content;
+                    let val;
+                    let txt = document.querySelector("a-text");
+
+                    // handles normal input and enter
+                    if (event.key == "Enter") {
+                        val = "\n";
+                    }
+                    else {
+                        val = event.key;
+                    }
+
+                    // handkles backspace and delete
+                    if (event.key == "Backspace") {
+                        let length = txt.getAttribute("value").length;
+                        if (length >= 1) {
+                            content = txt.getAttribute("value").slice(0, length-1);
+                        }
+                    }
+                    else {
+                        content = txt.getAttribute("value") + val;
+                    }
+                    
+                    txt.setAttribute("value", content);
+                }
+            })
+            document.querySelector('#note').addEventListener("click", function() {
+                console.log("on note");
+                active = true;
+                document.querySelector("#note_text").focus();
+            })
+        }
+    })
+    
+    
+</script>
     </head>
     <body style="margin:0px; overflow: hidden;">
-        <a-scene vr-mode-ui="enabled:false" embedded arjs>
+        <a-scene vr-mode-ui="enabled:false" embedded arjs scene-control cursor>
             <a-marker preset="hiro" >
-                <a-entity geometry="primitive:box" scale="1 0.02 1" material="color: yellow">
+                <a-entity id="note" geometry="primitive:box" scale="1 0.02 1" material="color: yellow">
                     <a-text id="note_text" wrap-count="30" width="0.8"
-                value=" eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" rotation="-90 0 0" 
-                position="-0.4 2 -0.4" color="black"
-                anchor="left" baseline="top"></a-text>
+                    value="1" rotation="-90 0 0" 
+                    position="-0.4 2 -0.4" color="black"
+                    anchor="left" baseline="top"></a-text>
                 </a-entity>
             </a-marker>
             <a-entity camera></a-entity>
