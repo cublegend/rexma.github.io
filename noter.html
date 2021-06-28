@@ -19,7 +19,7 @@
     <body style="margin: 0px;">
         <div id="inputfield">
             <label>Type Here:</label><br>
-            <input oninput="GetInput()" type="text" id="note_input">
+            <input type="text" id="note_input">
         </div>
         <div>
             <iframe id="iframe" style="width: 100%; height: 100%;" src="./noter_cam.html" frameborder="0"></iframe>
@@ -27,10 +27,19 @@
     </body>
 </html>
 <script>
+    const input = document.getElementById("note_input");
+    input.addEventListener("keypress", SubmitInput);
+    input.addEventListener("input", GetInput());
+
     function GetInput () {
-        var input = document.getElementById("note_input");
         var iframe = document.getElementById("iframe");
         iframe.contentWindow.document.getElementById("note_text").setAttribute('value', input.value);
+    }
+    
+    function SubmitInput(e) {
+        if (e.code == 12) {
+            console.log("pressed enter");
+        }
     }
     
 </script>
