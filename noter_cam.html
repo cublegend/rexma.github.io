@@ -26,7 +26,6 @@
                     this.el.id = "note_container" + this.data.id;
                 },
                 _create_note: function(event) {
-
                     // activate this writing and deactive any other writing
                     let all_container = this.el.sceneEl.querySelectorAll('[note_container]');
                     for (var i = 0; i < all_container.length; i++) {
@@ -56,6 +55,8 @@
                     new_note.appendChild(new_text);
 
                     this.el.appendChild(new_note);
+
+                    _retrieve_text();
                 },
 
                 _retrieve_id: function() {
@@ -82,6 +83,21 @@
                     else {
                         console.log("No Local Storage Support!!");
                     }
+                },
+
+                _retrieve_text: function () {
+                    if (typeof(localStorage) != "undefined") {
+                        let txt = localStorage.getItem("note_file" + this.data.id);
+                        if (txt == null) {
+                            console.log("no previously stored text");
+                            return;
+                        }
+                        this.el.querySelector("#note_text").setAttribute('value', txt);
+                    }
+                    else {
+                        console.log("No Local Storage Support!!");
+                    }
+
                 },
 
                 _getrid_box: function() {
