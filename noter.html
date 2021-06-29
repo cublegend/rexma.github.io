@@ -81,7 +81,7 @@
         let notes = iframe.contentWindow.document.querySelectorAll('[note_container]');
             for (var i = 0; i < notes.length; i++) {
                 if(notes[i].getAttribute("note_container").active_writing) {
-                    return note[i];
+                    return notes[i];
                 }
             }
         return null;
