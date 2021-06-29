@@ -10,15 +10,19 @@
                 // a different marker contains different note
                 // user created markers need to be stored with user defined class name
                 // to keep them unique
+
+                //FIXME: Add a cross on the corner to close the note tab
+                //FIXME: Add method to delete the transparent box after note instant
                 schema: {
                     active_writing: {type:'boolean', default: false},
                     id: {type: 'int', default: -1},
                     child_count: {type: 'int', default: 0}
                 },
                 init: function() {
-                    
+
                     this._retrieve_id();
                     this.el.addEventListener("click", this._create_note.bind(this));
+                    this.el.addEventListener('click', this._getrid_box.bind(this));
                     this.el.id = "note_container" + this.data.id;
                 },
                 _create_note: function(event) {
@@ -34,11 +38,9 @@
                     }
                     this.data.child_count++;
                     let new_note = document.createElement('a-box');
-                    let xAxis = event.target.offsetLeft;
-                    let yAxis = event.target.offsetTop;
                     new_note.setAttribute('color', 'yellow');
                     new_note.setAttribute('rotation', '-90, 0, 0');
-                    new_note.object3D.position.set(xAxis, yAxis, 0);
+                    new_note.object3D.position.set(0, 0, 0);
                     new_note.object3D.scale.set(1, 1, 0.02);
 
                     let new_text = document.createElement('a-text');
@@ -48,6 +50,7 @@
                     new_text.setAttribute('baseline', 'top');
                     new_text.setAttribute('anchor', 'left');
                     new_text.setAttribute('width', '0.8');
+                    new_text.setAttribute('value', 'hello');
                     new_text.object3D.position.set(-0.4, 0.4, 1.5);
 
                     new_note.appendChild(new_text);
@@ -79,6 +82,14 @@
                     else {
                         console.log("No Local Storage Support!!");
                     }
+                },
+
+                _getrid_box: function() {
+                    let box = this.el.querySelector('#trans_box');
+                    if (box == null) {
+                        return;
+                    }
+                    box.parentNode.removeChild(box);
                 }
             })
         </script>
@@ -90,10 +101,10 @@
             <a-entity cursor="rayOrigin: mouse; fuse:false"></a-entity>
             <a-marker class="hiro" note_container preset="hiro">
                 <!--Transparent box to activate marker click-->
-                <a-box material="transparent: true; opacity: 0"></a-box>
+                <a-box id="trans_box" material="transparent: true; opacity: 0"></a-box>
             </a-marker>
             <a-marker class="kanji"note_container preset="kanji">
-                <a-box material="transparent: true; opacity: 0"></a-box>
+                <a-box id="trans_box" material="transparent: true; opacity: 0"></a-box>
             </a-marker>
         </a-scene>
     </body>
