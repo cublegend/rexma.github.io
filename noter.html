@@ -31,7 +31,12 @@
     const iframe = document.getElementById("iframe");
 
     function GetInput () {
-        iframe.contentWindow.document.getElementById("note_text").setAttribute('value', input.value);
+        let active_note = FindActiveNote();
+        if (active_note == null) {
+            console.log("No current editing note!");
+            return;
+        }
+        active_note.getElementById("note_text").setAttribute('value', input.value);
     }
 
     function ClearTextBox() {
