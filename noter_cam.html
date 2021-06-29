@@ -1,6 +1,6 @@
 <html class="">
     <head>
-        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+        <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
         <!-- we import arjs version without NFT but with marker + location based support -->
         <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
         <script>
@@ -16,7 +16,9 @@
                 schema: {
                     active_writing: {type:'boolean', default: false},
                     id: {type: 'int', default: -1},
-                    child_count: {type: 'int', default: 0}
+                    child_count: {type: 'int', default: 0},
+                    active_color: {type: 'color', default: 'green'},
+                    color: {type: 'color', default: 'yellow'}
                 },
                 init: function() {
 
@@ -30,14 +32,16 @@
                     let all_container = this.el.sceneEl.querySelectorAll('[note_container]');
                     for (var i = 0; i < all_container.length; i++) {
                         all_container[i].setAttribute('note_container', 'active_writing', 'false');
+                        all_container[i].querySelector('a-box').setAttribute('color', this.data.color);
                     }
                     this.data.active_writing = true;
                     if (this.data.child_count > 0) {
+                        this.el.querySelector('a-box').setAttribute('color', this.data.active_color);
                         return;
                     }
                     this.data.child_count++;
                     let new_note = document.createElement('a-box');
-                    new_note.setAttribute('color', 'yellow');
+                    new_note.setAttribute('color', this.data.active_color);
                     new_note.setAttribute('rotation', '-90, 0, 0');
                     new_note.object3D.position.set(0, 0, 0);
                     new_note.object3D.scale.set(1, 1, 0.02);
@@ -114,12 +118,12 @@
     <body style="margin:0px; overflow: hidden;">
         <a-scene vr-mode-ui="enabled:false" embedded arjs scene-control>
             <a-entity camera></a-entity>
-            <a-entity cursor="fuse:false"></a-entity>
-            <a-marker class="hiro" note_container preset="hiro">
+            <a-entity cursor="fuse: false"></a-entity>
+            <a-marker class="hiro" note_container preset="hiro" cursor-listener>
                 <!--Transparent box to activate marker click-->
                 <a-box id="trans_box" material="transparent: true; opacity: 0"></a-box>
             </a-marker>
-            <a-marker class="kanji"note_container preset="kanji">
+            <a-marker class="kanji"note_container preset="kanji" cursor-listener>
                 <a-box id="trans_box" material="transparent: true; opacity: 0"></a-box>
             </a-marker>
         </a-scene>
