@@ -78,7 +78,7 @@
 
     function FindActiveNote() {
         // get the active note
-        let notes = document.querySelectorAll('[note_container]');
+        let notes = iframe.contentWindow.document.querySelectorAll('[note_container]');
             for (var i = 0; i < notes.length; i++) {
                 if(notes[i].getAttribute("note_container").active_writing) {
                     return note[i];
