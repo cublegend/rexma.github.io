@@ -34,10 +34,7 @@
   </head>
 
   <body style="margin : 0px; overflow: hidden;">
-    <!-- minimal loader shown until image descriptors are loaded. Loading may take a while according to the device computational power -->
-    <div class="arjs-loader">
-      <div>Loading, please wait...</div>
-    </div>
+    
 
     <!-- a-frame scene -->
     <a-scene
@@ -46,20 +43,13 @@
       embedded
       arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
 
-      <a-nft
-        type="nft"
-        url="https://cublegend.github.io/objectplane/resources/helium">
+      <a-marker preset="custom" url="">
         <a-box
             position= "200 0 -200"
             scale="400 400 400"
             material="opacity:0.2"
             ></a-box>
-        <a-plane
-            position="0 0 0"
-            rotation="-90 0 0"
-            scale="3000 3000 3000"
-            material="transparent:true"></a-plane>
-      </a-nft>
+      </a-marker>
       <!-- static camera that moves according to the device movemenents -->
       <a-entity camera></a-entity>
     </a-scene>
