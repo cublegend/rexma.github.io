@@ -1,30 +1,66 @@
 <!DOCTYPE html>
 <html>
-    <!-- Head -->
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Object Plane Detection</title>
-        <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-    </head>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Image based tracking AR.js demo</title>
+    <!-- import aframe and then ar.js with image tracking / location based features -->
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
 
-    <!-- Body -->
-    <body style="margin: 0; overflow: hidden;">
+    <!-- style for the loader -->
+    <style>
+      .arjs-loader {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
-        <!-- A-frame scene -->
+      .arjs-loader div {
+        text-align: center;
+        font-size: 1.25em;
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body style="margin : 0px; overflow: hidden;">
+    <!-- minimal loader shown until image descriptors are loaded. Loading may take a while according to the device computational power -->
+    <div class="arjs-loader">
+      <div>Loading, please wait...</div>
+    </div>
+
+    <!-- a-frame scene -->
     <a-scene
-        vr-mode-ui="enabled: false;"
-        renderer="logarithmicDepthBuffer: true;"
-        embeded
-        arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
-    >
-        <a-marker type="pattern" preset="custom" url="https://cublegend.github.io/objectplane/resources/helium.patt">
-            <a-plane position="0 -1 0" color="yellow" rotation=" -90 0 0" scale= "10 10 1"></a-plane>
-        </a-marker>
-
-        <!-- Camera -->
-        <a-entity camera></a-entity>
+      vr-mode-ui="enabled: false;"
+      renderer="logarithmicDepthBuffer: true;"
+      embedded
+      arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
+      
+      <a-nft
+        type="nft"
+        url="https://cublegend.github.io/objectplane/resources/helium"
+        smooth="true"
+        smoothCount="10"
+        smoothTolerance=".01"
+        smoothThreshold="5">
+         
+          <a-box
+            scale="100 100 100"
+            position="100 100 0"
+            color="red"
+          >
+          </a-entity>
+      </a-nft>
+      <!-- static camera that moves according to the device movemenents -->
+      <a-entity camera></a-entity>
     </a-scene>
-    </body>
+  </body>
 </html>
