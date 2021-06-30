@@ -42,31 +42,17 @@
       vr-mode-ui="enabled: false;"
       renderer="logarithmicDepthBuffer: true;"
       embedded
-      arjs>
+      arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
       <a-nft
         type="nft"
-        url="https://cublegend.github.io/objectplane/resources/helium"
-        smooth="true"
-        smoothCount="10"
-        smoothTolerance=".01"
-        smoothThreshold="5">
+        url="https://cublegend.github.io/objectplane/resources/helium">
          <!-- box to cover up the cube -->
          <a-box
-            scale="200 200 200"
-            position="200 400 -200"
-            material="transparent: true; opacity:0.2"
-          ></a-box>
-
-          <a-box scale="200 200 200"
-          position="200 200 -200"
-          material="transparent: true; color: yellow"></a-box>
-          
-          <a-box scale="200 200 200"
-          position="200 0 -200"
-          material="transparent: false; color: red"></a-box>
+            position="200 200 0"
+            scale = "200 200 200"></a-box>
       </a-nft>
       <!-- static camera that moves according to the device movemenents -->
-      <a-camera></a-camera>
+      <a-entity camera></a-entity>
     </a-scene>
   </body>
 </html>
