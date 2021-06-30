@@ -45,13 +45,20 @@
       renderer="logarithmicDepthBuffer: true;"
       embedded
       arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
+
       <a-nft
         type="nft"
         url="https://cublegend.github.io/objectplane/resources/helium">
-         <!-- box to cover up the cube -->
-         <a-box
-            position="200 -200 -200"
-            scale = "400 400 400"></a-box>
+        <a-box
+            position= "200 0 -200"
+            scale="400 400 400"
+            material="opacity:0.2"
+            ></a-box>
+        <a-plane
+            position="0 0 0"
+            rotation="-90 0 0"
+            scale="3000 3000 3000"
+            material="transparent:true"></a-plane>
       </a-nft>
       <!-- static camera that moves according to the device movemenents -->
       <a-entity camera></a-entity>
