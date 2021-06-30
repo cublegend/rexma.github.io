@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Fixes the position problem -->
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
     <title>Image based tracking AR.js demo</title>
     <!-- import aframe and then ar.js with image tracking / location based features -->
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
@@ -48,8 +50,8 @@
         url="https://cublegend.github.io/objectplane/resources/helium">
          <!-- box to cover up the cube -->
          <a-box
-            position="200 200 0"
-            scale = "200 200 200"></a-box>
+            position="200 -200 -200"
+            scale = "400 400 400"></a-box>
       </a-nft>
       <!-- static camera that moves according to the device movemenents -->
       <a-entity camera></a-entity>
