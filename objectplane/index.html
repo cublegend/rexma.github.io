@@ -6,15 +6,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>Object Plane Detection</title>
         <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     </head>
 
     <!-- Body -->
     <body style="margin: 0; overflow: hidden;">
-        <!-- Loading Image -->
-        <div class="arjs-loader">
-            <div>Loading, please wait...</div>
-        </div>
 
         <!-- A-frame scene -->
     <a-scene
@@ -23,16 +19,9 @@
         embeded
         arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
     >
-        <a-nft
-            type="nft"
-            url="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex"
-            smooth="true"
-            smoothCount="10"
-            smoothTolerance="0.01"
-            smoothThreashold="5"
-        >
-            <a-box position="0 0 0"></a-box>
-        </a-nft>
+        <a-marker type="pattern" preset="custom" url="https://cublegend.github.io/objectplane/resources/helium.patt">
+            <a-plane position="0 -1 0" color="yellow" rotation=" -90 0 0" scale= "10 10 1"></a-plane>
+        </a-marker>
 
         <!-- Camera -->
         <a-entity camera></a-entity>
