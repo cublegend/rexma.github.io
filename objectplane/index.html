@@ -5,53 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- Fixes the position problem -->
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
-    <title>Image based tracking AR.js demo</title>
+    <title>Build Your City Demo</title>
     <!-- import aframe and then ar.js with image tracking / location based features -->
-    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     <script src="./index.js"></script>
-    <!-- style for the loader -->
-    <style>
-      .arjs-loader {
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background-color: rgba(0, 0, 0, 0.8);
-        z-index: 9999;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .arjs-loader div {
-        text-align: center;
-        font-size: 1.25em;
-        color: white;
-      }
-    </style>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-mouse-dragndrop-component@1.0.4/dist/index.js"></script>
   </head>
 
   <body style="margin : 0px; overflow: hidden;">
-    
-
-    <!-- a-frame scene -->
-    <a-scene
-      vr-mode-ui="enabled: false;"
-      renderer="logarithmicDepthBuffer: true;"
-      embedded
-      arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
-
-      <a-marker preset="custom" url="">
-        <a-box
-            position= "200 0 -200"
-            scale="400 400 400"
-            material="opacity:0.2"
-            ></a-box>
+    <a-scene vr-mode-ui="enabled: false" embeded arjs scene-event-handler cursor="rayOrigin: mouse">
+      <a-marker preset="hiro" onclick="event.stopPropagation()">
+        <a-box building-floor></a-box>
       </a-marker>
-      <!-- static camera that moves according to the device movemenents -->
       <a-entity camera></a-entity>
     </a-scene>
+
   </body>
+
 </html>
