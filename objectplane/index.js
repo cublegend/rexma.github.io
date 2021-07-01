@@ -32,6 +32,8 @@ AFRAME.registerComponent('building-floor', {
 AFRAME.registerComponent('scene-event-handler', {
     on_marker: null,
 
+    plane: null,
+
     init: function() {
         document.addEventListener('markerFound', function() {
             this.on_marker = true;
@@ -40,7 +42,20 @@ AFRAME.registerComponent('scene-event-handler', {
             this.on_marker = false;
         }.bind(this));
 
-        this.el.addEventListener("click", this._instantiate_floor.bind(this));
+        document.addEventListener('markerFound', this._create_click_plane.bind(this));
+
+        document.querySelector('#base').addEventListener("click", this._instantiate_floor.bind(this));
+    },
+
+    _create_click_plane: function(event) {
+        if (this.plane != null) return;
+        let p = document.createElement('a-plane');
+        this.plane = p;
+        document.querySelector('a-marker').appendChild(p);
+        p.setAttribute('rotation', {x: -90, y: 0, z: 0});
+        p.setAttribute('color', 'beige');
+        p.object3D.scale.set(3, 3, 3);
+        p.addEventListener('click', this._instantiate_floor.bind(this));
     },
 
     _instantiate_floor: function(event) {
