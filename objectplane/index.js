@@ -76,7 +76,7 @@ AFRAME.registerComponent('scene-event-handler', {
     _move_floor: function(event) {
         if (!this.mousedown) return;
         if (this.ratio == null) {
-            this.ratio = 5 * this.curr_floor.object3D.position.x / event.screenX;
+            this.ratio = 0.005;
         }
         console.log(this.ratio);
         console.log(event.movementX);
