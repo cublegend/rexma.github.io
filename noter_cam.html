@@ -116,14 +116,13 @@
     </head>
 
     <body style="margin:0px; overflow: hidden;">
-        <a-scene vr-mode-ui="enabled:false" embedded arjs scene-control>
+        <a-scene cursor="fuse:false; rayOrigin:mouse;" vr-mode-ui="enabled:false" embedded arjs scene-control>
             <a-entity camera></a-entity>
-            <a-entity cursor="fuse: false"></a-entity>
-            <a-marker class="hiro" note_container preset="hiro" cursor-listener>
+            <a-marker class="hiro" note_container preset="hiro">
                 <!--Transparent box to activate marker click-->
                 <a-box id="trans_box" material="transparent: true; opacity: 0"></a-box>
             </a-marker>
-            <a-marker class="kanji"note_container preset="kanji" cursor-listener>
+            <a-marker class="kanji"note_container preset="kanji">
                 <a-box id="trans_box" material="transparent: true; opacity: 0"></a-box>
             </a-marker>
         </a-scene>
