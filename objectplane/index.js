@@ -41,6 +41,7 @@ AFRAME.registerComponent('scene-event-handler', {
     mousedown: false,
 
     init: function() {
+        this.ratio = 0.001;
         document.addEventListener('markerFound', function() {
             this.on_marker = true;
         }.bind(this));
@@ -51,8 +52,9 @@ AFRAME.registerComponent('scene-event-handler', {
         document.addEventListener('mousemove', this._move_floor.bind(this));
         document.querySelector('#base').addEventListener("mouseup", function() {
             this.mousedown = false;
-            this.ratio = null;
-            curr_floor = null;
+            this.curr_floor.setAttribute('color', 'grey');
+            this.curr_floor = null;
+            
         }.bind(this));
     },
 
@@ -72,14 +74,13 @@ AFRAME.registerComponent('scene-event-handler', {
         new_floor.object3D.position.y = point.y;
         this.curr_floor = new_floor;
         this.mousedown = true;
-        console.log("inst");
     },
 
     _move_floor: function(event) {
         if (!this.mousedown) return;
-        if (this.ratio == null) {
-            this.ratio = 0.001;
-        }
+
+        //FIXME: orientation issues on phone...
+        
         let xPos = event.movementX * this.ratio;
         let yPos = event.movementY * this.ratio;
         this.curr_floor.object3D.position.x += xPos;
