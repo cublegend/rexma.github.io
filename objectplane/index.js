@@ -34,6 +34,12 @@ AFRAME.registerComponent('scene-event-handler', {
 
     plane: null,
 
+    ratio: null,
+    
+    curr_floor: null,
+
+    mousedown: false,
+
     init: function() {
         document.addEventListener('markerFound', function() {
             this.on_marker = true;
@@ -41,7 +47,13 @@ AFRAME.registerComponent('scene-event-handler', {
         document.addEventListener('markerLost', function() {
             this.on_marker = false;
         }.bind(this));
-        document.querySelector('a-marker').addEventListener("click", this._instantiate_floor.bind(this));
+        document.querySelector('a-marker').addEventListener("mousedown", this._instantiate_floor.bind(this));
+        document.addEventListener('mousemove', this._move_floor.bind(this));
+        document.querySelector('a-marker').addEventListener("mouseup", function() {
+            this.mousedown = false;
+            this.ratio = null;
+            curr_floor = null;
+        }.bind(this));
     },
 
     _instantiate_floor: function(event) {
@@ -49,13 +61,28 @@ AFRAME.registerComponent('scene-event-handler', {
             return;
         }
         if (event.detail.intersection == undefined) return;
-        let point = document.querySelector('a-marker').object3D.worldToLocal(event.detail.intersection.point); 
-        console.log(event.detail.intersection.object.parent.parent);
+        let point = document.querySelector('a-marker').object3D.worldToLocal(event.detail.intersection.point);
         let new_floor = document.createElement('a-box');
         new_floor.setAttribute('building-floor', '');
 
         document.querySelector('a-marker').appendChild(new_floor);
-        new_floor.object3D.position.x = point.x;
-        new_floor.object3D.position.z = point.z;
+        new_floor.object3D.position.x = point.x / 2 - 0.1;
+        new_floor.object3D.position.z = point.z / 2 + 0.35;
+        new_floor.object3D.position.y = point.y;
+        this.curr_floor = new_floor;
+        this.mousedown = true;
+    },
+
+    _move_floor: function(event) {
+        if (!this.mousedown) return;
+        if (this.ratio == null) {
+            this.ratio = 5 * this.curr_floor.object3D.position.x / event.screenX;
+        }
+        console.log(this.ratio);
+        console.log(event.movementX);
+        let xPos = event.movementX * this.ratio;
+        let yPos = event.movementY * this.ratio;
+        this.curr_floor.object3D.position.x += xPos;
+        this.curr_floor.object3D.position.z += yPos;
     }
 })
