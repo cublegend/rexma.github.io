@@ -10,7 +10,7 @@
 
   <body style="margin:0px; overflow:hidden;">
     <a-scene embedded vr-mode-ui="enabled:false;" arjs='trackingMethod: best; debugUIEnabled: false; sourceType: webcam' scene-event-handler>
-      <a-marker cursor="rayOrigin:mouse;" raycaster="objects: .collidable" preset="hiro">
+      <a-marker cursor="rayOrigin:mouse;" raycaster="objects: .collidable; interval: 1" preset="hiro">
         <a-box class="collidable" id="base" building-floor scale="5 1 5"></a-box>
       </a-marker>
       <a-entity camera></a-entity>
