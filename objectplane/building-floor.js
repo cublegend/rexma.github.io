@@ -21,7 +21,7 @@ AFRAME.registerComponent('building-floor', {
         collider.setAttribute('geometry', {height: data.height, width: data.width, depth: data.depth});
         collider.object3D.scale.set(0.95, 0.95, 0.95);
         collider.setAttribute('material', {opacity: 0, transparent: true});
-        collider.setAttribute('aabb-collider',{objects: '.collidable', interval: '10', debug: true});
+        collider.setAttribute('aabb-collider',{objects: '.collidable'});
         floor.appendChild(collider);
         collider.setAttribute('data-aabb-collider-dynamic', 'true');
         collider.className = "collidable";
