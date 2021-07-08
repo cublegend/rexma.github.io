@@ -7,7 +7,8 @@ $(window).on('load', ()=> {
         opacity:"1"
     }, 700);
 
-    if (window.location.pathname.includes("/index.html")) {
+    if (window.location.pathname.includes("/index.html") ||
+        !window.location.pathname.includes("html")) { //if doesn't include html means its on index.html
         $('#sidebar').animate({
             width:"40%",
             marginRight:"60%"
