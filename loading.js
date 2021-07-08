@@ -3,7 +3,7 @@
 $(window).on('load', ()=> {
     $("#sidebar").find(".wrapper").fadeIn("slow");
     $("#main-section").animate({
-        paddingTop: "0%",
+        paddingTop: "-=10%",
         opacity:"1"
     }, 700);
 
@@ -17,6 +17,7 @@ $(window).on('load', ()=> {
         $('#gear').animate({
             right: "60%",
             width:"10%",
+            top:"60%",
         }, "slow");
     }
     else {
@@ -27,6 +28,7 @@ $(window).on('load', ()=> {
         gear_anim();
         $('#gear').animate({
             left: "81%",
+            top:"60%",
             width:"10%",
         }, "slow")
     }
@@ -80,6 +82,7 @@ function gear_anim_load() {
         left: "0",
         right: "0",
         width:"20%",
+        top:"0"
     }, "slow")
 }
 

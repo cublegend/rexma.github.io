@@ -29,6 +29,39 @@
             </div>
         </div>
         <img id="gear" src="./resources/gear.png">
+        <div class="container slides" id="main-section">
+            <img class="home-image" src="./resources/a-maze-in.png">
+            <img class="home-image" src="./resources/building.png">
+            <img class="home-image" src="./resources/hand.png">
+            <img class="home-image" src="./resources/marker.png">
+            <img class="home-image" src="./resources/noter.png">
+        </div>
     </body>
 </html>
 <script src="./loading.js"></script>
+<script>
+    var slideIndex = 1;
+    $(document).ready(()=> {
+        showSlides(slideIndex);
+        setInterval(() => {
+            nextSlide();
+        }, 2000);
+
+    })
+
+    function nextSlide() {
+        slideIndex++;
+        showSlides(slideIndex);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("home-image");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+             slides[i].style.display = "none";
+        }
+        slides[slideIndex-1].style.display = "block";
+    }
+</script>
