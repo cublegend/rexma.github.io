@@ -7,7 +7,7 @@ $(window).on('load', ()=> {
         opacity:"1"
     }, 700);
 
-    if (window.location.pathname.includes("HTML/index.html")) {
+    if (window.location.pathname.includes("/index.html")) {
         $('#sidebar').animate({
             width:"40%",
             marginRight:"60%"
