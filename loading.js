@@ -16,7 +16,7 @@ $(window).on('load', ()=> {
         $('#gear').animate({
             right: "60%",
             width:"10%",
-        }, "slow")
+        }, "slow");
     }
     else {
         $('#sidebar').animate({
