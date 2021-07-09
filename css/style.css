@@ -1,5 +1,5 @@
 body {
-    font-family:'Courier New', Courier, monospace;
+    font-family: 'Courier New', Courier, monospace;
     overflow-y: scroll;
     overflow-x: hidden;
 
@@ -67,8 +67,9 @@ h4.white-text {
 }
 
 #sidebar {
+    box-shadow: -1px -1px 10px rgb(187, 187, 187);
     z-index: 10;
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255);
     height: 100%;
     width: 100%;
     margin-left: 0%;
@@ -141,8 +142,6 @@ h2 {
 
 p.block-text {
     padding:5px;
-    border-style: dotted;
-    border-color: #F0A500;
 }
 
 .inner-text {
@@ -158,6 +157,15 @@ img {
 img:hover {
     opacity: 1;
 }
+
+/* horizontal band*/
+.horizontal-band {
+    width: 100%;
+    height: 20%;
+    box-shadow: -1000px -1px 5px grey;
+}
+
+/*animations*/
 
 @keyframes scroll {
     100% {
@@ -186,7 +194,7 @@ a.subpage:visited {
 
 a.subpage:hover {
     color: black;
-    background-color: #F0A500;
+    background-image: radial-gradient(rgb(255, 174, 0), rgba(255, 255, 255, 0.842));
     text-decoration: none;
     font-weight: bold;
 }
