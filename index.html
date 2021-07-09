@@ -17,10 +17,16 @@
                         <a class="home subpage">Home</a>
                     </div>
                     <div class="row single">
-                        <a class="portfolio subpage">Portfolio</a>
+                        <a class="portfolio subpage">Works</a>
                     </div>
                     <div class="row single">
                         <a class="blog subpage">Blogs</a>
+                    </div>
+                    <div class="row single">
+                        <a class="about subpage">About</a>
+                    </div>
+                    <div class="row single">
+                        <a class="contact subpage">Contact</a>
                     </div>
                     <div class="row single footer">
                         <p>This is the footer</p>
@@ -29,39 +35,26 @@
             </div>
         </div>
         <img id="gear" src="./resources/gear.png">
-        <div class="container slides" id="main-section">
-            <img class="home-image" src="./resources/a-maze-in.png">
-            <img class="home-image" src="./resources/building.png">
-            <img class="home-image" src="./resources/hand.png">
-            <img class="home-image" src="./resources/marker.png">
-            <img class="home-image" src="./resources/noter.png">
+        <div class="image-background">
+            <div class="image-container" id="line1">
+                <img class="home-image" id="first" src="./resources/view1.jpg">
+                <img class="home-image" id="first" src="./resources/a-maze-in.png">
+                <img class="home-image" id="first" src="./resources/building.png">
+            </div>
+            <div class="image-container" id="line2">
+                <img class="home-image" id="second" src="./resources/hand.png">
+                <img class="home-image" id="second" src="./resources/marker.png">
+                <img class="home-image" id="second" src="./resources/noter.png">
+            </div>
         </div>
+        <div class="floating-text">
+            <h1 class="white-text">THE WORLD</h1>
+            <h3 class="white-text">_IS BUILT FOR</h3>
+            <h4 class="white-text">_______________MORE</h4>
+            <h3 class="white-text">_CREATIVITY</h3>
+        </div>
+        
     </body>
 </html>
 <script src="./loading.js"></script>
-<script>
-    var slideIndex = 1;
-    $(document).ready(()=> {
-        showSlides(slideIndex);
-        setInterval(() => {
-            nextSlide();
-        }, 2000);
-
-    })
-
-    function nextSlide() {
-        slideIndex++;
-        showSlides(slideIndex);
-    }
-
-    function showSlides(n) {
-        var i;
-        var slides = document.getElementsByClassName("home-image");
-        if (n > slides.length) {slideIndex = 1}
-        if (n < 1) {slideIndex = slides.length}
-        for (i = 0; i < slides.length; i++) {
-             slides[i].style.display = "none";
-        }
-        slides[slideIndex-1].style.display = "block";
-    }
-</script>
+<script src="./image_scroll.js"></script>

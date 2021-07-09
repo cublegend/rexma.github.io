@@ -1,6 +1,7 @@
 body {
     font-family:'Courier New', Courier, monospace;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
 
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -10,23 +11,64 @@ body::-webkit-scrollbar {
     display:none;
 }
 
-.slides#main-section {
-    width: 60%;
-    margin-left: 40%;
-    padding-top: 50%;
-    padding-left: 0;
-    padding-right: 0;
-    opacity: 0;
+.home-image {
+    opacity: 0.5;
+    height: 100%;
+    flex-shrink: 0;
 }
 
-.home-image {
-    display: none;
-    width: 100%;
+.image-container {
+    display: flex;
+    position: absolute;
+    top: 10%;
+    bottom: 52%;
+}
+
+.floating-text {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    width: 55%;
+    z-index: 5;
+    margin-left: -200px;
+}
+
+.white-text {
+    color: white;
+}
+
+h1.white-text {
+    font-size: 100;
+    color: white;
+}
+
+h3.white-text {
+    font-size: 60;
+    color: white;
+}
+
+h4.white-text {
+    font-size: 40;
+    color: white;
+}
+
+#line2 {
+    top:52%;
+    bottom: 10%;
+}
+
+.image-background {
+    background-color: black;
+    height: 100%;
+    width: 70%;
+    margin-left: 40%;
 }
 
 #sidebar {
     z-index: 10;
-    background-color: rgb(128, 128, 128);
+    background-color: rgb(255, 255, 255);
     height: 100%;
     width: 100%;
     margin-left: 0%;
@@ -69,6 +111,7 @@ body::-webkit-scrollbar {
 
 h2 {
     margin-left: 2%;
+    color: black;
 }
 
 .grey {
@@ -99,7 +142,7 @@ h2 {
 p.block-text {
     padding:5px;
     border-style: dotted;
-    border-color: lightcoral;
+    border-color: #F0A500;
 }
 
 .inner-text {
@@ -116,6 +159,11 @@ img:hover {
     opacity: 1;
 }
 
+@keyframes scroll {
+    100% {
+        transform: translateX(-66.666%);
+    }
+}
 
 @keyframes rotate { 
     100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } 
@@ -126,24 +174,23 @@ a.subpage {
     width: inherit * 2;
     height: inherit * 2;
     display: block;
-    color: white;
+    color: black;
 }
 a.subpage:link {
-    color: white;
+    color: black;
 }
 
 a.subpage:visited {
-    color: white;
+    color: black;
 }
 
 a.subpage:hover {
-    color: white;
-    background-color: #df9e84;
+    color: black;
+    background-color: #F0A500;
     text-decoration: none;
     font-weight: bold;
 }
 
 a.subpage:active {
     color: #6C5B7B;
-    background-color: white;
 }

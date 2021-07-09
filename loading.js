@@ -12,13 +12,16 @@ $(window).on('load', ()=> {
         $('#sidebar').animate({
             width:"40%",
             marginRight:"60%"
-        }, "slow");
+        }, "slow", start_scrolling);
         gear_anim();
         $('#gear').animate({
             right: "60%",
             width:"10%",
             top:"60%",
         }, "slow");
+        $('.floating-text').animate({
+            marginLeft: '0'
+        }, 800)
     }
     else {
         $('#sidebar').animate({
