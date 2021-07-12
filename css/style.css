@@ -1,7 +1,6 @@
 body {
     font-family: 'Courier New', Courier, monospace;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    overflow: hidden;
     position: relative;
 
     -ms-overflow-style: none;
@@ -24,6 +23,7 @@ body::-webkit-scrollbar {
 
 .image-container {
     display: flex;
+    overflow: hidden;
     position: absolute;
     top: 10%;
     bottom: 52%;
