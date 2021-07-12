@@ -128,13 +128,6 @@ h2 {
     opacity: 0.5;
 }
 
-.row.single {
-    margin-top: 5%;
-    margin-bottom: 5%;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
 .footer {
     bottom: 0;
     position: absolute;
@@ -191,7 +184,7 @@ a.subpage {
     display: block;
     color: black;
     font-size: 2vw;
-    margin-top: 5vw;
+    margin-top: 5vh;
 }
 a.subpage:link {
     color: black;
