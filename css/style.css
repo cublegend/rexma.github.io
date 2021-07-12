@@ -12,6 +12,10 @@ body::-webkit-scrollbar {
     display:none;
 }
 
+.cub {
+    font-size: 4vw;
+}
+
 .home-image {
     opacity: 0.5;
     height: 100%;
@@ -184,6 +188,8 @@ a.subpage {
     height: inherit * 2;
     display: block;
     color: black;
+    font-size: 2vw;
+    margin-top: 5vw;
 }
 a.subpage:link {
     color: black;
