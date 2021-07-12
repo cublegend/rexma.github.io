@@ -5,24 +5,19 @@ AFRAME.registerComponent('scene-event-handler', {
     on_marker: null,
 
     plane: null,
-
-    ratio: null,
     
     curr_floor: null,
 
     mousedown: false,
 
-    camera: null,
-
     max_altitude: -1,
-    
-    collider: null,
+
+    on_touch: false,
+
+    tim_out_handler: null,
 
     init: function() {
-        this.ratio = 0.001;
-        this.camera = this.el.sceneEl.camera.el;
         this.plane = this.el.querySelector('#base');
-        this.collider = this.plane.querySelector('[aabb-collider]');
         document.addEventListener('markerFound', function() {
             this.on_marker = true;
         }.bind(this));
@@ -56,9 +51,9 @@ AFRAME.registerComponent('scene-event-handler', {
         let point = this.plane.object3D.worldToLocal(event.detail.intersection.point);
         this.curr_floor.object3D.position.x = point.x;
         this.curr_floor.object3D.position.z = point.z;
-        this.curr_floor.object3D.position.y = point.y 
-                + this.curr_floor.object3D.scale.y / 2;
-        this.curr_floor.addEventListener('hitstart', this._altitude_detection.bind(this));
+        this.curr_floor.object3D.position.y = this.plane.object3D.position.y
+        + this.plane.getAttribute('geometry').height * this.plane.object3D.scale.y / 2;
+        this.curr_floor.addEventListener('collisions', this._altitude_detection.bind(this));
         this.max_altitude = this.curr_floor.object3D.position.y;
         this.mousedown = true;
     },
@@ -134,20 +129,31 @@ AFRAME.registerComponent('scene-event-handler', {
     _altitude_detection: function(event) {
         if (!this.mousedown) return;
         let collider = this.curr_floor;
-        let targets = collider.querySelector('[aabb-collider]').components['aabb-collider']['intersectedEls'];
-        let altitude = 0;
-
+        let targets = event.detail.els;
+        if (targets[0] == this.curr_floor) {
+            return;
+        }
+        console.log(event.detail.clearedEls);
+        console.log(this.max_altitude);
+        if (!this.on_touch) {
+            this.max_altitude = 0.6;
+        }
+        
         targets.forEach((t) => {
-            let target = t.parentElement;
+            this.on_touch = true;
+            clearInterval(this.time_out_handler);
+            this.time_out_handler = setTimeout(() => {
+                this.on_touch = false;
+                console.log("here");
+            }, 300);
+            let target = t;
             let y_pos = target.object3D.position.y 
                     + target.getAttribute('geometry').height * target.object3D.scale.y / 2 + collider.getAttribute('geometry').height * collider.object3D.scale.y / 2;
 
-                if (y_pos > altitude) {
-                    altitude = y_pos;
-                }
+            if (y_pos > this.max_altitude) {
+                this.max_altitude = y_pos;
+            }
+            console.log(y_pos);
         });
-        this.max_altitude = altitude;
     }
 })
-
-//FIXME: add a invisible child object of collision box and check collision if necessary

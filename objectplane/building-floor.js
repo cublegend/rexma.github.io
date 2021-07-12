@@ -11,20 +11,20 @@ AFRAME.registerComponent('building-floor', {
         let floor = this.el;
         let data = this.data;
 
-        
         floor.setAttribute("height", data.height);
         floor.setAttribute("width", data.width);
         floor.setAttribute('depth', data.depth);
+        floor.setAttribute('static-body', '');
+        floor.setAttribute('physics-collider', 'ignoreSleep: true')
         floor.className = 'clickable';
 
-        let collider = document.createElement('a-box');
-        collider.setAttribute('geometry', {height: data.height, width: data.width, depth: data.depth});
-        collider.object3D.scale.set(0.95, 0.95, 0.95);
-        collider.setAttribute('material', {opacity: 0, transparent: true});
-        collider.setAttribute('aabb-collider',{objects: '.collidable'});
-        floor.appendChild(collider);
-        collider.setAttribute('data-aabb-collider-dynamic', 'true');
-        collider.className = "collidable";
+        //let collider = document.createElement('a-box');
+        //collider.setAttribute('geometry', {height: data.height, width: data.width, depth: data.depth});
+        //collider.object3D.scale.set(0.95, 0.95, 0.95);
+        //collider.setAttribute('material', {opacity: 0, transparent: true});
+        
+        //floor.appendChild(collider);
+        //collider.className = "collidable";
         if (this.data.random_color) {
             floor.setAttribute("color", this._random_color_gen());
         }
