@@ -161,13 +161,6 @@ img:hover {
     opacity: 1;
 }
 
-/* horizontal band*/
-.horizontal-band {
-    width: 100%;
-    height: 20%;
-    box-shadow: -1000px -1px 5px grey;
-}
-
 /*animations*/
 
 @keyframes scroll {
@@ -202,6 +195,7 @@ a.subpage:hover {
     background-image: radial-gradient(rgb(255, 174, 0), rgba(255, 255, 255, 0.842));
     text-decoration: none;
     font-weight: bold;
+    cursor: pointer;
 }
 
 a.subpage:active {

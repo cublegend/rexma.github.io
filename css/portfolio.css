@@ -1,0 +1,73 @@
+.circle {
+    width: 30vh;
+	height: 30vh;
+	border-radius: 50%;
+	position: absolute;
+    top: calc(50% - 15vh);
+    left: calc(40% - 15vh);
+	overflow: hidden;
+    background-color: rgba(255, 255, 255, 0);
+    z-index: 2;
+    padding-top: 5px;
+    padding-left: 5px;
+    box-shadow: 100px 100px 1000px 1000px white;
+}
+	
+
+.sector {
+    position: absolute;
+    transform-origin: 100% 100%;
+    background: #ccc;
+    width: 5000px;
+    height: 5000px;
+    left: 50%;
+    top: 50%;
+    margin-top: -5000px;
+    margin-left: -5000px;
+}
+
+.sector:hover {
+    cursor: pointer;
+}
+		
+
+.sector:hover {
+    border: 1px solid black;
+}
+
+.return-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10vh;
+    height: 10vh;
+    background-color: brown;
+    z-index: 0;
+}
+
+.return-button:hover {
+    cursor: pointer;
+}
+
+.button-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20vh;
+    height: 20vh;
+    background-color: white;
+    z-index: 0;
+}
+
+.AR {
+    padding-top: 10%;
+    display: none;
+    position: relative;
+    z-index: 1;
+    opacity: 0.5;
+}
+
+.Game {
+    display: none;
+}
+			
