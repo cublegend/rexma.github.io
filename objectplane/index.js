@@ -136,7 +136,8 @@ AFRAME.registerComponent('scene-event-handler', {
         console.log(event.detail.clearedEls);
         console.log(this.max_altitude);
         if (!this.on_touch) {
-            this.max_altitude = 0.6;
+            this.max_altitude = this.plane.object3D.position.y 
+            + this.plane.getAttribute('geometry').height * this.plane.object3D.scale.y / 2 + collider.getAttribute('geometry').height * collider.object3D.scale.y / 2;;
         }
         
         targets.forEach((t) => {
