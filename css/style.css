@@ -2,6 +2,7 @@ body {
     font-family: 'Courier New', Courier, monospace;
     overflow-y: scroll;
     overflow-x: hidden;
+    position: relative;
 
     -ms-overflow-style: none;
     scrollbar-width: none;
