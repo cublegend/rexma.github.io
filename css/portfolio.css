@@ -54,9 +54,9 @@ a.subpage:hover {
 .coffeeshop {
     position: absolute;
     bottom: 0;
-    left: 10%;
+    left: 5%;
     opacity: 1;
-    width: calc(30vh + 50px);
+    width: calc(5% + 50vh);
     z-index: 1;
 }
 
@@ -112,7 +112,11 @@ a.subpage:hover {
     z-index: 0;
 }
 
-.AR {
+.AR, .Game {
+    overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    height: 100%;
     padding-top: 10%;
     display: none;
     position: relative;
@@ -120,11 +124,8 @@ a.subpage:hover {
     opacity: 0;
 }
 
-.Game {
-    display: none;
-    position: relative;
-    z-index: 1;
-    opacity: 0;
+.AR::-webkit-scrollbar, .Game::-webkit-scrollbar {
+    display:none;
 }
 
 .test_obj {

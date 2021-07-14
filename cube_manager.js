@@ -57,7 +57,9 @@ AFRAME.registerComponent('cube-manager', {
                 });
                 return;
             }
-            new_cube.parentNode.removeChild(new_cube);
+            if (new_cube.parentNode != null) {
+                new_cube.parentNode.removeChild(new_cube);
+            }
             // create a new cube whenever one is gone
             this._create_cubes();
         });
