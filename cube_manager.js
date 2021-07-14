@@ -20,25 +20,26 @@ AFRAME.registerComponent('cube-manager', {
         let height_min = - ( (0 - rect.top) / rect.height ) * 2 + 1;;
         let pos_x = Math.random() * (width_max - width_min) + width_min;
         let pos_y = Math.random() * (height_max - height_min) + height_min;
-        let pos_z = Math.random() * -3;
+        let pos_z = Math.random() * -2;
         let rotation_x = Math.random() * 8;
         let rotation_y = Math.random() * 8;
         let rotation_z = Math.random() * 8;
-        let n = Math.random() * (10000 - 3000) + 3000;
+        let n = Math.random() * (8000 - 2000) + 2000;
 
         // create cube
-        let new_cube = document.createElement('a-box');
+        let new_cube = document.createElement('a-plane');
         new_cube.object3D.position.set(pos_x, pos_y, pos_z);
-        new_cube.object3D.scale.set(0.05, 0.05, 0.05);
+        new_cube.object3D.scale.set(0.1, 0.1, 0.1);
         new_cube.object3D.rotation.set(rotation_x, rotation_y, rotation_z);
-        new_cube.setAttribute('color', 'grey');
+        new_cube.setAttribute('color', 'white');
+        new_cube.setAttribute('material', 'transparent', 'true');
         new_cube.setAttribute('material', 'opacity', '0');
         
         
         // set animations
         new_cube.setAttribute('animation__enter',{
             property: 'material.opacity',
-            to: '1',
+            to: '0.2',
             dur: n / 2
         });
         new_cube.setAttribute('animation__rotation',{
@@ -72,8 +73,8 @@ AFRAME.registerComponent('cube-manager', {
         let mouse = new THREE.Vector2();
         let camera = AFRAME.scenes[0].camera;
         let rect = document.querySelector('a-scene').getBoundingClientRect();
-        mouse.x = ( (e.clientX - rect.left) / rect.width ) * 2 - 1;
-        mouse.y = - ( (e.clientY - rect.top) / rect.height ) * 2 + 1;
+        mouse.x = ( (e.clientX - rect.left) / rect.width ) * 5 - 1;
+        mouse.y = - ( (e.clientY - rect.top) / rect.height ) * 5 + 1;
         let vector = new THREE.Vector3( mouse.x, mouse.y, -1 ).unproject( camera );
         let rot = new THREE.Vector3();
         let ratio = 2;
