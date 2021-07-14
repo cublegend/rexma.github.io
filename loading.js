@@ -41,7 +41,8 @@ $(".portfolio.subpage").on("click", () => {
     text_anim();
     $('#sidebar').animate({
         width:"100%",
-        marginLeft:"0"
+        marginLeft:"0",
+        backgroundColor: "#3a5c57"
     }, "slow",()=> {
         window.location = "./portfolio.html"
     });
@@ -61,7 +62,8 @@ $(".home.subpage").on("click", () => {
     text_anim();
     $('#sidebar').animate({
         width:"100%",
-        marginLeft:"0"
+        marginLeft:"0",
+        backgroundColor: "white"
     }, "slow",()=> {
         window.location = "./index.html"
     });

@@ -3,7 +3,7 @@ AFRAME.registerComponent('cube-manager', {
         // create random cubes that follow mouse position parallex movement
 
         // how many cubes
-        let num_cubes = Math.random() * (50, 30) + 30;
+        let num_cubes = 150;
         for (let i = 0; i < num_cubes; i++) {
             this._create_cubes();
         }
@@ -12,25 +12,21 @@ AFRAME.registerComponent('cube-manager', {
 
     _create_cubes: function() {
         // randomize cube setup
-        let canvas = document.querySelector('canvas');
+        let canvas = document.querySelector('.a-canvas');
         let rect = document.querySelector('a-scene').getBoundingClientRect();
-        let width_max = ( (canvas.width - rect.left) / rect.width ) * 2 - 1;
-        let width_min = ( (0 - rect.left) / rect.width ) * 2 - 1;
-        let height_max = - ( (canvas.height - rect.top) / rect.height ) * 2 + 1;;
-        let height_min = - ( (0 - rect.top) / rect.height ) * 2 + 1;;
+        let width_max = ( (canvas.width - rect.left) / rect.width ) * 2 + 20;
+        let width_min = ( (0 - rect.left) / rect.width ) * 2 - 20;
+        let height_max = - ( (canvas.height - rect.top) / rect.height ) * 2 - 10;
+        let height_min = - ( (0 - rect.top) / rect.height ) * 2 + 10;
         let pos_x = Math.random() * (width_max - width_min) + width_min;
         let pos_y = Math.random() * (height_max - height_min) + height_min;
-        let pos_z = Math.random() * -2;
-        let rotation_x = Math.random() * 8;
-        let rotation_y = Math.random() * 8;
-        let rotation_z = Math.random() * 8;
-        let n = Math.random() * (8000 - 2000) + 2000;
+        let pos_z = -10;
+        let n = Math.random() * (6000 - 2000) + 2000;
 
         // create cube
-        let new_cube = document.createElement('a-plane');
+        let new_cube = document.createElement('a-sphere');
         new_cube.object3D.position.set(pos_x, pos_y, pos_z);
-        new_cube.object3D.scale.set(0.1, 0.1, 0.1);
-        new_cube.object3D.rotation.set(rotation_x, rotation_y, rotation_z);
+        new_cube.object3D.scale.set(0.005, 0.005, 0.005);
         new_cube.setAttribute('color', 'white');
         new_cube.setAttribute('material', 'transparent', 'true');
         new_cube.setAttribute('material', 'opacity', '0');
@@ -39,14 +35,13 @@ AFRAME.registerComponent('cube-manager', {
         // set animations
         new_cube.setAttribute('animation__enter',{
             property: 'material.opacity',
-            to: '0.2',
+            to: '1',
             dur: n / 2
         });
-        new_cube.setAttribute('animation__rotation',{
-            property: 'rotation',
-            to: '30 60 0',
+        new_cube.setAttribute('animation__scale',{
+            property: 'scale',
+            to: {x: n * 0.00001, y: n * 0.00001, z: 0.005},
             dur: n,
-            loop: 'true',
             easing: 'linear'
         });
        
@@ -58,8 +53,7 @@ AFRAME.registerComponent('cube-manager', {
                 new_cube.setAttribute('animation__opacity',{
                     property: 'material.opacity',
                     to: '0',
-                    dur: n / 2,
-                    easing: 'linear'
+                    dur: n / 2
                 });
                 return;
             }

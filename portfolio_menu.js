@@ -27,6 +27,7 @@ $(document).ready(function() {
                     left: "-=50%",
                     top: "-=100%"
                 }, 800);
+                $('.img-container').css("display", "none");
                 $(".circle").animate({
                     width: "+=500vh",
                     height: "+=500vh",
@@ -68,6 +69,7 @@ $(document).ready(function() {
                 $("#num2").animate({
                     left: "+=100%"
                 }, 800);
+                $('.img-container').css("display", "none");
                 $(".circle").animate({
                     width: "+=500vh",
                     height: "+=500vh",
@@ -109,7 +111,8 @@ $(document).ready(function() {
                 $("#num3").animate({
                     left: "-=50%",
                     top: "+=100%"
-                }, 600);
+                }, 800);
+                $('.img-container').css("display", "none");
                 $(".circle").animate({
                     width: "+=500vh",
                     height: "+=500vh",
@@ -150,11 +153,12 @@ function back_to_menu() {
     }, "slow");
     $('.circle').css("display", "inline-block");
     $(".circle").animate({
-        width: "30vh",
-        height: "30vh",
+        width: "10vh",
+        height: "10vh",
         top: t,
         left: l
     }, 800, () => {
+        $('.img-container').css("display", "block");
         $('a-scene').css('display', 'block');
         $(".button-cover").css("border-radius", '0');
         $(".AR").css("display", "none");
@@ -166,4 +170,10 @@ function back_to_menu() {
         $(".Music").css("opacity", "0");
         $('.circle').css({'animation': 'shadow-back 0.3s forwards'});
     });
+}
+
+function toggle_play_button(el) {
+    $('.soundcloud').css('opacity', '1');
+    $('.soundcloud').css('pointer-events', 'all');
+    $('.play-button').css('display', 'none');
 }
