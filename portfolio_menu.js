@@ -5,6 +5,19 @@ $(document).ready(function() {
     t = $('.circle').css("top");
     l = $('.circle').css("left");
 
+    $('#gear').on('click', ()=> {
+        let sn = document.querySelector('.star-night');
+        console.log(document.querySelector('.star-night').getAttribute('cube-manager').active);
+        if (!sn.getAttribute('cube-manager').active) {
+            sn.setAttribute('cube-manager', 'active', 'true');
+            $('.rain-main').css('display', 'none');
+        }
+        else {
+            sn.setAttribute('cube-manager', 'active', 'false');
+            $('.rain-main').css('display', 'block');
+        }
+    })
+
     $("#num1").on('click', () => {
         $('.circle').css({'animation': 'shadow 1s forwards'});
         $('.AR').css("display", "block");

@@ -1,13 +1,35 @@
 AFRAME.registerComponent('cube-manager', {
-    init: function () {
-        // create random cubes that follow mouse position parallex movement
+    schema: {
+        active: {type: 'boolean', default: false}
+    },
 
-        // how many cubes
-        let num_cubes = 150;
+    init: function () {
+        this.enabled = false;
+        
+    },
+
+    tick: function () {
+        if (this.data.active && !this.enabled) {
+            this.enabled = true;
+            this._enable_gen();
+        }
+        else if (!this.data.active && this.enabled) {
+            this.enabled = false;
+            this._clear_gen();
+        }
+    },
+
+    _enable_gen: function () {
+        let num_cubes = 100;
         for (let i = 0; i < num_cubes; i++) {
             this._create_cubes();
         }
-        this.el.addEventListener('mousemove', this._mouse_to_world.bind(this));
+        
+        this.el.addEventListener('mousemove', this._mouse_to_world);
+    },
+
+    _clear_gen: function() {
+        this.el.removeEventListener('mousemove', this._mouse_to_world);
     },
 
     _create_cubes: function() {
@@ -30,8 +52,6 @@ AFRAME.registerComponent('cube-manager', {
         new_cube.setAttribute('color', 'white');
         new_cube.setAttribute('material', 'transparent', 'true');
         new_cube.setAttribute('material', 'opacity', '0');
-        
-        
         // set animations
         new_cube.setAttribute('animation__enter',{
             property: 'material.opacity',
@@ -61,6 +81,8 @@ AFRAME.registerComponent('cube-manager', {
                 new_cube.parentNode.removeChild(new_cube);
             }
             // create a new cube whenever one is gone
+            // if not enabled do not create new cubes
+            if (!this.enabled) return;
             this._create_cubes();
         });
     },
