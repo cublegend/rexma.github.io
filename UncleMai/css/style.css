@@ -1,0 +1,71 @@
+body {
+    margin: 0;
+    orientation: landscape;
+}
+
+img {
+    position: absolute;
+}
+
+.main-page {
+    overflow: hidden;
+}
+
+.background {
+    bottom: 0%;
+    height: auto;
+    width:100%;
+}
+
+.mss {
+    height: 90vh;
+    left: -5vh;
+    bottom: -3vh;
+}
+
+.title-words {
+    height: 17vh;
+    left: 20vh;
+    top: 2vh;
+}
+
+.shizi {
+    left: calc(50% - 20vh);
+    top: calc(50% - 20vh);
+    height: 50vh;
+
+}
+
+.tiyan {
+    right: 25vh;
+    top: 10vh;
+    height: 35vh;
+}
+
+.shibie {
+    height: 18vh;
+    right: 5vh;
+    top: 2vh;
+}
+
+.shezhi {
+    height: 30vh;
+    right: 25vh;
+    bottom: 10vh;
+}
+
+.button:hover {
+    animation: 1s wobble infinite;
+}
+
+.loading-image {
+    overflow: hidden;
+    display: none;
+}
+
+@keyframes wobble {
+    0% {transform:  rotate(0deg);}
+    25% {transform:  rotate(5deg);}
+    50% {transform:  rotate(-5deg);}
+    100% {transform:  rotate(0);}
+}
