@@ -11,7 +11,7 @@ img {
 }
 
 .background {
-    bottom: 0%;
+    top: 0%;
     height: auto;
     width:100%;
 }
@@ -68,3 +68,15 @@ img {
     50% {transform:  rotate(-5deg);}
     100% {transform:  rotate(0);}
 }
+
+@media screen and (orientation:landscape) {
+
+    html {
+      -ms-transform: rotate(-90deg); /* IE 9 */
+      -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+      transform: rotate(-90deg);
+      width: auto;
+      height: auto;
+      overflow: scroll;
+    }
+  }
