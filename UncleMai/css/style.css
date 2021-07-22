@@ -1,6 +1,7 @@
 body {
     margin: 0;
     orientation: landscape;
+    overflow: hidden;
 }
 
 img {
@@ -12,9 +13,11 @@ img {
 }
 
 .background {
-    bottom: 0%;
+    top: 0;
+    min-width: 100%;
+    width: auto;
     height: auto;
-    width:100%;
+    min-height: 100%;
 }
 
 .mss {
