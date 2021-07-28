@@ -80,12 +80,13 @@ AFRAME.registerComponent('cube-manager', {
             if (new_cube.parentNode != null) {
                 console.log("removed cube");
                 new_cube.parentNode.removeChild(new_cube);
+                // create a new cube whenever one is gone
+                // if not enabled do not create new cubes
+                if (!this.enabled) return;
+                this._create_cubes();
+                console.log("create cube");
             }
-            // create a new cube whenever one is gone
-            // if not enabled do not create new cubes
-            if (!this.enabled) return;
-            this._create_cubes();
-            console.log("create cube");
+            
         });
     },
 
