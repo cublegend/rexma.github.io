@@ -3,13 +3,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/mainStyle.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
    
     <div class="main-page">
-        <img class="button" id="return" src="./resources/UIpic/UI-223png.png">
+        <img class="button" id="return" onclick="return_to_main()" src="./resources/UIpic/UI-223png.png">
         <img id="tl" src="./resources/UIpic/UI-32.png">
         <img id="tr" src="./resources/UIpic/UI-32.png">
         <img id="br" src="./resources/UIpic/UI-32.png">
@@ -65,3 +66,17 @@
         <p style="position: absolute; top: 50%; left: 50%;font-size: large;">请旋转手机</p>
     </div>
 </body>
+<script>
+    function return_to_main () {
+        window.location = "./index.html";
+    }
+
+    $(window).ready(function() {
+        
+        if(!window.location.hash) {
+            window.location = window.location + '#loaded';
+            window.location.reload();
+        }
+    })
+    
+</script>
