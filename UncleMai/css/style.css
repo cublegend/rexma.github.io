@@ -1,5 +1,6 @@
 html {
     padding: env(safe-area-inset);
+    overflow: hidden;
 }
 
 body {
