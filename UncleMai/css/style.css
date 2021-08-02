@@ -26,14 +26,14 @@ img {
     pointer-events: none;
     bottom: 0%;
     height: auto;
-    width:100%;
+    width:120%;
 }
 
 .mss {
     pointer-events: none;
     height: 90vh;
     left: -5vh;
-    bottom: -3vh;
+    bottom: -6vh;
 }
 
 .title-words {
@@ -97,20 +97,5 @@ img {
 
     .info {
         display: block;
-    }
-}
-
-@media screen and (orientation:landscape) {
-
-    html {
-        padding: env(safe-area-inset);
-        overflow: hidden;
-    }
-    
-    body {
-        margin: 0;
-        height: 100%;
-        width: 100%;
-        overflow: hidden;
     }
 }
