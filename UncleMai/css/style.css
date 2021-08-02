@@ -11,18 +11,21 @@ img {
 }
 
 .background {
+    pointer-events: none;
     bottom: 0%;
     height: auto;
     width:100%;
 }
 
 .mss {
+    pointer-events: none;
     height: 90vh;
     left: -5vh;
     bottom: -3vh;
 }
 
 .title-words {
+    pointer-events: none;
     height: 17vh;
     left: 20vh;
     top: 2vh;
@@ -58,6 +61,7 @@ img {
 }
 
 .loading-image {
+    pointer-events: none;
     overflow: hidden;
     display: none;
 }
