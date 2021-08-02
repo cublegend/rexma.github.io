@@ -1,5 +1,6 @@
 html {
     padding: env(safe-area-inset);
+    overflow: hidden;
 }
 
 body {
@@ -7,6 +8,7 @@ body {
     height: 100%;
     width: 100%;
     overflow: hidden;
+    position: relative;
 }
 
 img {
