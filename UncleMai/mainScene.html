@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./css/mainStyle.css">
     <link rel="stylesheet" href="./css/style.css">
     <script>
-    const current_audios = [];
+    var current_audio = null;
     $(window).ready(function() {
         
         if(!window.location.hash) {
@@ -20,13 +20,11 @@
                 let str = event.currentTarget.querySelector("[gltf-model]").getAttribute("gltf-model");
                 let num = str.slice(92, 96);
                 let audio = new Audio("./resources/Geyao/" + num + ".mp3")
-                current_audios.push(audio);
+                current_audio = audio;
+                console.log(current_audio);
             })
             element.addEventListener("markerLost", function(event) {
-                let str = event.currentTarget.querySelector("[gltf-model]").getAttribute("gltf-model");
-                let num = str.slice(92, 96);
-                let audio = new Auido("./resources/Geyao/" + num + ".mp3");
-                current_audios.pop(audio);
+                current_audio = null;
             })
         });
         
