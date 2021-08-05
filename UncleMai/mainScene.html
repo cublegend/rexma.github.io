@@ -6,6 +6,38 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/mainStyle.css">
     <link rel="stylesheet" href="./css/style.css">
+    <script>
+    const current_audios = [];
+    $(window).ready(function() {
+        
+        if(!window.location.hash) {
+            window.location = window.location + '#loaded';
+            window.location.reload();
+        }
+        let allthings = document.querySelectorAll("a-nft");
+        allthings.forEach(element => {
+            element.addEventListener("markerFound", function(event) {
+                let str = event.currentTarget.querySelector("[gltf-model]").getAttribute("gltf-model");
+                let num = str.slice(92, 96);
+                let audio = new Audio("./resources/Geyao/" + num + ".mp3")
+                current_audios.push(audio);
+            })
+            element.addEventListener("markerLost", function(event) {
+                let str = event.currentTarget.querySelector("[gltf-model]").getAttribute("gltf-model");
+                let num = str.slice(92, 96);
+                let audio = new Auido("./resources/Geyao/" + num + ".mp3");
+                current_audios.pop(audio);
+            })
+        });
+        
+    })
+
+    function play_geyao() {
+        current_audios.forEach(a => {
+            a.play(); 
+        })
+    }
+    </script>
 </head>
 <body>
    
@@ -15,7 +47,7 @@
         <img id="tr" src="./resources/UIpic/UI-32.png">
         <img id="br" src="./resources/UIpic/UI-32.png">
         <img id="bl" src="./resources/UIpic/UI-32.png">
-        <img class="button" id="geyao" src="./resources/UIpic/UI-23.png">
+        <img class="button" id="geyao" onclick="play_geyao()" src="./resources/UIpic/UI-23.png">
         <a-scene renderer="logarithmicDepthBuffer: true;" embedded arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;" vr-mode-ui="enabled: false">
             <a-nft
                 type="nft"
@@ -71,12 +103,6 @@
         window.location = "./index.html";
     }
 
-    $(window).ready(function() {
-        
-        if(!window.location.hash) {
-            window.location = window.location + '#loaded';
-            window.location.reload();
-        }
-    })
+    
     
 </script>
