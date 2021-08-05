@@ -24,6 +24,7 @@
                 console.log(current_audio);
             })
             element.addEventListener("markerLost", function(event) {
+                current_audio.pause();
                 current_audio = null;
             })
         });
@@ -31,6 +32,7 @@
     })
 
     function play_geyao() {
+        
         current_audio.play();
     }
     </script>
