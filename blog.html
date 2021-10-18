@@ -65,6 +65,54 @@
             </div>
             <div class="content-page">
                 <div class="title-container">
+                    <h2 class="content-title"> Wolverine Soft Blogs </h2>
+                </div>
+
+            	<div class="content-container">
+                    <h2> BiWeeklyDevBlog #1 </h2>
+                    <p>In the first two weeks of Project Tower, I did work that fulfilled my credit hours(18 hours total) and even more to help build a solid start for the project.</p>
+                    <br>
+                    <h4>1. Setup the website (2 Hours) </h4>
+                    <img class="col-md-6 inline-img" src="resources/BlogImage/portfolio.png">
+                    <p>The website that I use was already there as my portfolio website. However, it was really rough and included some useless aesthetics that took up a lot of memory (mostly animations). I got rid of those, and refined the menu for my website. I still don't have it fully complete; I will be refining it further in the coming weeks.</p>
+                    <br>
+                    <br>
+                    <br>
+                    <h4>2. Play Bloons TD 6 (5 Hours)</h4>
+                    <p>Before the project officially begins, I played a lot of TD 6 in my own time. I've played the game in my childhood but have never been able to analyze it in detail while I play. While I play through the game, I made sure that I have these things in mind: How does the game feel in general? What elements or mechanics make it fun to play? What are some things that could be altered or improved? I realized that the mechanic that I found to be most interesting is how setting up defense strategy with different combinations of towers could lead to entirely different playstyle, and how you could try entirely different things in a single level. Just like how you could pick different heroes to play in order to experience different game styles in MOBA games. The upgrades of towers furthered this idea of variety. However, the game manages to keep things balanced by introducing different enemy types that could only be handled in some specific ways (invisibility, magic immunity, etc.). This ensures that a variety of different towers are needed to pass the level.</p>
+                    <br>
+                    <h4>3. Pause Menu (2 Hours)</h4>
+                    <img class="col-md-6 inline-img" src="resources/BlogImage/pause_menu.png">
+                    <p>The first task I did for the studio is the pause menu. In this task, I created an interface that can be called up during gameplays to pause the game. The menu included four buttons: Resume resumes the game; Restart restarts the entire level; MainMenu quits the current level and goes back to the main menu; and Quit quit the entire game. When I was testing the pause menu, I realized that if the timeScale for the game is changed, returning back from the pause menu would not reflect that change. This is due to the hard coded timeScale = 1 in the method ResumeGame(). I fixed that issue by adding a private variable to the class to keep track of the current timeScale.</p>
+                    <br>
+                    <h4>4. Tower Range (2 Hours)</h4>
+                    <p>In this task, I made a range view for towers when dragging them to better illustrate the aggro region for each tower.
+                    </p>
+                    <img class="col-md-6 inline-img" src="resources/BlogImage/range.gif">
+                    <p>As you can see, the green region automatically reflects the range of the specific tower. It will grab the range variable from each tower’s scriptable object and update the circle’s radius. However, this range view is currently only visible when you drag the tower to place it. Further implementation is needed if we want to view each tower’s range in game while directly clicking on them.</p>
+					<br>
+					<br>
+					<h4>5. Immunity system and Magic Attacks (7 Hours)</h4>
+					<p>These two tasks are somewhat related, since they both use the immunity system. I first constructed the underlying logic for immunity and visibility. I figured that these features can be placed on the Health component since they are dealing with damage and health. I added a general immunity toggle and a visibility toggle first, then I changed the general immunity into two separate toggles for magical and physical damage.
+					</p>
+                    <img class="col-md-6 inline-img" src="resources/BlogImage/immunity.png">
+                    <img class="col-md-6 inline-img" src="resources/BlogImage/immunity2.png">
+                    <p>To achieve invisibility, I added a layer called invisibleEnemy, and if the invisible toggle is on, its layer will be changed to this one which cannot be detected by towers unless we add this layer to the target layer setting for the tower.
+					</p><p>I then added an enum called DamageType which currently consists of Magical and Physical, that reflects the different types of damage dealt. I added a damage type variable to the Tower SO, and when a tower shoots out bullets, the bullet will deal exactly the type of damage of that tower.
+                    </p>
+                    <img class="col-md-6 inline-img" src="resources/BlogImage/immunity_game.gif">
+                    <img class="col-md-6 inline-img" src="resources/BlogImage/invisible_game.gif">
+                    <p>I was considering a different option of using damageLayer instead of a new enum, since I saw there was this variable and think that it will be cleaner for me to just use this variable. But after talking with Nikhil, I have decided to use a new enum instead just so that damageType can be separated from all the layer stuff and be in its own pack. This way, further managing it will be less error prone, and clearer for the designers.</p>
+					
+                    <br>
+					<h4>6. Explosive Tower (2 Hours)</h4>
+                    <img class="col-md-6 inline-img" src="resources/BlogImage/invisible_game.gif">
+					<p>The last task I did for the past 2 weeks is the explosive tower. For the temporary model, I just copied the original tower model and added a shade of red to it. The tower itself does not need too much alter, but the bullet needs to be altered into an AoE damage bullet. I made a green star as my bomb bullet; I then implemented a new component called ExplosiveDamage which derives from the DamageOnTrigger2D script. This component uses overlapSphere to check for targets within a certain range once it hits its initial target. It then deals damage to all of them within a for loop. This method is overridden from the original DoDamage method, so that triggers are handled in the base class. The range of the explosion can be accessed through the inspector of ExplosiveDamage which is on the explosive bullet itself. Dragging this new bullet to a tower lets the tower shoot out such a bullet.</p>
+
+                </div>
+            </div>
+            <div class="content-page">
+                <div class="title-container">
                     <h2 class="content-title"> Other Contents </h2>
                 </div>
                 <div class="content-container">

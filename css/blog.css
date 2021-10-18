@@ -4,8 +4,11 @@
     margin-right: 5vh;
 }
 
+.inline-img {
+    opacity: 1;
+}
+
 .circle {
-    
     width: 10vh;
 	height: 10vh;
     margin-top: 2vh;
