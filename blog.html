@@ -65,7 +65,7 @@
             </div>
             <div class="content-page">
                 <div class="title-container">
-                    <h2 class="content-title"> Wolverine Soft Blogs </h2>
+                    <h2 class="content-title"> Wolverine Soft Blog #1 </h2>
                 </div>
 
             	<div class="content-container">
@@ -109,6 +109,83 @@
                     <img class="col-md-6 inline-img" src="resources/BlogImage/invisible_game.gif">
 					<p>The last task I did for the past 2 weeks is the explosive tower. For the temporary model, I just copied the original tower model and added a shade of red to it. The tower itself does not need too much alter, but the bullet needs to be altered into an AoE damage bullet. I made a green star as my bomb bullet; I then implemented a new component called ExplosiveDamage which derives from the DamageOnTrigger2D script. This component uses overlapSphere to check for targets within a certain range once it hits its initial target. It then deals damage to all of them within a for loop. This method is overridden from the original DoDamage method, so that triggers are handled in the base class. The range of the explosion can be accessed through the inspector of ExplosiveDamage which is on the explosive bullet itself. Dragging this new bullet to a tower lets the tower shoot out such a bullet.</p>
 
+                </div>
+            </div>
+            <div class="content-page">
+
+                <div class="title-container">
+                    <h2 class="content-title"> Wolverine Soft Blog #2 </h2>
+                </div>
+                <div class="content-container">
+                    <h2> BiWeeklyDevBlog #2 </h2>
+                    <h4>1. Magical Tower (3 Hours)</h4>
+                    <img class="col-md-6 inline-img" src="resources/BlogImage/MagicalImmune.png">
+                    <img class="col-md-6 inline-img" src="resources/BlogImage/MagicalImmune2.gif">
+                    <p>I created a magic tower that shoots out bullets that deal magical damage. And to illustrate the difference, I also created a temporary magic enemy (purple enemy) who is immune to physical damage. When I was testing out my implementation, I also noticed this bug that once you place down a tower then sell it immediately, you can no longer place down any other towers. The dragged out sprite looks red which is an indication that the tower cannot be placed on the current tile. Therefore I think this may be caused by some sort of collider issue.</p>                        <br>
+                    <p>Furthermore, I was rethinking my implementation for magical damage when I implemented the magical tower. I chose to implement the magical damage as an enum (instead of using damage layers) since it is easier to manage and will not be confused with other game settings.</p>
+                    <br>
+                    <br>
+                    <h4>2. Prevent Towers from Being Placed Out of Screen (3 hours)</h4>
+                    <img class="col-md-6 inline-img" src="resources/BlogImage/withinWindow.gif">
+                    <p>In this task I fixed the bug of tower placement. I changed the TowerDragger object to achieve this goal. Before the mousePosition variable was assigned, I added a constraint check to see if the current mouse position is out of the screen. If so, mousePosition will only remain at the maximum value which is determined by the screen width and height. This ensures that the tower will never go out of screen, which in turn ensures that towers will never be placed out of screen.</p>
+                    <p>At first I was trying to do this with just the screen width and height, but soon I realized that these two values are not reflecting the true width and height of the game window accurately. Following what was done in the other part of the script, I realized that I did not take the scale factor of the canvas into account. Unity game windows can be dragged and stretched, and this results in a different canvas scale factor. After I divided the screen width and height to canvas scale factor x and y, the issue was fixed.</p>
+                    <br>
+                    <h4>3. Tower Scaling (0.5 hour)</h4>
+                    <p>This is a simple task to fix the scale of the tower dropper image and the real placed down tower size. I tried out different values and found that a scale of 2 for the tower dropper image is exactly the same size as the real tower. However, some towers have a stretch factor on the x or y axis, but I think this will be fixed on the art side.</p>
+                    <br>
+                    <br>
+                    <h4>4. Tower Range Color Change (1 hours)</h4>
+                    <img class="col-md-6 inline-img" src="resources/BlogImage/withinWindow.gif">
+                    <p>In this task, I managed to change the color of the tower range indicator while placing the tower to better reflect the state of the tower. If the tower cannot be placed on the current grid, the range will appear red, and if it can be placed down, the range will appear green. These two colors can also be adjusted using the inspector. To implement this feature, I added an if check in the tower dropper script. Since there is already a similar feature of tower changing color, all I needed to do is change the tower range color accordingly.</p>
+                    <br>
+					<br>
+					<h4>5. Referencing Bloons TD 6 (3 Hours)</h4>
+					<p>For a lot of tasks this week, I am not certain about how the feature should be presented. Specifically, I am curious how Bloons handles tower drag and drop, multi-hit projectiles, and magical attacks.</p>
+                    <p>After playing through some levels by myself in the last few weeks, I am now familiar with the overall game flow and how to strategically plan ahead my tower arrangement. However, this time I paid close attention to find answers for the questions above. For the drag and drop part, I found that Bloons has both the “click and place” and the “drag and drop” options available to the player. I mimicked this in our game to also have the two options. Furthermore, I realized that the multi-hit projectiles are usually being used in tower upgrades, and some towers have default higher hit numbers. If projectiles with a high number of hits are shot, and the hit limit is not reached, projectiles will fly off the screen and disappear. I then applied this to our game by implementing a hit point variable that keeps track of the remaining hits a projectile can have. If the projectile flies too far away, it will also destroy itself. Types of attacks in Bloons are crucial since different balloons receive different attacks. The most obvious one is the purple balloon which is immune to magic attacks. Furthermore, a tower can shoot out both magical and physical attacks (e.g. druid) but it depends on the current upgrade. Therefore, I think it is better to manage tower attack types on towers instead of on projectiles themselves. Upgrades can then easily modify the attack type of the tower without accessing projectile components.</p><p>I then added an enum called DamageType which currently consists of Magical and Physical, that reflects the different types of damage dealt. I added a damage type variable to the Tower SO, and when a tower shoots out bullets, the bullet will deal exactly the type of damage of that tower.</p>
+                    <br>
+					<h4>6. Hide Tower Menu (2 Hour)</h4>
+                    <img class="col-md-6 inline-img" src="resources/BlogImage/hideMenu.gif">
+					<p>TIn this task, I implemented a button on the tower menu which hides the menu to the side when pressed. Press it again and the tower menu will be shown. To achieve this effect, I added methods in the UI Manager script. The MoveTowerMenu() method is called in Update() to move the menu. By adding a bool to keep track of the current state of the menu (hidden or not), I was able to generalize the ShowMenu() method and the HideMenu() method into one single method. I also made sure to divide screen width with canvas scale factor so that the movement will also take that into account.</p>
+                    <h4>7. Ability to Drag and Drop Tower (2 Hour)</h4>
+                    <p>This is one of the harder tasks for these two weeks. In this task, I made sure to keep the original click and place function still valid, and add drag and drop on top of it. I first thought about doing a whole new script to add detections for mouseDown and mouseUp, but then I realized it is kind of unnecessary, since most of the functionalities are still the same--you are still grabbing a tower and you are still trying to place it down somewhere. Therefore I reused the methods in the previous component, and after I read through the code, I found the right place to add my functionality in. In the TowerListSlot script, I added a OnTowerPointerDown() method and changed the condition for placement from wasPressed to wasRelease. This way the drag functionality can be easily implemented.</p>
+                    <br>
+                    <br>
+                    <h4>8. Escape Button for Pause Menu (1 Hour)</h4>
+                    <p>This task ensures that pressing the escape button can call out the pause menu. In this task, I created a new component called KeyInputManager. This component is a singleton which handles all the keyboard inputs received from the user. Since the pause menu is automatically called out when the game is paused, I simply let the game pause whenever a key input of the escape button is received.</p>
+                    <br>
+                    <br>
+                    <h4>9. Multi-Hit Projectile (2 Hour)</h4>
+                    <p>The very last task on the list is to create a multi hit projectile--a projectile that can penetrate more than 1 enemy target before being destroyed. In order to achieve this, I created a new component called ProjectileHealth. By replacing the DestroyOnTrigger2D, the projectile will not immediately destroy itself when it hits something, instead, it will decrease its own health by 1 each time it hits. If the health is down to 0, it will then destroy itself. I kept most of the OnTriggerEnter2D method the same as the DestroyOnTrigger2D component, but I added two different conditions: hitTarget and hitObstacle to the script, since hitting an obstacle will destroy the projectile immediately, but hitting a target will not. I also added two different public layerMask variables (obstacle and target layers) for designers to tweek and adjust.</p>
+                    <br>
+                    <br>
+                    <table>
+                        <tr>
+                            <td>Bloons</td>
+                            <td>Tower Placement</td>
+                            <td>Tower Scaling</td>
+                            <td>Magic Tower</td>
+                            <td>Tower Range Color</td>
+                            <td>Hide Tower Menu</td>
+                            <td>Drag and Drop</td>
+                            <td>Escape Button</td>
+                            <td>Multi-Hit Projectile</td>
+                            <td>Studio Meetings</td>
+                            <td><b>Total:</b></td>
+                        </tr>
+                        <tr>
+                            <td>3h</td>
+                            <td>3h</td>
+                            <td>0.5h</td>
+                            <td>3h</td>
+                            <td>1h</td>
+                            <td>2h</td>
+                            <td>2h</td>
+                            <td>1h</td>
+                            <td>2h</td>
+                            <td>2h</td>
+                            <td>19.5h</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
             <div class="content-page">
