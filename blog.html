@@ -69,7 +69,6 @@
                 </div>
 
             	<div class="content-container">
-                    <h2> BiWeeklyDevBlog #1 </h2>
                     <p>In the first two weeks of Project Tower, I did work that fulfilled my credit hours(18 hours total) and even more to help build a solid start for the project.</p>
                     <br>
                     <h4>1. Setup the website (2 Hours) </h4>
@@ -117,7 +116,6 @@
                     <h2 class="content-title"> Wolverine Soft Blog #2 </h2>
                 </div>
                 <div class="content-container">
-                    <h2> BiWeeklyDevBlog #2 </h2>
                     <h4>1. Magical Tower (3 Hours)</h4>
                     <img class="col-md-6 inline-img" src="resources/BlogImage/MagicalImmune.png">
                     <img class="col-md-6 inline-img" src="resources/BlogImage/magicalImmune2.gif">
@@ -184,6 +182,77 @@
                             <td>2h</td>
                             <td>2h</td>
                             <td>19.5h</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="content-page">
+
+                <div class="title-container">
+                    <h2 class="content-title"> Wolverine Soft Blog #3 </h2>
+                </div>
+                <div class="content-container">
+                    <h4>1. Volume Control Bug Fix (2 Hours)</h4>
+                    <img class="col-md-6 inline-img" src="resources/BlogImage/settings.gif">
+                    <p>As mentioned in one of the studio meetings, the settings audio menu doesn’t work after scene transitions. The volume change is reflected if the user slides the slider, but that change will be set back to default once we proceed into one of the levels. As I was investigating this issue, I first thought about the possibility of failing to update player preferences, which means every change we made is temporary and will not be stored. Following this path, I checked the volume slider script and found that everything looks fine.</p>                        
+                    <br>
+                    <p>I then looked into the start function of the volume controller script and printed messages to debug. During the process of debugging I found that there exist 6 messages setting up volume sliders where only 3 should be present. I then realized that the line setting up the default values of the sliders are outside of the if/else statements, which therefore causes everything to reset to 0.6. I also realized that I multiplied the slider values by 100 to fit the volume scale, and that I need to normalize the recorded player preference volume by dividing it by 100 when I pass that into the SetVolumeFromValue function.</p>
+                    <br>
+                    <br>
+                    <h4>2. Tower Scale Fix (4 Hours)</h4>
+                    <img class="col-md-6 inline-img" src="resources/BlogImage/size_match.gif">
+                    <p>In this task, I fixed the tower scale once again. After the previous attempt of manually adjusting the sprite scales to fit the image scales, I realized that this is not the way to go. Since different towers have different view scales, I cannot hard code a single ratio that covers all the cases. I first changed the dragging image to match the placed tower sprite instead of the sprite appearing on the tower screen. This change is minor, but it’s crucial for the players to visualize how the tower would look like, once it is placed down. Furthermore, to adjust the sizes of the sprites, I found that the SetNativeSize function of images is very useful in resetting the sprite dimensions. It is especially useful to match the sizes of image sprites and sprite renderer sprites. I then investigated the tower prefabs and found that the resulting sprite is scaled once in the object “view”’s scale, and once more in its parent container’s scale. This is true for every single tower, so I decided to access these two scales to calculate the true scale of the placed tower sprite. I then set the local scale of the towerImage to the true scale after calling SetNativeSize(). This method achieves very accurate results. However, there are still noticeable minor differences between the sprite and the image. I searched online for a solution, and found out that it may just be a Unity thing that happens internally, and the best solution I found is just to manually compensate for the difference. I added a 0.03f to each of the dimensions of the calculated local scale so that the image and the tower sprite appear exactly the same, at least to my eyes. There are still minor issues with the sprites being off-center, but that should be handled by the arts people.</p>
+                    <br>
+                    <br>
+                    <h4>3. Tower Range Display Bug Fix (0.5 Hour)</h4>
+                    <img class="col-md-6 inline-img" src="resources/BlogImage/range_delete.gif">
+
+                    <p>This is a simple task to fix the scale of the tower dropper image and the real placed down tower size. I tried out different values and found that a scale of 2 for the tower dropper image is exactly the same size as the real tower. However, some towers have a stretch factor on the x or y axis, but I think this will be fixed on the art side.</p>
+                    <br>
+                    <br>
+                    <h4>4. Default Volume Set (1 Hour)</h4>
+                    <p>In this task, I set the default volume for the three audio sliders I created last week. Currently each of the sliders are default to 1 whenever the game is started. I added an if/else statement in the volumeController script to check whether a recorded player preference setting exists. If so, the default value will be set accordingly, if not, the default setting will be, as suggested by Crystal, 60/100.</p>
+                    <br>
+					<br>
+					<h4>5. Auto Continue Toggle (2 Hours)</h4>
+                    <img class="col-md-6 inline-img" src="resources/BlogImage/auto_toggle.png">
+                    <img class="col-md-6 inline-img" src="resources/BlogImage/auto_cont.gif">
+					<p>In this task, I created an auto continue toggle which after a certain delay, would automatically proceed to the next level if the auto-continue option is toggled. In order to achieve this effect, I added a private boolean variable and a ToggleAutoStart function in the enemySpawner script, since this is the script that handles the level progression. I then added lines of code to check if the bool is true, if so, whenever a round is finished, it would invoke the next round by a fake speed button press after a set amount of delay. I use a fake speed button click rather than directly proceed to the next level since some events are connected to the action of pressing that speed button, I don’t want to decouple this when auto starting to create potential confusion and issues.</p>
+                    <p>I then added a simple UI in the HUD as the toggle for auto continue right on top of the speed button. While testing out the effect, I encountered various issues with dialogues not pausing the game. Further discussions about this issue down below.</p>
+                    <br>
+                    <br>
+					<h4>6. Fixed Dialogue Unpause Bug (6 Hours)</h4>
+                    <img class="col-md-6 inline-img" src="resources/BlogImage/dialogue_pause.gif">
+					<p>As mentioned above, I encountered this bug while adding the auto continue toggle. It first appears to be various separate bugs--sometimes I can’t proceed the dialogue clicking anywhere else except on the speed button, sometimes the dialogue just doesn’t stop the game and if the auto toggle is on, the next round will start with the dialogue still running. At first it feels overwhelming, since I have no prior knowledge of how the dialogue system is built. I spent a long time reading through possible related scripts, then a longer time failing to fix the bug. The problem appears to be related to Time.timeScale. Therefore, I looked up all the references to the timeScale variable, and nothing seemed to be wrong at first glance. I thought that game pause is just not implemented while dialogue is running, but it appears that Nikhil has already implemented a timeScale change at the start and end of each dialogue, it’s just that the pause doesn’t seem to work.</p>
+                    <p>I tried to use different functions and faking button presses as I did above with the auto continue toggle, thinking that maybe some events are not called which resulted in this issue. These attempts failed, and directly calling core public functions doesn’t work either. After a long time of search, I found a tiny detail that was ignored by me previously--that when I change the speed of the game, the pop up dialogues would not stop the game but rather slow them down to timeScale = 1, and then after the dialogue ends, the timeScale will go back to what it was. This detail leads to the conclusion that there is something changing the timeScale independent of the pause functions. Then I found out about how the speedButton is setting the default speed to 1 whenever the previous round ends. After fixing this part, the pause worked, but then I also need to change all the WaitForSeconds to WaitForSecondsRealtime in the narrativeDisplay since changing timeScale would affect game time but we don’t want the dialogues to be affected.</p>
+                    <br>
+                    <br>
+                    <h4>7. Added Settings Screen to Pause Menu (0.5 Hour)</h4>
+                    <p>In this task, I added the settings screen that I made last week to the pause menu. I simply copy and pasted the entire menu UI on top of the pause menu, and made a button that activates this screen and hides the pause menu when pressed.</p>
+                    <br>
+                    <br>
+                    <table>
+                        <tr>
+                            <td>Volume Control Bug Fix</td>
+                            <td>Tower Scale Fix</td>
+                            <td>Tower Range Display Bug Fix</td>
+                            <td>Default Volume Set</td>
+                            <td>Auto Continue Toggle</td>
+                            <td>Fixed Dialogue Unpause Bug</td>
+                            <td>Added Settings Screen to Pause Menu</td>
+                            <td>Studio Meetings</td>
+                            <td><b>Total:</b></td>
+                        </tr>
+                        <tr>
+                            <td>2h</td>
+                            <td>4h</td>
+                            <td>0.5h</td>
+                            <td>1h</td>
+                            <td>2h</td>
+                            <td>6h</td>
+                            <td>0.5h</td>
+                            <td>2h</td>
+                            <td>18h</td>
                         </tr>
                     </table>
                 </div>
