@@ -258,6 +258,48 @@
                 </div>
             </div>
             <div class="content-page">
+
+                <div class="title-container">
+                    <h2 class="content-title"> Wolverine Soft Blog #4 </h2>
+                </div>
+                <div class="content-container">
+                    <h4>1. Support Tower Bug (5 Hours)</h4>
+                    <img class="col-md-6 inline-img" src="resources/BlogImage/support_issue.gif">
+                    <p>This is a bug that I discovered while fixing other bugs, and it appears to be a deadly one. Basically when we implement the support tower, we implement the upgrades to towers within range, but we never implement the downgrade that should be there when the support tower is gone. This could potentially break the game balance entirely since the player can place down a support tower and then sell it to get permanent upgrades for towers. However, since we’ve never considered such a problem, there is not an existing downgrading system in place. It is not ideal to implement a brand new system into the game since it’s already near the end of development. I thought maybe implementing the new downgrades as a sort of negative upgrade would be a great solution. Therefore, I included new defined tower “upgrades” that counter the support tower’s upgrades to be added onto towers whenever a support tower despawns. These new upgrades include a range upgrade with a modifier that is smaller than 1, a fire rate upgrade with a modifier that is smaller than 1, and a CantSeeEnemy upgrade that removes the hidden enemy layer from visible layers from the towers.</p>
+                    <br>
+                    <br>
+                    <h4>2. Stun Issue (7 Hours)</h4>
+                    <img class="col-md-6 inline-img" src="resources/BlogImage/stun_issue.gif">
+                    <p>This is another huge issue that was encountered during playtest sessions. It appears that when we reach round 30+, when camo enemies appear, they sometimes would be stunned forever and be immutable so that no towers can hurt it. I first used the dev console to investigate and try to recreate the issue. It wasn't obvious why such an issue would occur at first. I then try to use a single type of tower - the stun tower to see what is going on. It then appears to me that the camo enemies are stun only if they are being stun repeatedly for a certain amount of time. I thought it may be that the stun time is stacking up instead of resetting so I looked at the stun script. But instead of that, I found that it may be caused by stacking coroutines, since the stun coroutine is not really being cleared before the next coroutine starts. I fixed this by using a handler to keep track of each corountine, and if the handler is not null, we stop the coroutine stored in the handler first, then start a new coroutine. Yet this doesn't fix the issue. After a long time of  investigation, I finally realized that when rapidly stunning enemies, it is possible that before the tower is stunned, it's speed is 0, since it is previously stunned, so that even after recovery, the speed of the enemy would be recovered as 0. To fix this, I added a check before recording enemy speed to make sure that no 0 speed is being recorded.</p>
+                    <p>Furthermore, it appears that even though towers are able to attack camo enemies, the hit layers on the projectiles are not updated to take hidden enemies into account, and therefore the camo enemies appear to be "immutable". To fix this issue, I added functions that make sure whenever a projectile spawns, I change the projectile's hit layer to match the spawner tower's visible layer.</p>
+                    <br>
+                    <h4>3. Click Not Working Bug (2 Hours)</h4>
+                    <p>This is a bug I discovered when fixing tower range last week. It is also mentioned by others during playtest. It seems that every first click in a round on top of a placed tower would only bring up the range of the tower, but the tower menu would not show. But after the first time, everything works fine. It is really confusing, since it only appears once, and during investigation, I realized that the scripts are full of deprecated functions that are not really being used, which adds more complexity to finding the issue. But after a short time of guessing and checking, I found that there are some unnecessary gameObject.SetActive(false) which may be the cause of the issue. After I changed these to CloseActionSceen(), the issue was resolved.</p>
+                    <br>
+                    <br>
+                    <h4>4. Studio Meeting & Playtest(4 Hours)</h4>
+                    <p>Really enjoying this semester working with the studio! People are always engaging and fulfilling their responsibilities and I really learned a lot from the experience! I hope I'll have time for one more semester of it but unfortunately I may not be able to make it next semester.The final meeting is wonderful! To be able to see a game’s production from a simple prototype to a fully-running and awesome-looking game is a wonderful experience to have. Being a programmer in the team, I think I learned a lot on how to cooperate with other programmers and how to manage tasks more efficiently.</p>
+                    <br>
+                    <br>
+                    <table>
+                        <tr>
+                            <td>Support Tower Bug</td>
+                            <td>Stun Issue</td>
+                            <td>Click Not Working Bug</td>
+                            <td>Studio Meeting & Playtest</td>
+                            <td><b>Total:</b></td>
+                        </tr>
+                        <tr>
+                            <td>5h</td>
+                            <td>7h</td>
+                            <td>2h</td>
+                            <td>4h</td>
+                            <td>18h</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="content-page">
                 <div class="title-container">
                     <h2 class="content-title"> Other Contents </h2>
                 </div>
