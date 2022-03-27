@@ -1,0 +1,198 @@
+class ProjectList extends React.Component {
+    createProjectListItem(project) {
+        let byline = project.acf.project_byline
+        let client = project.acf.project_client
+        return (
+            <li key={'project-' + project.id}>
+                <a to={'/projects/' + project.slug}>
+                  <h3 className="projectlist--client">{client}</h3>
+                  <h4 className="projectlist--byline">{byline}</h4>
+                </a>
+            </li>
+        );
+    }
+    render() {
+        return (
+            <div className="project-list">
+                <ul className="menu vertical">
+                  { this.props.projects.map( this.createProjectListItem ) }
+                </ul>
+            </div>
+        )
+    }
+}
+
+class ProjectCategory extends React.Component {
+    constructor(props) {
+        super(props)
+
+        this.setActive = this.setActive.bind(this)
+
+        this.state = {
+          projects: []
+        }
+    }
+    componentWillMount() {
+      this.getProjects();
+    }
+    getProjects() {
+      let _this = this
+      let catid = this.props.cat.id
+      let url = 'http://beta.json-generator.com/api/json/get/EyrhxmRVz'
+      fetch(url).then( response => response.json() )
+      .then( json => { _this.setState({ projects: json }) })
+    }
+    getBackground(i){
+      let _this = this
+
+      // let bgArray = this.state.projects.map(function(project){
+      //   return project.acf.project_thumbnail
+      // });
+
+      let bg = this.props.cat.thumbnail
+
+      return bg
+    }
+    setActive() {
+        this.props.handleClick(this.props.Index)
+    }
+    getWidth(isActive) {
+        let w = 'calc(20vw - 20px)'
+        if (isActive) { w = '500px' }
+        return w
+    }
+    render() {
+      // console.log(this.state.projects)
+        let name = this.props.cat.name
+        let thumbnail = this.getBackground()
+
+        let { active, focused, shiftLeft, isLast } = this.props
+
+        let styles = {
+          container: {
+            transform: (function() {
+                return (active)
+                    ? 'scale(1.1) translate3d(0, 0, 0)'
+                    : 'scale(1) translate3d(0, 0, 0)'
+            })()
+          }, item: {
+              transform: (function() {
+                  let direction = (shiftLeft) ? '-': ''
+                  let transform = 'translate3d(0, 0, 0)'
+                  if (focused) {
+                    if (!active) {
+                      transform = 'translate3d('+ direction +'100%, 0, 0)'
+                    }
+                  }
+                  return transform
+              })()
+          }, background: {
+              background: 'url(' + thumbnail + ') no-repeat center center',
+              backgroundSize: 'cover',
+              height: '500px',
+              width: (this.getWidth(active))
+          }
+        }
+        let classes = classNames({category: true, isActive: active, isLast, shiftLeft})
+        return (
+            <li className={classes} style={styles.item}>
+                <div className="category--content">
+                    <h2>{name}</h2>
+                    <ProjectList projects={this.state.projects}/>
+                </div>
+                <div className="category--image-container" onClick={this.setActive} style={styles.container}>
+                    <div className="category--image" style={styles.background}></div>
+                </div>
+                <div className="category--name">
+                  <h6>{name}</h6>
+                </div>
+                <div className="category--closeButton">
+                  <a href="#">Back</a>
+                </div>
+            </li>
+        )
+    }
+}
+
+class Collection extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        this._handleClick = this._handleClick.bind(this)
+        this.categoryNode = this.categoryNode.bind(this)
+        this._focusOff = this._focusOff.bind(this)
+
+        this.state = {
+          open: false,
+          activeIndex: null,
+          categories: []
+        }
+    }
+    componentDidMount() {
+      this._getCategories();
+    }
+    _getCategories() {
+      let _this = this
+      let url = 'http://beta.json-generator.com/api/json/get/E1NpHQAEf';
+      fetch(url).then( response => response.json() )
+      .then( json => { _this.setState({ categories: json }) })
+    }
+    _handleClick(i){
+      this.setState({
+        activeIndex: i,
+        open: true
+      })
+    }
+    _focusOff(e){
+      e.preventDefault()
+      if (e.target.className !== 'category--image') {
+        this.setState({
+          activeIndex: null,
+          open: false
+        })
+      }
+    }
+    categoryNode(cat, i){
+        let isLast = ( i === this.state.categories.length - 1 || i === this.state.categories.length - 2)
+        let shiftLeft = ( i < this.state.activeIndex )
+
+        return (
+          <ProjectCategory
+            cat={cat}
+            key={'cat-' + i}
+            handleClick={this._handleClick}
+            active={i === this.state.activeIndex}
+            focusOff={this._focusOff}
+            focused={this.state.open}
+            shiftLeft={shiftLeft}
+            Index={i}
+            isLast={isLast}
+          />
+        )
+    }
+    render() {
+      let catNodes = this.state.categories.map(this.categoryNode)
+      let classes = classNames({
+        focused: this.state.open
+      })
+      return (
+        <div className={'categories--menu-container ' + classes} onClick={this._focusOff} style={{height: window.innerHeight}}>
+          <ul className="categories menu">
+            {catNodes}
+          </ul>
+        </div>
+      )
+    }
+}
+
+class App extends React.Component{
+  render(){
+    return(
+      <div className="App">
+        <Collection/>
+      </div>
+    )
+  }
+}
+ReactDOM.render(<App />, document.querySelector("#root"))
