@@ -112,6 +112,10 @@ body {
     color: white;
 }
 
+iframe {
+    width: 50%;
+}
+
 .content p {
      font-family: "Times New Roman", Times, serif;
 }
