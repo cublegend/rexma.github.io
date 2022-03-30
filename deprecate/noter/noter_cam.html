@@ -1,0 +1,130 @@
+<html class="">
+    <head>
+        <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+        <!-- we import arjs version without NFT but with marker + location based support -->
+        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+        <script>
+            AFRAME.registerComponent("note_container", {
+                // Every note container is bound to the unique marker
+                // a same marker will always call out the same note
+                // a different marker contains different note
+                // user created markers need to be stored with user defined class name
+                // to keep them unique
+
+                //FIXME: Add a cross on the corner to close the note tab
+                //FIXME: Add AJAX
+                schema: {
+                    active_writing: {type:'boolean', default: false},
+                    id: {type: 'int', default: -1},
+                    child_count: {type: 'int', default: 0},
+                    active_color: {type: 'color', default: 'green'},
+                    color: {type: 'color', default: 'yellow'}
+                },
+                init: function() {
+
+                    this._retrieve_id();
+                    this.el.addEventListener("click", this._create_note.bind(this));
+                    this.el.addEventListener('click', this._getrid_box.bind(this));
+                    this.el.id = "note_container" + this.data.id;
+                },
+                _create_note: function(event) {
+                    // activate this writing and deactive any other writing
+                    let all_container = this.el.sceneEl.querySelectorAll('[note_container]');
+                    for (var i = 0; i < all_container.length; i++) {
+                        all_container[i].setAttribute('note_container', 'active_writing', 'false');
+                        all_container[i].querySelector('a-box').setAttribute('color', this.data.color);
+                    }
+                    this.data.active_writing = true;
+                    if (this.data.child_count > 0) {
+                        this.el.querySelector('a-box').setAttribute('color', this.data.active_color);
+                        return;
+                    }
+                    this.data.child_count++;
+                    let new_note = document.createElement('a-box');
+                    new_note.setAttribute('color', this.data.active_color);
+                    new_note.setAttribute('rotation', '-90, 0, 0');
+                    new_note.object3D.position.set(0, 0, 0);
+                    new_note.object3D.scale.set(1, 1, 0.02);
+
+                    let new_text = document.createElement('a-text');
+                    new_text.setAttribute('id', 'note_text');
+                    new_text.setAttribute('wrap-count', '20');
+                    new_text.setAttribute("color", 'black');
+                    new_text.setAttribute('baseline', 'top');
+                    new_text.setAttribute('anchor', 'left');
+                    new_text.setAttribute('width', '0.8');
+                    new_text.setAttribute('value', 'hello');
+                    new_text.object3D.position.set(-0.4, 0.4, 1.5);
+
+                    new_note.appendChild(new_text);
+
+                    this.el.appendChild(new_note);
+
+                    this._retrieve_text();
+                },
+
+                _retrieve_id: function() {
+                    if (typeof(localStorage) != "undefined") {
+                        let stored_id = localStorage.getItem(this.el.className);
+                        if (stored_id != null) {
+                            this.data.id = stored_id;
+                        }
+                        else {
+                            if (localStorage.getItem("note_id") != null) {
+                                // get the note_id, and plus one to it
+                                this.data.id =  localStorage.getItem("note_id");
+                                localStorage.setItem("note_id", this.id + 1);
+                            }
+                            else {
+                                // if no note id, set it to 0
+                                localStorage.setItem("note_id", 0);
+                                this.data.id = localStorage.getItem("note_id");
+                                localStorage.setItem("note_id", 1);
+                            }
+                            localStorage.setItem(this.el.className, this.data.id);
+                        }
+                    }
+                    else {
+                        console.log("No Local Storage Support!!");
+                    }
+                },
+
+                _retrieve_text: function () {
+                    if (typeof(localStorage) != "undefined") {
+                        let txt = localStorage.getItem("note_file" + this.data.id);
+                        if (txt == null) {
+                            console.log("no previously stored text");
+                            return;
+                        }
+                        this.el.querySelector("#note_text").setAttribute('value', txt);
+                    }
+                    else {
+                        console.log("No Local Storage Support!!");
+                    }
+
+                },
+
+                _getrid_box: function() {
+                    let box = this.el.querySelector('#trans_box');
+                    if (box == null) {
+                        return;
+                    }
+                    box.parentNode.removeChild(box);
+                }
+            })
+        </script>
+    </head>
+
+    <body style="margin:0px; overflow: hidden;">
+        <a-scene cursor="fuse:false; rayOrigin:mouse;" vr-mode-ui="enabled:false" embedded arjs scene-control>
+            <a-entity camera></a-entity>
+            <a-marker class="hiro" note_container preset="hiro">
+                <!--Transparent box to activate marker click-->
+                <a-box id="trans_box" material="transparent: true; opacity: 0"></a-box>
+            </a-marker>
+            <a-marker class="kanji"note_container preset="kanji">
+                <a-box id="trans_box" material="transparent: true; opacity: 0"></a-box>
+            </a-marker>
+        </a-scene>
+    </body>
+</html>

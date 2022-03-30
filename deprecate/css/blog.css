@@ -1,0 +1,67 @@
+.content-page {
+    background-color: ivory;
+    margin-left: 5vh;
+    margin-right: 5vh;
+}
+
+.inline-img {
+    opacity: 1;
+}
+
+.circle {
+    width: 10vh;
+	height: 10vh;
+    margin-top: 2vh;
+    background-color: black;
+    border-radius: 50%;
+}
+
+.circle#white {
+    box-sizing: border-box;
+    flex: none;
+    margin-left: -5vh;
+    margin-top: 5vh;
+    background-color: rgb(255, 255, 255);
+    border-radius: 25px;
+    width: 20vh;
+}
+
+.menu-title {
+    text-decoration: underline;
+    box-sizing: border-box;
+    flex: none;
+    height: 20%;
+    margin-left: -18vh;
+    margin-top: 7vh;
+}
+
+.blog-menu {
+    display: flex;
+    flex-flow: row nowrap;
+    top: 0;
+    height: 20vh;
+    width: 100%;
+}
+
+.content-container {
+    display: none;
+    font-size: 2vh;
+    line-height: 3.5vh;
+}
+
+.title-container {
+    border-radius: 5px;
+    padding-left: 2vh;
+    width: 100%;
+    height: 5vh;
+    background-color: rgb(253, 252, 160);
+}
+
+.title-container:hover {
+    background-color: rgb(255, 255, 194);
+}
+
+.content-title {
+    margin: 0;
+    padding-top: 1vh;
+}

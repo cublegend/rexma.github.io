@@ -1,0 +1,94 @@
+<html class="">
+    <head>
+        <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+        <!-- we import arjs version without NFT but with marker + location based support -->
+        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+        <style>
+            #inputfield {
+                background-color: aliceblue;
+                text-align: center;
+                margin: 0;
+                position: absolute;
+                top: 90%;
+                left: 50%;
+                transform: translate(-49.99%, -50%);
+                z-index: 0;
+            }
+        </style>
+    </head>
+    <body style="margin: 0px;">
+        <div id="inputfield">
+            <label>Type Here:</label><br>
+            <textarea style="font-size: 16px;" onclick="RetrieveLocalText()" onblur="ClearTextBox()" oninput="GetInput()" type="text" id="note_input"></textarea>
+        </div>
+        <div>
+            <iframe id="iframe" style="width: 100%; height: 100%;" src="./noter_cam.html" frameborder="0"></iframe>
+        </div>
+    </body>
+</html>
+<script>
+    const input = document.getElementById("note_input");
+    const iframe = document.getElementById("iframe");
+
+    function GetInput () {
+        let active_note = FindActiveNote();
+        if (active_note == null) {
+            console.log("No current editing note!");
+            return;
+        }
+        active_note.querySelector("#note_text").setAttribute('value', input.value);
+    }
+
+    function ClearTextBox() {
+        StoreTextLocal();
+        input.value = "";
+    }
+
+    function StoreTextLocal() {
+        if (typeof(localStorage) != "undefined") {
+           let note_on_edit = FindActiveNote();
+            if (note_on_edit == null) {
+                console.log("No currently editing note!");
+                return;
+            }
+
+            // store text input into id note file
+            let id = localStorage.getItem(note_on_edit.className);
+            if (id == null) {
+                console.log("no id valid!!");
+                return;
+            }
+            localStorage.setItem("note_file"+ id, input.value);
+        }
+        else {
+            console.log("No Local Storage Support!!");
+        }
+    }
+
+    function RetrieveLocalText() {
+        let note = FindActiveNote();
+        if (note == null) {
+            console.log("No currently editing note!");
+            return;
+        }
+
+        // load text back to the text area
+        let id = localStorage.getItem(note.className);
+        let text = localStorage.getItem("note_file" + id);
+        if (text == null) {
+            return;
+        }
+        input.value = text;
+    }
+
+    function FindActiveNote() {
+        // get the active note
+        let notes = iframe.contentWindow.document.querySelectorAll('[note_container]');
+            for (var i = 0; i < notes.length; i++) {
+                if(notes[i].getAttribute("note_container").active_writing) {
+                    return notes[i];
+                }
+            }
+        return null;
+    }
+</script>
