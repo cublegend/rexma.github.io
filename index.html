@@ -86,6 +86,9 @@
                 $(".menu").animate({ // layer 3
                     "width": "50em"
                 }, () => { // layer 4
+                    if (called)
+                        return
+                    called = true // prevent multiple calls to animation done
                     $('#' + id + " .smenu").css({
                         "max-height": "0em",
                     })
@@ -93,8 +96,7 @@
                         "max-height": "40em",
                     })
 
-                    if (id2 == "#game" && !called) {
-                        called = true // prevent multiple calls to terminal object
+                    if (id2 == "#game") {
                         terminal();
                     }
                 })
@@ -104,7 +106,6 @@
 
     function reset() {
         // send email and process string data to do something musical or visual
-        console.log('here')
         $(".page").animate({ // layer 1
             "max-height": "0em",
         }, () => { // layer 2
