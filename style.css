@@ -125,6 +125,21 @@ iframe {
     margin-left: 30%;
 }
 
+.gallery {
+    width: 100%;
+    height: auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: calc((100% - 750px)/2);
+    margin-left: -webkit-calc((100% - 750px)/2);
+}
+
+.photo {
+    object-fit: cover;
+    width: 250px;
+    height: 250px;
+}
+
 .terminal-output img:hover {
     cursor: pointer;
 }

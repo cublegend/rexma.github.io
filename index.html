@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/jquery.terminal/js/jquery.terminal.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/jquery.terminal/css/jquery.terminal.min.css" />
+    <title>Cublegend</title>
 </head>
 
 
@@ -59,7 +60,13 @@
                 </div>
                 <div class="page" id="photo">
                     <div class="gallery">
-                        <img class="photo" src="./resource/">
+                        <img class="photo" src="./resource/photo/000083470002.jpg">
+                        <img class="photo" src="./resource/photo/000083470024.jpg">
+                        <img class="photo" src="./resource/photo/000083470026.jpg">
+                        <br>
+                        <img class="photo" src="./resource/photo/000083470029.jpg">
+                        <img class="photo" src="./resource/photo/000083490026.jpg">
+                        <img class="photo" src="./resource/photo/000083490026.jpg">
                     </div>
                 </div>
                 <div class="page" id="music">
@@ -79,7 +86,7 @@
                             photo's visual data.
                         </p>
                         <p>The Turntable Controller</p>
-                        <iframe src="https://youtu.be/K6Mgpz9EGgw"></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/K6Mgpz9EGgw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         <br><br>
                     </div>
                 </div>
@@ -120,7 +127,7 @@
                 id2 = $(e.target).attr('href')
                 called = false
                 $(".menu").animate({ // layer 3
-                    "width": "50em"
+                    "width": "80em"
                 }, () => { // layer 4
                     if (called)
                         return
@@ -138,6 +145,17 @@
                 })
             })
         })
+        /*
+        $('.photo').click((e) => {
+            $(e.target).parent().animate({
+                'margin-left': '10%'
+            })
+            $(e.target).animate({
+                'width': '80%',
+                'height': '80%'
+            })
+        })
+        */
     })
 
     function reset() {
