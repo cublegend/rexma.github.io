@@ -98,12 +98,19 @@ body {
     max-height: 10em;
 }
 
+.page::-webkit-scrollbar {
+    display: none;
+}
+
 .page {
     background: #222220;
-    overflow: hidden;
+    overflow: scroll;
     max-height: 0;
     transition: max-height 0.3s ease;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }
+
 
 .content {
     line-height: 1.5;
