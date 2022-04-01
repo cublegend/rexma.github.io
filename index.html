@@ -66,7 +66,7 @@
                         <br>
                         <img class="photo" src="./resource/photo/000083470029.jpg">
                         <img class="photo" src="./resource/photo/000083490026.jpg">
-                        <img class="photo" src="./resource/photo/000083490026.jpg">
+                        <img class="photo" src="./resource/photo/000083490007.jpg">
                     </div>
                 </div>
                 <div class="page" id="music">
@@ -91,7 +91,6 @@
                         <br><br>
                     </div>
                 </div>
-
             </li>
             <li class="item" id="contact">
                 <a href="#contact" class="btn"><i class="fas fa-paper-plane" aria-hidden="true"></i>Contact</a>
@@ -112,6 +111,7 @@
         </div>
     </div>
 
+    <div id="fullpage" onclick="this.style.display='none';"></div>
 </body>
 <script>
     // terminal in works
@@ -146,17 +146,12 @@
                 })
             })
         })
-        /*
         $('.photo').click((e) => {
-            $(e.target).parent().animate({
-                'margin-left': '10%'
-            })
-            $(e.target).animate({
-                'width': '80%',
-                'height': '80%'
+            $('#fullpage').css({
+                'backgroundImage': 'url(' + e.target.src + ')',
+                display: 'block'
             })
         })
-        */
     })
 
     function reset() {
