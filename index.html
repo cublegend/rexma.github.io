@@ -38,14 +38,10 @@
                             multiple different fields helped me envision my different possibilities, and it
                             also allows me to process interdisciplinarily.
                         </p>
-                        <br><br>
                     </div>
                 </div>
                 <div class="page" id="posts">
-                    <div class='content'>
-                        <p>Under Construction...</p>
-                        <br><br>
-                    </div>
+                    <a href="https://sulky-mechanic-c7b.notion.site/Game-Programming-Patterns-Note-d1de4ec76fbc481ca857efef9649acfa" target="_blank">Game Programming Patterns Note</a>
                 </div>
             </li>
             <li class="item" id="works">
@@ -88,7 +84,6 @@
                         </p>
                         <p>- The Turntable Controller</p>
                         <iframe width="560" height="315" src="https://www.youtube.com/embed/K6Mgpz9EGgw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        <br><br>
                     </div>
                 </div>
             </li>
@@ -101,7 +96,7 @@
                     <div class="content">
                         <p> Contact Me</p><br>
                         <p> Email: cubayf@gmail.com </p><br>
-                        <p> Text: 734-882-8883 </p><br><br>
+                        <p> Text: 734-882-8883 </p>
                     </div>
                 </div>
             </li>
@@ -128,7 +123,7 @@
                 id2 = $(e.target).attr('href')
                 called = false
                 $(".menu").animate({ // layer 3
-                    "width": "80em"
+                    "width": "80vw"
                 }, () => { // layer 4
                     if (called)
                         return
@@ -137,7 +132,7 @@
                         "max-height": "0em",
                     })
                     $('#' + id + ' ' + id2).css({
-                        "max-height": "60em",
+                        "max-height": "60vh",
                     })
 
                     if (id2 == "#game") {

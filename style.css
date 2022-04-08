@@ -111,12 +111,34 @@ body {
     scrollbar-width: none;  /* Firefox */
 }
 
-
 .content {
     line-height: 1.5;
-    padding-top: 5%;
-    padding-left: 5%;
+    padding: 2%;
     color: white;
+}
+
+a {
+    color: #C28C2E;
+    display: block;
+    padding: 16px 26px;
+    font-size: 14px;
+    margin: 4px 0;
+    position: relative;
+}
+a:before {
+    content: "";
+    width: 5px;
+    height: 100%;
+    position: absolute;
+    background: #C28C2E;
+    left: 0;
+    top: 0;
+    transition: 0.3s;
+    opacity: 0;
+}
+
+a:hover::before {
+    opacity: 1;
 }
 
 iframe {
