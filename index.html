@@ -20,7 +20,7 @@
             <li class="item" id="profile">
                 <a href="#profile" class="btn"><i class="far fa-user" aria-hidden="true"></i>Profile</a>
                 <div class="smenu">
-                    <a href="#posts">Posts</a>
+                    <!--<a href="#posts">Posts</a>-->
                     <a href="#about">About Me</a>
                 </div>
                 <div class="page" id="about">
@@ -48,7 +48,7 @@
                 <a href="#works" class="btn"><i class="fas fa-cog" aria-hidden="true"></i>Works</a>
                 <div class="smenu">
                     <a href="#game">Game</a>
-                    <a href="#photo">Photo</a>
+                    <!--<a href="#photo">Photo</a>-->
                     <a href="#music">Music</a>
                 </div>
                 <div class="page" id="game">
@@ -70,7 +70,15 @@
                         <p>Some Music Projects I worked on:</p>
                         <p>- The Ritual Staff: A New Digital Instrument</p>
                         <iframe width="560" height="315" src="https://www.youtube.com/embed/L3Vf6CGCgiM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        <p>- The Scannable Trees Installation</p>
+                        <p>This is an instrument that I built inspired by ritual dances and related appliances from different cultures.
+                            The idea is that the performer is collaborating with the spirit in the staff when they perform the instrument.
+                            The staff has a IMU which can pick up its motion information. I then processed these information using Max,
+                            connecting different movements to different tones. The can on the staff is a trigger that acts as a record button.
+                            The performer can record a certain length of the notes played and have them played back in loops, and the ghost will
+                            alter the played audio by adding different effects if you "disobey" its instructions.
+                        </p>
+                        <p>- The Treee Factory</p>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/bf6Jw1y78j4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         <p>In this project, I built a musical installation by hosting a webpage with all the different
                             tree photos
                             that I took within UM campus. These photos are kept as unique copies online, and everyone
@@ -84,6 +92,7 @@
                         </p>
                         <p>- The Turntable Controller</p>
                         <iframe width="560" height="315" src="https://www.youtube.com/embed/K6Mgpz9EGgw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <p>A music controller that lets you select songs and add various effects to it.</p>
                     </div>
                 </div>
             </li>
@@ -101,7 +110,7 @@
                 </div>
             </li>
             <li class="item" id="logout">
-                <a href="" class="btn"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                <a href="" class="btn" onclick="closeWin()"><i class="fas fa-sign-out-alt"></i>Logout</a>
             </li>
         </div>
     </div>
@@ -109,6 +118,9 @@
     <div id="fullpage" onclick="this.style.display='none';"></div>
 </body>
 <script>
+    function closeWin() {
+        $(window).close();
+    }
     // terminal in works
     $(window).on('load', () => {
         $('.item .btn').click(reset)
@@ -173,10 +185,9 @@
                     case '--help':
                         this.echo(`usage: cub
                                     [--help] shows all the help messages
-                                    [--games] lists all avaliable games I made
+                                    [--games] lists all game projects
                                     [--ar] lists some ar mini projects I made,
                                            they perform better using your phone
-                                    [--play] plays a mini puzzle game
                         `, { keepWords: true })
                         break
                     case '--games':
@@ -184,9 +195,6 @@
                         break
                     case '--ar':
                         list_ar(this)
-                        break
-                    case '--play':
-                        this.echo('under construction...')
                         break
                 }
             },
@@ -225,6 +233,7 @@
     }
 
     function list_games(t) {
+        t.echo('\tClick on images to see more!\n', { keepWords: true })
         t.echo('\t- A Maze In\n')
         t.echo('<a href="http://www-personal.umich.edu/~crescely/A%20Maze%20In_Web/" target="_blank">\
                     <img src = "./resource/a-maze-in.png" >\
@@ -233,10 +242,16 @@
         t.echo('<a href="https://wolverinesoft-studio.itch.io/ragnarok-td" target="_blank">\
                     <img src = "./resource/ragnarok-td.png" >\
                 </a ><br>', { raw: true });
-        t.echo('\t- New Game Project Under Development!', { keepWords: true })
-        t.echo('\tA new RTS/RPG game project under development! Demo will be out soon!\n', { keepWords: true })
+        t.echo('\t- Treat Team\n')
+        t.echo('<a href="https://bluebirdstudios.net/#:~:text=By%20playing%20Treat%20Team%2C%20YOU,them%20to%20donate%20an%20item." target="_blank">\
+                    <img src = "./resource/treat-team.png" >\
+                </a ><br>', { raw: true });
+        t.echo('\t- YuanGu Project', { keepWords: true })
+        t.echo('\tA cute RPG game project where you control plant-creatures to fight enemies! Demo will be out soon!\n', { keepWords: true })
         t.echo('<img src = "./resource/fluffy.jpg" ><br>', { raw: true });
         t.echo('<img src = "./resource/fluffy2.jpg" >', { raw: true });
+        t.echo('\t- Smash!\n')
+        t.echo('\tA new mobile game project currently under development!\n', { keepWords: true })
     }
 
     function list_ar(t) {
