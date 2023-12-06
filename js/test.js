@@ -30,6 +30,16 @@ $(document).ready(function () {
             snapMode: 'inner',
             containment: '#grid-container',
             start: function (event, ui) {
+                var $this = $(this);
+
+                // Check if the dragged item is in the selection
+                if (!$this.hasClass('selected')) {
+                    // If not, deselect all items and select only this one
+                    $('.grid-item').removeClass('selected');
+                    $this.addClass('selected');
+                }
+
+                // Store the selected items in the dragged item's data
                 ui.helper.data('selectedItems', $('.selected'));
             },
             drag: function (event, ui) {
