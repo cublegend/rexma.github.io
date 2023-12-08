@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var isInEditMode = false;
+    var isInEditMode = true;
 
     // Initialize draggable and resizable (disabled initially)
     $('.grid-item').draggable({ disabled: true });
@@ -17,11 +17,21 @@ $(document).ready(function () {
         if (isInEditMode) {
             $('.iframe-overlay').css('pointer-events', 'all');
             $('#toggleEditMode').text('Switch to View Mode');
+            $('.resize-handle').addClass('visible').removeClass('hidden');
+            $('.grid-item').each(function () {
+                var $this = $(this);
+                $this.data('originalTop', $this.offset().top);
+                $this.data('originalLeft', $this.offset().left);
+            });
         } else {
+            $('.resize-handle').addClass('hidden').removeClass('visible');
             $('.iframe-overlay').css('pointer-events', 'none');
             $('#toggleEditMode').text('Switch to Edit Mode');
         }
     }
+
+    // Initial toggle to set to view mode
+    toggleEditMode();
 
     $('#toggleEditMode').on('click', toggleEditMode);
 });
