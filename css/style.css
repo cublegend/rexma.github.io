@@ -5,10 +5,23 @@ html {
   overflow: hidden;
 }
 
-#grid-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
+/* Disable text selection */
+* {
+  -webkit-user-select: none;
+  /* Chrome, Safari, Opera */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
+/* Disable image dragging */
+img {
+  pointer-events: none;
+  user-drag: none;
+  -webkit-user-drag: none;
 }
 
 #grid {
@@ -29,65 +42,123 @@ html {
   margin: auto;
 }
 
+#grid-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
 .grid-item {
   position: absolute;
   background-color: rgba(0, 0, 255, 0.5);
   border: 1px solid blue;
   z-index: 2;
-}
-
-.content {
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-}
-
-.text-center {
-  font-size: 2vw;
-  display: flex;
-  justify-content: center;
-  height: 100%;
-  text-align: center;
-}
-
-.image-container {
-  position: relative;
-  margin: auto;
-  width: 100%;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
-.image-container img {
+/* Responsive Text */
+.grid-item h1,
+.grid-item p,
+.grid-item a {
+  margin: 0;
+  padding: 10px;
+  /* Optional for spacing */
+  text-align: center;
+  font-size: 3vw;
+  /* Responsive font size */
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #000;
+  color: #fff;
+  text-decoration: none;
+  font-size: 2vw;
+}
+
+/* Profile Picture Container */
+.profile-pic-container {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile-pic-container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+/* Project Container for Images with Hover Info */
+.project-container {
+  position: absolute;
+  cursor: pointer;
+}
+
+.project-container img {
   width: 100%;
   height: auto;
-  display: block;
 }
 
-.selected {
-  border: 2px solid red;
-  /* Highlight selected items */
+.project-info {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  visibility: hidden;
+  text-align: center;
+  font-size: 2vw;
 }
 
+.project-container:hover .project-info {
+  visibility: visible;
+}
+
+/* YouTube Iframe */
+.grid-item iframe {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Resize Handle */
+.resize-handle {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  bottom: 0;
+  right: 0;
+  background-color: #ccc;
+  cursor: se-resize;
+}
+
+/* Selection Box */
 .select-box {
   position: absolute;
   background-color: rgba(0, 0, 255, 0.2);
   border: 1px dashed #000;
   display: none;
   z-index: 3;
-  /* Above grid-items but below other UI elements */
 }
 
-.resize-handle {
+/* Highlight Selected Items */
+.selected {
+  border: 2px solid red;
+}
+
+.iframe-overlay {
   position: absolute;
-  width: 10px;
-  /* Example size */
-  height: 10px;
-  /* Example size */
-  bottom: 0;
-  right: 0;
-  background-color: #ccc;
-  cursor: se-resize;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  /* Invisible overlay */
+  z-index: 10;
+  /* Above the iframe */
+  pointer-events: none;
+  /* Allows clicks to pass through initially */
 }

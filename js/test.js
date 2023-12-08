@@ -18,13 +18,7 @@ $(document).ready(function () {
 
     // Initialize grid items with absolute positions
     $('.grid-item').each(function (index) {
-        $(this).css({
-            top: (index * 10) + '%', // Adjust as necessary
-            left: '0%', // Adjust as necessary
-            position: 'absolute',
-            width: '20%',
-            height: '20%'
-        }).draggable({
+        $(this).draggable({
             grid: [5, 5],
             snap: '.cell',
             snapMode: 'inner',
@@ -61,7 +55,7 @@ $(document).ready(function () {
                     $this.data('originalLeft', $this.offset().left);
                 });
             }
-        }).resizable({
+        }).not('.profile-pic-container').resizable({
             grid: [5, 5],
             handles: {
                 'se': '.resize-handle' // Specify the custom handle class
@@ -71,14 +65,16 @@ $(document).ready(function () {
             'originalLeft': $(this).offset().left
         });
     });
+    $('.profile-pic-container').resizable({
+        aspectRatio: 1
+    });
 
     //////////////////// selection box logic
 
     // Append the select box element to the container
     $('#grid-container').append(selectBox);
-
     // Mouse down event to start the selection
-    $('#grid-container').mousedown(function (e) {
+    $(document).mousedown(function (e) {
         if (selectProhibited) return; // Skip if dragging or resizing
         isSelecting = true;
         $('.grid-item').removeClass('selected');
@@ -93,7 +89,7 @@ $(document).ready(function () {
     });
 
     // Mouse move event to adjust the size of the selection box
-    $('#grid-container').mousemove(function (e) {
+    $(document).mousemove(function (e) {
         if (!isSelecting) return;
 
         var movex = e.pageX,

@@ -4,40 +4,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Grid</title>
+    <title>Haoxuan Ma's Portfolio</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/init.css">
 </head>
 
 <body>
+    <div id="grid"></div>
     <div id="grid-container">
-        <div id="grid"></div>
-        <div class="grid-item" id="item1">
-            <div class="content">
-                <div class="image-container">
-                    <img src="resource/fluffy.jpg" alt="Image">
-                </div>
-            </div>
-            <div class="ui-resizable-handle ui-resizable-se resize-handle"></div>
 
+        <!-- Item 1: Profile Picture -->
+        <div class="grid-item profile-pic-container" id="item1">
+            <img src="resource/profile_pic.jpg" alt="Profile Picture">
+            <div class="ui-resizable-handle ui-resizable-se resize-handle"></div>
         </div>
 
+        <!-- Item 2: Big Title -->
         <div class="grid-item" id="item2">
-            <div class="content">
-                <div class="text-center">
-                    <p>Your text goes here wefio jwefioj owiejfo iwjefoi jweofj owiejf oiwejfo jweofij woeifj owiefj
-                        owiejf </p>
-                </div>
+            <h1>Haoxuan Ma</h1>
+            <div class="ui-resizable-handle ui-resizable-se resize-handle"></div>
+        </div>
+
+        <!-- Item 3: Contact Information -->
+        <div class="grid-item" id="item3">
+            <p>Email: crescely@umich.edu</p>
+            <div class="ui-resizable-handle ui-resizable-se resize-handle"></div>
+        </div>
+
+        <!-- Item 4: Resume Link -->
+        <div class="grid-item" id="item4">
+            <a href="resource/Resume_Haoxuan Ma.pdf" class="button" target="_blank">Resume</a>
+            <div class="ui-resizable-handle ui-resizable-se resize-handle"></div>
+        </div>
+
+        <!-- Item 5: Ragnarok TD Game Project -->
+        <div class="grid-item project-container" id="item5">
+            <img src="resource/ragnarok-td.png" alt="Ragnarok TD">
+            <div class="project-info">
+                <a href="https://wolverinesoft-studio.itch.io/ragnarok-td" target="_blank">Ragnarok TD</a>
             </div>
             <div class="ui-resizable-handle ui-resizable-se resize-handle"></div>
         </div>
-        <div class="grid-item" id="item3"></div>
-        <div class="grid-item" id="item4"></div>
-        <div class="grid-item" id="item5"></div>
+
+
+        <!-- Item 6: Treat Team Game Project -->
+        <div class="grid-item project-container" id="item6">
+            <img src="resource/treat-team.png" alt="Treat Team">
+            <div class="project-info">
+                <a href="https://bluebirdstudios.net/#:~:text=By%20playing%20Treat%20Team%2C%20YOU,them%20to%20donate%20an%20item."
+                    target="_blank">Treat Team</a>
+            </div>
+            <div class="ui-resizable-handle ui-resizable-se resize-handle"></div>
+        </div>
+
+        <!-- Item 7: A Maze In WebGL Game -->
+        <div class="grid-item" id="item7">
+            <!-- Embed WebGL Game Here -->
+            <div class="ui-resizable-handle ui-resizable-se resize-handle"></div>
+        </div>
+
+        <!-- Item 8: Theseus Orbital Station -->
+        <div class="grid-item" id="item8">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/GDbWQehwQRE?si=X91R88ZuTvMkrEvD"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            <div class="iframe-overlay"></div>
+            <div class="ui-resizable-handle ui-resizable-se resize-handle"></div>
+        </div>
+
+        <!-- Item 9: Turn table -->
+        <div class="grid-item" id="item9">
+            <iframe id="m1" width="560" height="315" src="https://www.youtube.com/embed/L3Vf6CGCgiM"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            <div class="iframe-overlay"></div>
+            <div class="ui-resizable-handle ui-resizable-se resize-handle"></div>
+        </div>
+
+        <!-- Item 10: Ritual Staff -->
+        <div class="grid-item" id="item10">
+            <iframe id="m2" width="560" height="315" src="https://www.youtube.com/embed/bf6Jw1y78j4"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            <div class="iframe-overlay"></div>
+            <div class="ui-resizable-handle ui-resizable-se resize-handle"></div>
+        </div>
+
+        <!-- Item 11: The Treee Factory -->
+        <div class="grid-item" id="item11">
+            <iframe id="m3" width="560" height="315" src="https://www.youtube.com/embed/K6Mgpz9EGgw"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            <div class="iframe-overlay"></div>
+            <div class="ui-resizable-handle ui-resizable-se resize-handle"></div>
+        </div>
+
+        <!-- Item 12: Same Thing -->
+        <div class="grid-item" id="item12">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/0zlaVbNvsZg?si=hqKbtYdINBoNnjH6"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            <div class="iframe-overlay"></div>
+            <div class="ui-resizable-handle ui-resizable-se resize-handle"></div>
+        </div>
+
+        <!-- Item 13: Edit Button -->
+        <div class="grid-item" id="item13">
+            <div id="toggleEditMode" class="button">Toggle Edit Mode</div>
+            <div class="ui-resizable-handle ui-resizable-se resize-handle"></div>
+        </div>
+
+        <!-- Item 14: Save Layout Button -->
+        <div class="grid-item" id="item14">
+            <a href="" id="saveLayoutButton" class="button" target="_blank">Save
+                Layout</a>
+            <div class="ui-resizable-handle ui-resizable-se resize-handle"></div>
+        </div>
+
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="js/test.js"></script>
+    <script src="js/toggle_mode.js"></script>
+    <script src="js/save_layout.js"></script>
 </body>
 
 </html>
