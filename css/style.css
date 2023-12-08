@@ -148,6 +148,7 @@ img {
   right: 0;
   background-color: var(--tool-color);
   cursor: se-resize;
+  z-index: 100;
 }
 
 /* Selection Box */
