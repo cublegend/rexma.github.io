@@ -1,10 +1,5 @@
 $(document).ready(function () {
 
-    // Create grid cells
-    for (let i = 0; i < 100; i++) {
-        $('#grid').append('<div class="cell"></div>');
-    }
-
     // Initialize grid items with absolute positions
     $('.grid-item').each(function (index) {
         // Append four resize handles to each grid item
@@ -17,8 +12,6 @@ $(document).ready(function () {
 
         $(this).draggable({
             grid: [5, 5],
-            snap: '.cell',
-            snapMode: 'inner',
             containment: '#grid-container',
             cancel: '.resize-handle, .updown',
             start: function (event, ui) {
@@ -28,8 +21,8 @@ $(document).ready(function () {
                 if (!$this.hasClass('selected')) {
                     // If not, deselect all items and select only this one
                     removeAllSelection();
-                    addToSelection(this);
                 }
+                addToSelection(this);
 
                 // Store the selected items in the dragged item's data
                 ui.helper.data('selectedItems', $('.selected'));
@@ -67,12 +60,9 @@ $(document).ready(function () {
                 // Check if the resized item is in the selection
                 if (!$this.hasClass('selected')) {
                     // If not, deselect all items and select only this one
-                    $('.grid-item').removeClass('selected');
-                    $('.resize-handle').removeClass('resize-handle-selected');
-                    $this.addClass('selected');
-                    $(this).find('.resize-handle').addClass('resize-handle-selected');
+                    removeAllSelection();
                 }
-
+                addToSelection(this);
                 // Store the selected items in the resized item's data
                 ui.helper.data('selectedItems', $('.selected'));
             },
