@@ -24,7 +24,7 @@ $(document).ready(function () {
                 var $this = $(this);
                 $this.data('originalTop', $this.offset().top);
                 $this.data('originalLeft', $this.offset().left);
-                $this.css('border', '5px dotted var(--bordr-color)');
+                $this.css('border-width', '5px');
             });
         } else {
             $('#item14').addClass('hidden').removeClass('visible');
@@ -33,7 +33,7 @@ $(document).ready(function () {
             $('.iframe-overlay').css('pointer-events', 'none');
             $('#toggleEditMode').text('Switch to Edit Mode');
             $('.grid-item').each(function () {
-                $(this).css('border', '0px solid #000');
+                $(this).css('border-width', '0px');
             });
         }
     }

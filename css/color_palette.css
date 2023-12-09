@@ -4,8 +4,8 @@
     --button-color: grey;
     --dot-color: #000000;
     --tool-color: rgba(128, 128, 128, 0.393);
-    --bordr-color: #000000;
     --text-color: #000000;
+    --highlight-color: rgb(252, 94, 2);
 }
 
 .palette1 {
@@ -14,7 +14,6 @@
     --button-color: grey;
     --dot-color: #000000;
     --tool-color: rgba(128, 128, 128, 0.393);
-    --bordr-color: #000000;
     --text-color: #000000;
 }
 
@@ -24,7 +23,6 @@
     --button-color: #f2542d;
     --dot-color: #271033;
     --tool-color: #1e555c;
-    --bordr-color: #000000;
     --text-color: #000000;
 }
 
@@ -34,7 +32,6 @@
     --button-color: #3a7d44;
     --dot-color: #181d27;
     --tool-color: #254d32;
-    --bordr-color: #000000;
     --text-color: #000000;
 }
 
@@ -44,7 +41,6 @@
     --button-color: #283613;
     --dot-color: #3a2a19;
     --tool-color: #283613;
-    --bordr-color: #18180b;
     --text-color: #000000;
 }
 
@@ -54,8 +50,11 @@
     --button-color: grey;
     --dot-color: #000000;
     --tool-color: rgba(128, 128, 128, 0.393);
-    --bordr-color: #000000;
     --text-color: #000000;
+}
+
+.gray-image {
+    filter: grayscale(100%);
 }
   
 .color-dot {

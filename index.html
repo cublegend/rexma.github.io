@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/init.css">
     <link rel="stylesheet" href="css/color_palette.css">
+    <link rel="stylesheet" href="css/tools.css">
 </head>
 
 <body>
@@ -17,13 +18,11 @@
         <!-- Item 1: Profile Picture -->
         <div class="grid-item profile-pic-container" id="item1">
             <img src="resource/profile_pic.jpg" alt="Profile Picture">
-            <div class="ui-resizable-handle ui-resizable-se resize-handle"></div>
         </div>
 
         <!-- Item 2: Big Title -->
         <div class="grid-item" id="item2">
             <h1>Haoxuan Ma</h1>
-            <div class="ui-resizable-handle ui-resizable-se resize-handle"></div>
         </div>
 
         <!-- Item 3: Contact Information -->
@@ -35,7 +34,10 @@
         <!-- Item 4: Resume Link -->
         <div class="grid-item" id="item4">
             <a href="resource/Resume_Haoxuan Ma.pdf" class="button" target="_blank">Resume</a>
-            <div class="ui-resizable-handle ui-resizable-se resize-handle"></div>
+        </div>
+
+        <div class="grid-item" id="item5">
+            <img class=" gray-image" src="resource/photo/000083470011.JPG" alt="">
         </div>
 
         <!-- Item 5: Ragnarok TD Game Project -->
@@ -44,7 +46,6 @@
             <div class="project-info">
                 <a href="https://wolverinesoft-studio.itch.io/ragnarok-td" target="_blank">Ragnarok TD</a>
             </div>
-            <div class="ui-resizable-handle ui-resizable-se resize-handle"></div>
         </div> -->
 
 
@@ -55,7 +56,6 @@
                 <a href="https://bluebirdstudios.net/#:~:text=By%20playing%20Treat%20Team%2C%20YOU,them%20to%20donate%20an%20item."
                     target="_blank">Treat Team</a>
             </div>
-            <div class="ui-resizable-handle ui-resizable-se resize-handle"></div>
         </div> -->
 
         <!-- Item 7: Soundcloud Playlist -->
@@ -63,7 +63,6 @@
             <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay"
                 src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1735292811&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
             <div class="iframe-overlay"></div>
-            <div class="ui-resizable-handle ui-resizable-se resize-handle"></div>
         </div> -->
 
         <!-- Item 8: Theseus Orbital Station -->
@@ -73,7 +72,6 @@
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen></iframe>
             <div class="iframe-overlay"></div>
-            <div class="ui-resizable-handle ui-resizable-se resize-handle"></div>
         </div> -->
 
         <!-- Item 9: Turn table -->
@@ -83,7 +81,6 @@
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
             <div class="iframe-overlay"></div>
-            <div class="ui-resizable-handle ui-resizable-se resize-handle"></div>
         </div> -->
 
         <!-- Item 10: Ritual Staff -->
@@ -93,7 +90,6 @@
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
             <div class="iframe-overlay"></div>
-            <div class="ui-resizable-handle ui-resizable-se resize-handle"></div>
         </div> -->
 
         <!-- Item 11: The Treee Factory -->
@@ -103,7 +99,6 @@
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
             <div class="iframe-overlay"></div>
-            <div class="ui-resizable-handle ui-resizable-se resize-handle"></div>
         </div> -->
 
         <!-- Item 12: Same Thing -->
@@ -113,20 +108,17 @@
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen></iframe>
             <div class="iframe-overlay"></div>
-            <div class="ui-resizable-handle ui-resizable-se resize-handle"></div>
         </div> -->
 
         <!-- Item 13: Edit Button -->
         <div class="grid-item" id="item13">
             <div id="toggleEditMode" class="button">Toggle Edit Mode</div>
-            <div class="ui-resizable-handle ui-resizable-se resize-handle"></div>
         </div>
 
         <!-- Item 14: Save Layout Button -->
         <div class="grid-item" id="item14">
             <a href="" id="saveLayoutButton" class="button" target="_blank">Save
                 Layout</a>
-            <div class="ui-resizable-handle ui-resizable-se resize-handle"></div>
         </div>
 
         <!-- Item 15: Color Palette -->
@@ -136,7 +128,6 @@
             <div class="color-dot" data-palette="palette3"></div>
             <div class="color-dot" data-palette="palette4"></div>
             <div class="color-dot" data-palette="palette5"></div>
-            <div class="ui-resizable-handle ui-resizable-se resize-handle"></div>
         </div>
         
 
@@ -144,10 +135,12 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="js/test.js"></script>
+    <script src="js/init.js"></script>
     <script src="js/toggle_mode.js"></script>
     <script src="js/save_layout.js"></script>
     <script src="js/color_palette.js"></script>
+    <script src="js/tools.js"></script>
+    <script src="js/selection_box.js"></script>
 </body>
 
 </html>
