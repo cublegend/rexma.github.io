@@ -18,15 +18,23 @@ $(document).ready(function () {
             $('.iframe-overlay').css('pointer-events', 'all');
             $('#toggleEditMode').text('Switch to View Mode');
             $('.resize-handle').addClass('visible').removeClass('hidden');
+            $('#item14').addClass('visible').removeClass('hidden');
+            $('#item15').addClass('visible').removeClass('hidden');
             $('.grid-item').each(function () {
                 var $this = $(this);
                 $this.data('originalTop', $this.offset().top);
                 $this.data('originalLeft', $this.offset().left);
+                $this.css('border', '5px dotted var(--bordr-color)');
             });
         } else {
+            $('#item14').addClass('hidden').removeClass('visible');
+            $('#item15').addClass('hidden').removeClass('visible');
             $('.resize-handle').addClass('hidden').removeClass('visible');
             $('.iframe-overlay').css('pointer-events', 'none');
             $('#toggleEditMode').text('Switch to Edit Mode');
+            $('.grid-item').each(function () {
+                $(this).css('border', '0px solid #000');
+            });
         }
     }
 

@@ -1,19 +1,10 @@
-:root {
-  --bckgd-color: #ffffff;
-  --item-color: #ffffff;
-  --button-color: grey;
-  --dot-color: #000000;
-  --tool-color: rgba(128, 128, 128, 0.393);
-  --bordr-color: #000000;
-  --text-color: #000000;
-}
-
 body,
 html {
   margin: 0;
   height: 100%;
   overflow: hidden;
   background-color: var(--bckgd-color);
+  font: 1em "Open Sans", sans-serif;
 }
 
 /* Disable text selection */
@@ -66,7 +57,7 @@ img {
 .grid-item {
   position: absolute;
   background-color: var(--item-color);
-  border: 1px solid var(--bordr-color);
+  border: 1px dotted var(--bordr-color);
   z-index: 2;
   display: flex;
   justify-content: center;
