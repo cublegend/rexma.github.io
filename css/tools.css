@@ -30,8 +30,13 @@
     position: absolute;
     width: 30px;
     height: 30px;
+    text-align: center;
     background-color: var(--tool-color);
     z-index: 100;
+}
+
+.handle-selected {
+    background-color: var(--highlight-color);
 }
 
 .z-down {

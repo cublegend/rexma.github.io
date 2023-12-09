@@ -13,7 +13,7 @@ $(document).ready(function () {
         $(this).append('<div class="resize-handle ui-resizable-sw"></div>');
         $(this).append('<div class="resize-handle ui-resizable-se"></div>');
 
-        $(this).append(['<button class="z-up updown">^</button> <button class="z-down updown">v</button>']);
+        $(this).append(['<div class="z-up updown">^</div> <div class="z-down updown">v</div>']);
 
         $(this).draggable({
             grid: [5, 5],
@@ -27,8 +27,8 @@ $(document).ready(function () {
                 // Check if the dragged item is in the selection
                 if (!$this.hasClass('selected')) {
                     // If not, deselect all items and select only this one
-                    $('.grid-item').removeClass('selected');
-                    $this.addClass('selected');
+                    removeAllSelection();
+                    addToSelection(this);
                 }
 
                 // Store the selected items in the dragged item's data
@@ -60,7 +60,22 @@ $(document).ready(function () {
                 'ne': '.ui-resizable-ne',
                 'sw': '.ui-resizable-sw',
                 'se': '.ui-resizable-se'
-            }
+            },
+            start: function (event, ui) {
+                var $this = $(this);
+
+                // Check if the resized item is in the selection
+                if (!$this.hasClass('selected')) {
+                    // If not, deselect all items and select only this one
+                    $('.grid-item').removeClass('selected');
+                    $('.resize-handle').removeClass('resize-handle-selected');
+                    $this.addClass('selected');
+                    $(this).find('.resize-handle').addClass('resize-handle-selected');
+                }
+
+                // Store the selected items in the resized item's data
+                ui.helper.data('selectedItems', $('.selected'));
+            },
         }).data({
             'originalTop': $(this).offset().top,
             'originalLeft': $(this).offset().left

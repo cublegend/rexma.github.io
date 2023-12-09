@@ -18,7 +18,7 @@ $(document).ready(function () {
     $(document).mousedown(function (e) {
         if (selectProhibited) return; // Skip if dragging or resizing
         isSelecting = true;
-        $('.grid-item').removeClass('selected');
+        removeAllSelection();
         startx = e.pageX;
         starty = e.pageY;
         selectBox.css({
@@ -50,9 +50,7 @@ $(document).ready(function () {
         // Select items that intersect with the select box
         $('.grid-item').each(function () {
             if (isIntersecting(selectBox[0], this)) {
-                $(this).addClass('selected');
-            } else {
-                $(this).removeClass('selected');
+                addToSelection(this);
             }
         });
     });

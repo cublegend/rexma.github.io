@@ -18,6 +18,7 @@ $(document).ready(function () {
             $('.iframe-overlay').css('pointer-events', 'all');
             $('#toggleEditMode').text('Switch to View Mode');
             $('.resize-handle').addClass('visible').removeClass('hidden');
+            $('.updown').addClass('visible').removeClass('hidden');
             $('#item14').addClass('visible').removeClass('hidden');
             $('#item15').addClass('visible').removeClass('hidden');
             $('.grid-item').each(function () {
@@ -30,6 +31,7 @@ $(document).ready(function () {
             $('#item14').addClass('hidden').removeClass('visible');
             $('#item15').addClass('hidden').removeClass('visible');
             $('.resize-handle').addClass('hidden').removeClass('visible');
+            $('.updown').addClass('hidden').removeClass('visible');
             $('.iframe-overlay').css('pointer-events', 'none');
             $('#toggleEditMode').text('Switch to Edit Mode');
             $('.grid-item').each(function () {
