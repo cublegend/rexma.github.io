@@ -5,24 +5,26 @@ body {
   min-height: 100vh;
   margin: 0;
   background-color: #f0f0f0;
+  overflow: hidden;
 }
 
-#ring-container {
+.ring-container {
   position: relative;
-  width: 300px;  /* Adjust as needed */
-  height: 300px; /* Adjust as needed */
+  width: auto;
+  height: auto;
 }
 
 .ring-div {
   position: absolute;
-  width: 50px;  /* Adjust as needed */
-  height: 50px; /* Adjust as needed */
-  background-color: #3498db;
-  border-radius: 50%;
+  width: 5vw;  /* Adjust as needed */
+  height: 5vw; /* Adjust as needed */
   text-align: center;
-  line-height: 50px; /* Same as height */
-  color: white;
-  font-size: 14px;
+  line-height: 5vw; /* Same as height */
+  color: black;
+  font-size: 5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @keyframes rotate {
