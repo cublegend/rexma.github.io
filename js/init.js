@@ -1,78 +1,44 @@
-$(document).ready(function () {
+$(document).ready(function() {
+    // Create a ring for each word
+    createRingFromWord('Hello', 100, 1);
+    createRingFromWord('World', 150, 2);
+    createRingFromWord('This', 200, 3);
+});
 
-    // Initialize grid items with absolute positions
-    $('.grid-item').each(function (index) {
-        // Append four resize handles to each grid item
-        $(this).append('<div class="resize-handle ui-resizable-nw"></div>');
-        $(this).append('<div class="resize-handle ui-resizable-ne"></div>');
-        $(this).append('<div class="resize-handle ui-resizable-sw"></div>');
-        $(this).append('<div class="resize-handle ui-resizable-se"></div>');
+function createRingFromWord(word, radius, id) {
+    const container = $('<div class="rotating"></div>');
+    container.attr('id', '#ring-'+ id);
+    // Set the animation duration and direction
+    const direction = id % 2 ? 'normal' : 'reverse';
+    const rotationDuration = 10000/radius;
+    container.css('animation-duration', rotationDuration + 's');
+    container.css('animation-direction', direction);
+    
+    $(document.body).append(container);
 
-        $(this).append(['<div class="z-up updown">^</div> <div class="z-down updown">v</div>']);
+    // Create a div for each letter
+    for (let i = 0; i < word.length; i++) {
+        const div = $('<div class="ring-div rotating"></div>').text(word[i]);
+        div.css('animation-duration', rotationDuration + 's');
+        const dir = (direction === 'normal') ? 'reverse' : 'normal';
+        div.css('animation-direction', dir);
+        container.append(div);
+    }
 
-        $(this).draggable({
-            grid: [5, 5],
-            containment: '#grid-container',
-            cancel: '.resize-handle, .updown',
-            start: function (event, ui) {
-                var $this = $(this);
+    // Position each div in a ring
+    const divs = container.children();
+    const angleStep = 360 / divs.length;
 
-                // Check if the dragged item is in the selection
-                if (!$this.hasClass('selected')) {
-                    // If not, deselect all items and select only this one
-                    removeAllSelection();
-                }
-                addToSelection(this);
+    divs.each(function(index) {
+        const angle = index * angleStep;
+        const x = radius * Math.cos(angle * Math.PI / 180);
+        const y = radius * Math.sin(angle * Math.PI / 180);
 
-                // Store the selected items in the dragged item's data
-                ui.helper.data('selectedItems', $('.selected'));
-            },
-            drag: function (event, ui) {
-                var selectedItems = ui.helper.data('selectedItems');
-                selectedItems.each(function () {
-                    var $this = $(this);
-                    if ($this[0] !== ui.helper[0]) {
-                        var newTop = ui.position.top + ($this.data('originalTop') - ui.helper.data('originalTop'));
-                        var newLeft = ui.position.left + ($this.data('originalLeft') - ui.helper.data('originalLeft'));
-                        $this.css({ top: newTop, left: newLeft });
-                    }
-                });
-            },
-            stop: function (event, ui) {
-                var selectedItems = ui.helper.data('selectedItems');
-                selectedItems.each(function () {
-                    var $this = $(this);
-                    $this.data('originalTop', $this.offset().top);
-                    $this.data('originalLeft', $this.offset().left);
-                });
-            }
-        }).not('.profile-pic-container').resizable({
-            grid: [5, 5],
-            handles: {
-                'nw': '.ui-resizable-nw',
-                'ne': '.ui-resizable-ne',
-                'sw': '.ui-resizable-sw',
-                'se': '.ui-resizable-se'
-            },
-            start: function (event, ui) {
-                var $this = $(this);
-
-                // Check if the resized item is in the selection
-                if (!$this.hasClass('selected')) {
-                    // If not, deselect all items and select only this one
-                    removeAllSelection();
-                }
-                addToSelection(this);
-                // Store the selected items in the resized item's data
-                ui.helper.data('selectedItems', $('.selected'));
-            },
-        }).data({
-            'originalTop': $(this).offset().top,
-            'originalLeft': $(this).offset().left
+        $(this).css({
+            'left': '50%',
+            'top': '50%',
+            'margin-left': (x - $(this).width() / 2) + 'px', // Adjust for div size
+            'margin-top': (y - $(this).height() / 2) + 'px' // Adjust for div size
         });
     });
-
-    $('.profile-pic-container').resizable({
-        aspectRatio: 1
-    });
-});
+}

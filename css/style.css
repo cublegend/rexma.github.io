@@ -1,142 +1,38 @@
-body,
-html {
-  margin: 0;
-  height: 100%;
-  overflow: hidden;
-  background-color: var(--bckgd-color);
-  font: 1em "Open Sans", sans-serif;
-}
-
-/* Disable text selection */
-* {
-  -webkit-user-select: none;
-  /* Chrome, Safari, Opera */
-  -moz-user-select: none;
-  /* Firefox */
-  -ms-user-select: none;
-  /* IE/Edge */
-  user-select: none;
-  /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
-}
-
-text {
-  color: var(--text-color);
-}
-
-/* Disable image dragging */
-img {
-  pointer-events: none;
-  -webkit-user-drag: none;
-}
-
-#grid-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.grid-item {
-  position: absolute;
-  border: 1px dotted var(--tool-color);
-  z-index: 2;
+body {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
-}
-
-.grid-item img, .grid-item iframe, .grid-item video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* For images and videos */
-}
-
-/* Responsive Text */
-.grid-item h1,
-.grid-item p,
-.grid-item a {
+  min-height: 100vh;
   margin: 0;
-  padding: 10px;
-  /* Optional for spacing */
-  text-align: center;
-  font-size: 3vw;
-  /* Responsive font size */
+  background-color: #f0f0f0;
 }
 
-.button {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: var(--button-color);
-  color: var(--text-color);
-  text-decoration: none;
-  font-size: 2vw;
+#ring-container {
+  position: relative;
+  width: 300px;  /* Adjust as needed */
+  height: 300px; /* Adjust as needed */
 }
 
-/* Profile Picture Container */
-.profile-pic-container {
+.ring-div {
+  position: absolute;
+  width: 50px;  /* Adjust as needed */
+  height: 50px; /* Adjust as needed */
+  background-color: #3498db;
   border-radius: 50%;
-  overflow: hidden;
-}
-
-.profile-pic-container img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: cover;
-}
-
-/* Project Container for Images with Hover Info */
-.project-container {
-  position: absolute;
-  cursor: pointer;
-}
-
-.project-container img {
-  width: 100%;
-  height: auto;
-}
-
-.project-info {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background-color: var(--dot-color);
-  color: var(--text-color);
-  visibility: hidden;
   text-align: center;
-  font-size: 2vw;
+  line-height: 50px; /* Same as height */
+  color: white;
+  font-size: 14px;
 }
 
-.project-container:hover .project-info {
-  visibility: visible;
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-/* YouTube Iframe */
-.grid-item iframe {
-  max-width: 100%;
-  max-height: 100%;
-}
-
-.iframe-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: transparent;
-  /* Invisible overlay */
-  z-index: 10;
-  /* Above the iframe */
-  pointer-events: none;
-  /* Allows clicks to pass through initially */
-}
-
-/* Hide elements */
-.hidden {
-  display: none;
-}
-
-/* Show elements */
-.visible {
-  display: block;
-  /* or 'inline-block', 'flex', etc., depending on your layout */
+.rotating {
+  /* Duration will be set dynamically via jQuery */
+  animation-name: rotate;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }
