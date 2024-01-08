@@ -1,61 +1,66 @@
-$(document).ready(function() {
-    // Create a ring for each word
-    createRingFromWord('tst', 10);
-    createRingFromWord('hah', 15);
-    createRingFromWord('eme', 20);
-    createRingFromWord('se ', 25);
-    createRingFromWord('e t', 30);
-    createRingFromWord('utr', 35);
-    createRingFromWord('she', 40);
-    createRingFromWord(' ie', 45);
-});
+// parameters
+const fontSizeVW = 2;
+const fontRadiusRation = 10;
+const animationDurationRatio = 50000;
+const radiuses = [7, 10, 13, 16, 19, 22, 25, 28, 31, 34];
+const titles = ["TREAT TEAM TREAT TEAM TREAT TEAM ", "THE TREEE FACTORY THE TREEE FACTORY ", 
+    "SAME THING SAME THING SAME THING ",
+    "THESEUS ORBITAL STATION THESEUS ORBITAL STATION ", "MUSIC MUSIC MUSIC MUSIC MUSIC ", 
+    "PHOTOGRAPHY PHOTOGRAPHY PHOTOGRAPHY PHOTOGRAPHY PHOTOGRAPHY "];
+// const titles = ["TEST TEST TEST TEST TEST TEST "]
 
-function createRingFromWord(word, radiusRaw) {
-    // The radius is a percentage of the screen width or height, whichever is smaller
-    const ratio = $(window).width() > $(window).height() ? $(window).height() : $(window).width();
-    
-    const updateRingDivs = () => {
-        const angleStep = 360 / divs.length;
+function initCurvedText($curvedText, radius) {
+    $curvedText.css("min-width", "initial");
+    $curvedText.css("min-height", "initial");
+    var text = $curvedText.text();
+    var html = "";
+    Array.from(text).forEach(function (letter) {
+        html += `<span>${letter}</span>`;
+    });
+    $curvedText.html(html);
+    var $letters = $curvedText.find("span");
 
-        divs.each(function(index) {
-            const angle = index * angleStep;
-            const x = radiusRaw * Math.cos(angle * Math.PI / 180) * ratio / 100;
-            const y = radiusRaw * Math.sin(angle * Math.PI / 180) * ratio / 100;
-            $(this).css({
-                'left': '50%', 
-                'top': '50%',
-                'margin-left': (x - $(this).width() / 2) + 'px',
-                'margin-top': (y - $(this).height() / 2) + 'px'
-            });
-        });
-    };
-
-    const container = $('<div class="rotating ring-container"></div>');
-
-    // Set the animation duration and direction
-    const direction = Math.random() > 0.5 ? 'normal' : 'reverse';
-    const rotationDuration = 1000 / radiusRaw;
-    container.css({
-        'animation-duration': rotationDuration + 's',
-        'animation-direction': direction
+    $letters.css({
+        position: "absolute",
+        height:`${radius}px`,
+        bottom: "50%",
+        left: "50%",
+        transformOrigin:"bottom center"
     });
 
-    $(document.body).append(container);
+    var angleOffset = 360/$letters.length;
+    $letters.each(function(idx,el){
+        $(el).css({
+            transform:`translate(-50%) rotate(${idx * angleOffset}deg) rotateX(350deg)`
+        })
+    });
+}
 
-    // Create a div for each letter
-    for (let i = 0; i < word.length; i++) {
-        const div = $('<div class="ring-div rotating"></div>').text(word[i]);
-        const dir = (direction === 'normal') ? 'reverse' : 'normal';
-        div.css({
-            'animation-duration': rotationDuration + 's',
-            'animation-direction': dir
+function createCurvedText(text, originalRadiusVW, id) {
+    const $curvedTextContainer = $('<div class="curved-text rotating"></div>').text(text);
+    $(document.body).append($curvedTextContainer);
+
+    function updateCurvedText() {
+        const ratio = $(window).width() > $(window).height() ? $(window).height() : $(window).width();
+        let radius = originalRadiusVW * ratio / 100;
+
+        $curvedTextContainer.css({
+            animationDuration: `${animationDurationRatio/radius}s`,
+            animationDirection: id % 2 ? "normal" : "reverse",
+            fontSize: `${radius/fontRadiusRation + fontSizeVW * ratio / 100}px`
         });
-        container.append(div);
+
+        initCurvedText($curvedTextContainer, radius);
     }
 
-    const divs = container.children();
-    updateRingDivs(); // Initial positioning
+    updateCurvedText(); // Initial setup
 
-    // Adjust on window resize
-    $(window).resize(updateRingDivs);
+    $(window).resize(updateCurvedText); // Update on window resize
 }
+
+$(document).ready(function() {
+    for(let i = 0; i < radiuses.length; i++) {
+        let titleIdx = i % titles.length;
+        createCurvedText(titles[titleIdx], radiuses[i], i);
+    }
+});

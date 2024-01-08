@@ -4,27 +4,38 @@ body {
   align-items: center;
   min-height: 100vh;
   margin: 0;
-  background-color: #f0f0f0;
+  background-color: rgb(0, 136, 73);
   overflow: hidden;
 }
 
-.ring-container {
-  position: relative;
-  width: auto;
-  height: auto;
-}
-
-.ring-div {
-  position: absolute;
-  width: 5vw;  /* Adjust as needed */
-  height: 5vw; /* Adjust as needed */
-  text-align: center;
-  line-height: 5vw; /* Same as height */
-  color: black;
-  font-size: 5vw;
+.centered-container {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.round-image {
+  width: 200px; /* Or your desired size */
+  height: 200px; /* Or your desired size */
+  border-radius: 50%; /* Makes the image round */
+  object-fit: cover; /* Ensures the image covers the area */
+}
+
+.curved-text {
+  position: absolute;
+  font-size: 32px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  perspective: 70px;
+}
+
+.curved-text span {
+  min-width: 0.5em;
+  text-align: center;
+  padding: 30px;
+  margin: 0px;
+  transform-style: preserve-3d;
 }
 
 @keyframes rotate {
@@ -33,7 +44,7 @@ body {
 }
 
 .rotating {
-  /* Duration will be set dynamically via jQuery */
+  transform: translate3d(0, 0, 0);
   animation-name: rotate;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
