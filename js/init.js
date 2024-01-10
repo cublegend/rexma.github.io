@@ -1,13 +1,10 @@
 // parameters
-const fontSizeVW = 2;
-const fontRadiusRation = 10;
-const animationDurationRatio = 50000;
-const radiuses = [7, 10, 13, 16, 19, 22, 25, 28, 31, 34];
-const titles = ["TREAT TEAM TREAT TEAM TREAT TEAM ", "THE TREEE FACTORY THE TREEE FACTORY ", 
-    "SAME THING SAME THING SAME THING ",
-    "THESEUS ORBITAL STATION THESEUS ORBITAL STATION ", "MUSIC MUSIC MUSIC MUSIC MUSIC ", 
-    "PHOTOGRAPHY PHOTOGRAPHY PHOTOGRAPHY PHOTOGRAPHY PHOTOGRAPHY "];
-// const titles = ["TEST TEST TEST TEST TEST TEST "]
+const fontSizeVW = 1.5;
+const fontRadiusRatio = 15;
+const animationDuration = 800;
+const titles = ["TREAT TEAM • TREAT TEAM • TREAT TEAM • ", "THE TREEE FACTORY • THE TREEE FACTORY • ",
+    "SAME THING • SAME THING • SAME THING • SAME THING • ",
+    "THESEUS ORBITAL STATION • THESEUS ORBITAL STATION • ", "MUSIC • MUSIC • MUSIC • MUSIC • MUSIC • "];
 
 function initCurvedText($curvedText, radius) {
     $curvedText.css("min-width", "initial");
@@ -22,16 +19,16 @@ function initCurvedText($curvedText, radius) {
 
     $letters.css({
         position: "absolute",
-        height:`${radius}px`,
+        height: `${radius}px`,
         bottom: "50%",
         left: "50%",
-        transformOrigin:"bottom center"
+        transformOrigin: "bottom center"
     });
 
-    var angleOffset = 360/$letters.length;
-    $letters.each(function(idx,el){
+    var angleOffset = 360 / $letters.length;
+    $letters.each(function (idx, el) {
         $(el).css({
-            transform:`translate(-50%) rotate(${idx * angleOffset}deg) rotateX(350deg)`
+            transform: `translate(-50%) rotate(${idx * angleOffset}deg)`
         })
     });
 }
@@ -45,9 +42,9 @@ function createCurvedText(text, originalRadiusVW, id) {
         let radius = originalRadiusVW * ratio / 100;
 
         $curvedTextContainer.css({
-            animationDuration: `${animationDurationRatio/radius}s`,
+            animationDuration: `${animationDuration}s`,
             animationDirection: id % 2 ? "normal" : "reverse",
-            fontSize: `${radius/fontRadiusRation + fontSizeVW * ratio / 100}px`
+            fontSize: `${radius / fontRadiusRatio + fontSizeVW * ratio / 100}px`
         });
 
         initCurvedText($curvedTextContainer, radius);
@@ -58,9 +55,10 @@ function createCurvedText(text, originalRadiusVW, id) {
     $(window).resize(updateCurvedText); // Update on window resize
 }
 
-$(document).ready(function() {
-    for(let i = 0; i < radiuses.length; i++) {
+$(document).ready(function () {
+    for (let i = 0; i < 6; i++) {
         let titleIdx = i % titles.length;
-        createCurvedText(titles[titleIdx], radiuses[i], i);
+        createCurvedText(titles[titleIdx], 13 + i * 9, i);
     }
 });
+

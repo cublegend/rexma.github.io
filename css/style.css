@@ -15,10 +15,14 @@ body {
 }
 
 .round-image {
-  width: 200px; /* Or your desired size */
-  height: 200px; /* Or your desired size */
-  border-radius: 50%; /* Makes the image round */
-  object-fit: cover; /* Ensures the image covers the area */
+  width: 200px;
+  /* Or your desired size */
+  height: 200px;
+  /* Or your desired size */
+  border-radius: 50%;
+  /* Makes the image round */
+  object-fit: cover;
+  /* Ensures the image covers the area */
 }
 
 .curved-text {
@@ -27,7 +31,6 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  perspective: 70px;
 }
 
 .curved-text span {
@@ -35,16 +38,21 @@ body {
   text-align: center;
   padding: 30px;
   margin: 0px;
-  transform-style: preserve-3d;
+  font-family: 'Bodoni Moda', serif;
+  font-weight: 200;
 }
 
 @keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .rotating {
-  transform: translate3d(0, 0, 0);
   animation-name: rotate;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
