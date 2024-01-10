@@ -1,10 +1,12 @@
 // parameters
-const fontSizeVW = 1.5;
-const fontRadiusRatio = 15;
+const fontSizeVW = 1.3;
+const fontRadiusRatio = 40;
 const animationDuration = 800;
-const titles = ["TREAT TEAM • TREAT TEAM • TREAT TEAM • ", "THE TREEE FACTORY • THE TREEE FACTORY • ",
-    "SAME THING • SAME THING • SAME THING • SAME THING • ",
-    "THESEUS ORBITAL STATION • THESEUS ORBITAL STATION • ", "MUSIC • MUSIC • MUSIC • MUSIC • MUSIC • "];
+const initialRadius = 13;
+const radiusIncrement = 9;
+const titles = ["TREAT TEAM • ", "THE TREEE FACTORY • ",
+    "SAME THING • ",
+    "THESEUS ORBITAL STATION • ", "MUSIC • "];
 
 function initCurvedText($curvedText, radius) {
     $curvedText.css("min-width", "initial");
@@ -34,20 +36,25 @@ function initCurvedText($curvedText, radius) {
 }
 
 function createCurvedText(text, originalRadiusVW, id) {
-    const $curvedTextContainer = $('<div class="curved-text rotating"></div>').text(text);
+    const $curvedTextContainer = $(`<div class="curved-text rotating" id=${id}></div>`);
     $(document.body).append($curvedTextContainer);
 
     function updateCurvedText() {
         const ratio = $(window).width() > $(window).height() ? $(window).height() : $(window).width();
-        let radius = originalRadiusVW * ratio / 100;
+        let pxRadius = originalRadiusVW * ratio / 100;
+        // calculate font size
+        let fontSize = pxRadius / fontRadiusRatio + fontSizeVW * ratio / 100;
+        // calculate number of repetitions for each title based on font length and radius
+        let repeatNTimes = Math.round(2 * pxRadius * Math.PI / (text.length * fontSize));
 
+        $curvedTextContainer.text(text.repeat(repeatNTimes));
         $curvedTextContainer.css({
             animationDuration: `${animationDuration}s`,
             animationDirection: id % 2 ? "normal" : "reverse",
-            fontSize: `${radius / fontRadiusRatio + fontSizeVW * ratio / 100}px`
+            fontSize: `${fontSize}px`
         });
 
-        initCurvedText($curvedTextContainer, radius);
+        initCurvedText($curvedTextContainer, pxRadius);
     }
 
     updateCurvedText(); // Initial setup
@@ -56,9 +63,27 @@ function createCurvedText(text, originalRadiusVW, id) {
 }
 
 $(document).ready(function () {
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 10; i++) {
         let titleIdx = i % titles.length;
-        createCurvedText(titles[titleIdx], 13 + i * 9, i);
+        createCurvedText(titles[titleIdx], initialRadius + i * radiusIncrement, i);
     }
+});
+
+// calculate the mouse position as the radius to the center of the page
+$(document).on("mousemove", function (e) {
+    const x = e.pageX - $(window).width() / 2;
+    const y = e.pageY - $(window).height() / 2;
+    const radius = Math.sqrt(x * x + y * y);
+    // convert radius into vw
+    const ratio = $(window).width() > $(window).height() ? $(window).height() : $(window).width();
+    const radiusVW = radius * 100 / ratio;
+    // highlight the text that has the closest radius to the mouse
+    let idx = Math.round((radiusVW - initialRadius) / radiusIncrement);
+    if (idx < 0) idx = 0;
+    if (idx > 9) idx = 9;
+    // fade in the highlighted text
+    $(".curved-text").removeClass("highlighted");
+    $(`#${idx}`).addClass("highlighted");
+
 });
 
