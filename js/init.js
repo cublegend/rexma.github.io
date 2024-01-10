@@ -1,9 +1,9 @@
 // parameters
-const fontSizeVW = 1.3;
-const fontRadiusRatio = 40;
+const fontSizeVW = 0.9;
+const fontRadiusRatio = 60;
 const animationDuration = 800;
-const initialRadius = 13;
-const radiusIncrement = 9;
+const initialRadius = 5;
+const radiusIncrement = 6.5;
 const titles = ["TREAT TEAM • ", "THE TREEE FACTORY • ",
     "SAME THING • ",
     "THESEUS ORBITAL STATION • ", "MUSIC • "];
@@ -35,17 +35,22 @@ function initCurvedText($curvedText, radius) {
     });
 }
 
+function calculateRatio() {
+    const ratio = $(window).width() > $(window).height() ? $(window).width() : $(window).height();
+    return ratio;
+}
+
 function createCurvedText(text, originalRadiusVW, id) {
     const $curvedTextContainer = $(`<div class="curved-text rotating" id=${id}></div>`);
     $(document.body).append($curvedTextContainer);
 
     function updateCurvedText() {
-        const ratio = $(window).width() > $(window).height() ? $(window).height() : $(window).width();
+        const ratio = calculateRatio();
         let pxRadius = originalRadiusVW * ratio / 100;
         // calculate font size
         let fontSize = pxRadius / fontRadiusRatio + fontSizeVW * ratio / 100;
         // calculate number of repetitions for each title based on font length and radius
-        let repeatNTimes = Math.round(2 * pxRadius * Math.PI / (text.length * fontSize));
+        let repeatNTimes = Math.ceil(2 * pxRadius * Math.PI / (text.length * fontSize));
 
         $curvedTextContainer.text(text.repeat(repeatNTimes));
         $curvedTextContainer.css({
@@ -75,7 +80,7 @@ $(document).on("mousemove", function (e) {
     const y = e.pageY - $(window).height() / 2;
     const radius = Math.sqrt(x * x + y * y);
     // convert radius into vw
-    const ratio = $(window).width() > $(window).height() ? $(window).height() : $(window).width();
+    const ratio = calculateRatio();
     const radiusVW = radius * 100 / ratio;
     // highlight the text that has the closest radius to the mouse
     let idx = Math.round((radiusVW - initialRadius) / radiusIncrement);
@@ -84,6 +89,5 @@ $(document).on("mousemove", function (e) {
     // fade in the highlighted text
     $(".curved-text").removeClass("highlighted");
     $(`#${idx}`).addClass("highlighted");
-
 });
 
