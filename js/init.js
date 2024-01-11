@@ -4,6 +4,8 @@ const fontRadiusRatio = 60;
 const animationDuration = 800;
 const initialRadius = 5;
 const radiusIncrement = 6.5;
+const backgroundSpeed = 0.5;
+const foregroundSpeed = 1;
 const titles = ["TREAT TEAM • ", "THE TREEE FACTORY • ",
     "SAME THING • ",
     "THESEUS ORBITAL STATION • ", "MUSIC • "];
@@ -42,7 +44,7 @@ function calculateRatio() {
 
 function createCurvedText(text, originalRadiusVW, id) {
     const $curvedTextContainer = $(`<div class="curved-text rotating" id=${id}></div>`);
-    $(document.body).append($curvedTextContainer);
+    $('.background').append($curvedTextContainer);
 
     function updateCurvedText() {
         const ratio = calculateRatio();
@@ -75,9 +77,10 @@ $(document).ready(function () {
 });
 
 // calculate the mouse position as the radius to the center of the page
-$(document).on("mousemove", function (e) {
-    const x = e.pageX - $(window).width() / 2;
-    const y = e.pageY - $(window).height() / 2;
+$(document).mousemove(function (e) {
+    // get the viewport position of the mouse
+    const x = e.clientX - $(window).width() / 2;
+    const y = e.clientY - $(window).height() / 2;
     const radius = Math.sqrt(x * x + y * y);
     // convert radius into vw
     const ratio = calculateRatio();
@@ -91,3 +94,50 @@ $(document).on("mousemove", function (e) {
     $(`#${idx}`).addClass("highlighted");
 });
 
+$(window).on('beforeunload', function () {
+    $(window).scrollTop(0);
+});
+
+// Scroll Animation
+$(window).on('scroll', function () {
+    var viewportHeight = $(window).height();
+    var shrinkFactor = 0.15;
+    var viewportTop = viewportHeight * shrinkFactor;
+    var viewportBottom = viewportHeight - viewportTop;
+
+    $('.animated-section').each(function () {
+        var elementHeight = $(this).outerHeight();
+        var elementTop = $(this).offset().top - $(window).scrollTop();
+        var elementBottom = elementTop + elementHeight;
+        var opacity = 1;
+
+        // Element is above the effective viewport
+        if (elementTop < viewportTop) {
+            opacity = Math.max(0, (elementBottom - viewportTop) / elementHeight);
+        }
+
+        // Element is below the effective viewport
+        else if (elementBottom > viewportBottom) {
+            opacity = Math.max(0, (viewportBottom - elementTop) / elementHeight);
+        }
+
+        $(this).css('opacity', opacity);
+    });
+});
+
+
+$.fn.isInViewport = function () {
+    var elementTop = $(this).offset().top;
+    var elementBottom = elementTop + $(this).outerHeight();
+    var viewportTop = $(window).scrollTop();
+    var viewportBottom = viewportTop + $(window).height();
+    return elementBottom > viewportTop && elementTop < viewportBottom;
+};
+
+function calculate() {
+    var windowHeight = $(window).height();
+    var sectionTop = $(this).offset().top;
+    var sectionHeight = $(this).outerHeight();
+    var sectionMid = sectionTop + sectionHeight / 2;
+    var scrollPos = $(window).scrollTop();
+}

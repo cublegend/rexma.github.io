@@ -5,24 +5,114 @@ body {
   min-height: 100vh;
   margin: 0;
   background-color: black;
-  overflow: hidden;
 }
 
-.centered-container {
+h1 {
+  font-family: 'Bodoni Moda', serif;
+  font-weight: 200;
+  font-size: 8vw;
+}
+
+p {
+  font-family: 'Times New Roman', serif;
+  font-weight: 200;
+  font-size: 3vw;
+}
+
+/* Foreground */
+.foreground {
+  position: relative;
+  z-index: 10;
+  width: 100vw;
+  color: white;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
-.round-image {
-  width: 200px;
-  /* Or your desired size */
-  height: 200px;
-  /* Or your desired size */
-  border-radius: 50%;
-  /* Makes the image round */
-  object-fit: cover;
-  /* Ensures the image covers the area */
+.foreground p {
+  font-size: 100px;
+}
+
+.spacer {
+  height: 100vh;
+  width: 100%;
+}
+
+.demo-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-height: 70vh;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  overflow: hidden;
+  padding: 0;
+}
+
+.demo-section img {
+  width: 100%;
+  height: auto;
+}
+
+.title-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  padding: 0;
+  text-align: center;
+}
+
+
+.title-section h1 {
+  margin: 0;
+  padding: 10px;
+}
+
+.external-link-button {
+  display: inline-block;
+  /* Allows width and height to be set */
+  margin-top: 20px;
+  /* Space above the button */
+  padding: 10px 20px;
+  /* Padding inside the button */
+  text-decoration: none;
+  /* Remove underline from link */
+  border-radius: 25px;
+  /* Round corners */
+  border: 1px solid black;
+  /* Border for the button */
+  transition: all 0.3s ease;
+  /* Smooth transition for hover effect */
+  background-color: black;
+  color: white;
+  font-family: 'Times New Roman', serif;
+  font-weight: 600;
+  font-size: 2vh;
+}
+
+.external-link-button:hover {
+  background-color: white;
+  color: black;
+}
+
+/* END Foreground */
+
+/* Background */
+.background {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .curved-text {
@@ -47,6 +137,9 @@ body {
   animation: fadeInColor 0.3s forwards;
 }
 
+/* END Background */
+
+/* Animation */
 @keyframes fadeInColor {
   to {
     color: white;
@@ -68,3 +161,9 @@ body {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
+
+.animated-section {
+  opacity: 0;
+}
+
+/* END Animation */
