@@ -1,5 +1,5 @@
-$(window).scroll(function () {
-    var scrollPosition = $(window).scrollTop();
+$('.snap-container').scroll(function () {
+    var scrollPosition = $('.snap-container').scrollTop();
 
     $('.content-section').each(function () {
         var sectionTop = $(this).offset().top;
