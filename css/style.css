@@ -5,18 +5,24 @@ body {
   min-height: 100vh;
   margin: 0;
   background-color: black;
+  transition: background-color 0.5s;
 }
 
 h1 {
   font-family: 'Bodoni Moda', serif;
   font-weight: 200;
-  font-size: 8vw;
+  font-size: 10vh;
+  transition: color 0.5s !important;
 }
 
 p {
   font-family: 'Times New Roman', serif;
   font-weight: 200;
-  font-size: 3vw;
+  font-size: 3vh;
+}
+
+span {
+  transition: color 0.5s !important;
 }
 
 /* Foreground */
@@ -62,12 +68,12 @@ p {
 
 .title-section {
   width: 100%;
+  margin-top: 40vh;
+  margin-bottom: 20vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 10vh;
-  margin-bottom: 10vh;
   padding: 0;
   text-align: center;
 }
@@ -75,7 +81,7 @@ p {
 
 .title-section h1 {
   margin: 0;
-  padding: 10px;
+  padding: 0;
 }
 
 .external-link-button {
@@ -154,6 +160,23 @@ p {
   to {
     transform: rotate(360deg);
   }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(-10vh);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.start-animation {
+  animation: fadeInUp 0.7s ease-out forwards;
+  opacity: 0;
 }
 
 .rotating {

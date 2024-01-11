@@ -133,11 +133,3 @@ $.fn.isInViewport = function () {
     var viewportBottom = viewportTop + $(window).height();
     return elementBottom > viewportTop && elementTop < viewportBottom;
 };
-
-function calculate() {
-    var windowHeight = $(window).height();
-    var sectionTop = $(this).offset().top;
-    var sectionHeight = $(this).outerHeight();
-    var sectionMid = sectionTop + sectionHeight / 2;
-    var scrollPos = $(window).scrollTop();
-}
