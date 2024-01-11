@@ -4,7 +4,7 @@ body {
   align-items: center;
   min-height: 100vh;
   margin: 0;
-  background-color: black;
+  background-color: var(--bckgd-color);
   transition: background-color 0.5s;
 }
 
@@ -30,7 +30,7 @@ span {
   position: relative;
   z-index: 10;
   width: 100vw;
-  color: white;
+  color: var(--title-color);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -136,17 +136,12 @@ span {
   margin: 0px;
   font-family: 'Bodoni Moda', serif;
   font-weight: 200;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--curved-text-color);
 }
 
 /* END Background */
 
 /* Animation */
-@keyframes fadeInColor {
-  to {
-    color: white;
-  }
-}
 
 @keyframes rotate {
   from {

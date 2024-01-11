@@ -1,75 +1,17 @@
 :root {
-    --bckgd-color: #ffffff;
-    --item-color: #ffffff;
-    --button-color: grey;
-    --dot-color: #000000;
-    --tool-color: rgba(128, 128, 128, 0.393);
-    --text-color: #000000;
-    --highlight-color: rgb(252, 94, 2);
+    --bckgd-color: black;
+    --curved-text-color: white;
+    --title-color: white;
 }
 
 .palette1 {
-    --bckgd-color: #ffffff;
-    --item-color: #ffffff;
-    --button-color: grey;
-    --dot-color: #000000;
-    --tool-color: rgba(128, 128, 128, 0.393);
-    --text-color: #000000;
+    --bckgd-color: rgb(179 222 227);
+    --curved-text-color: rgb(239 190 73);
+    --title-color: rgb(188, 149, 57);
 }
 
-.palette2 {
-    --bckgd-color: #e7eb90;
-    --item-color: #fadf63;
-    --button-color: #f2542d;
-    --dot-color: #271033;
-    --tool-color: #1e555c;
-    --text-color: #000000;
+.palette1 {
+    --bckgd-color: violet;
+    --curved-text-color: black;
+    --title-color: black;
 }
-
-.palette3 {
-    --bckgd-color: #69b578;
-    --item-color: #d0db97;
-    --button-color: #3a7d44;
-    --dot-color: #181d27;
-    --tool-color: #254d32;
-    --text-color: #000000;
-}
-
-.palette4 {
-    --bckgd-color: #d4d8d8;
-    --item-color: #99abb8;
-    --button-color: #283613;
-    --dot-color: #3a2a19;
-    --tool-color: #283613;
-    --text-color: #000000;
-}
-
-.palette5 {
-    --bckgd-color: #ffffff;
-    --item-color: #ffffff;
-    --button-color: grey;
-    --dot-color: #000000;
-    --tool-color: rgba(128, 128, 128, 0.393);
-    --text-color: #000000;
-}
-
-.gray-image {
-    filter: grayscale(100%);
-}
-  
-.color-dot {
-    width: 20px; /* Size of the dot */
-    height: 20px;
-    border-radius: 50%; /* Make it circular */
-    margin: 5px; /* Spacing */
-    cursor: pointer; /* Indicate it's clickable */
-    display: inline-block; /* Align dots in a row */
-    /* Add more styles as needed */
-}
-  
-/* Example colors for the dots */
-.color-dot[data-palette="palette1"] { background-color: #e74c3c; }
-.color-dot[data-palette="palette2"] { background-color: #3498db; }
-.color-dot[data-palette="palette3"] { background-color: #2ecc71; }
-.color-dot[data-palette="palette4"] { background-color: #f1c40f; }
-.color-dot[data-palette="palette5"] { background-color: #9b59b6; }
