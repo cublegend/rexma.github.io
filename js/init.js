@@ -76,24 +76,6 @@ $(document).ready(function () {
     }
 });
 
-// calculate the mouse position as the radius to the center of the page
-$(document).mousemove(function (e) {
-    // get the viewport position of the mouse
-    const x = e.clientX - $(window).width() / 2;
-    const y = e.clientY - $(window).height() / 2;
-    const radius = Math.sqrt(x * x + y * y);
-    // convert radius into vw
-    const ratio = calculateRatio();
-    const radiusVW = radius * 100 / ratio;
-    // highlight the text that has the closest radius to the mouse
-    let idx = Math.round((radiusVW - initialRadius) / radiusIncrement);
-    if (idx < 0) idx = 0;
-    if (idx > 9) idx = 9;
-    // fade in the highlighted text
-    $(".curved-text").removeClass("highlighted");
-    $(`#${idx}`).addClass("highlighted");
-});
-
 $(window).on('beforeunload', function () {
     $(window).scrollTop(0);
 });

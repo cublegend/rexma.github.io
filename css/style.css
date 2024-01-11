@@ -139,10 +139,6 @@ span {
   color: rgba(255, 255, 255, 0.4);
 }
 
-.highlighted span {
-  animation: fadeInColor 0.3s forwards;
-}
-
 /* END Background */
 
 /* Animation */
