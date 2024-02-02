@@ -55,3 +55,69 @@ $.fn.isInViewport = function () {
     return elementBottom > viewportTop && elementTop < viewportBottom;
 };
 
+// position overlay menu items
+$(document).ready(function () {
+    $('.menu-item').hover(function () {
+        // When mouse enters
+        var hoverText = $(this).find('.menu-item-title').attr('data-hover-text');
+        $(this).find('.menu-item-title').addClass('glitch').text(hoverText);
+    }, function () {
+        // When mouse leaves
+        var originalText = $(this).find('.menu-item-title').attr('data-hover-text');
+        $(this).find('.menu-item-title').removeClass('glitch').text(originalText);
+    });
+});
+
+$(document).ready(function () {
+    function positionOverlay(id, initWidth, initHeight, initLeft, initTop) {
+        var containerWidth = $('#background').width();
+        var containerHeight = $('#background').height();
+        var img = new Image();
+        id += ' .menu-item';
+        img.src = $('#background-img').attr('src');
+
+        img.onload = function () {
+            var imgWidth = img.width;
+            var imgHeight = img.height;
+            var bgScale = Math.max(containerWidth / imgWidth, containerHeight / imgHeight);
+
+            var scaledImgWidth = imgWidth * bgScale;
+            var scaledImgHeight = imgHeight * bgScale;
+
+            var dx = (scaledImgWidth - containerWidth) / 2;
+            var dy = (scaledImgHeight - containerHeight);
+
+            // Now, calculate the overlay position
+            var overlayX = initLeft * bgScale;
+            var overlayY = initTop * bgScale;
+
+            $('#background-img').css({
+                width: scaledImgWidth + 'px',
+                height: scaledImgHeight + 'px',
+                left: -dx + 'px',
+                top: -dy + 'px'
+            });
+
+            $(id).css({
+                left: overlayX + 'px',
+                top: overlayY + 'px',
+                width: initWidth * bgScale + 'px',
+                height: initHeight * bgScale + 'px'
+            });
+        };
+    }
+
+    positionOverlay('#1', 200, 158, 190, 455);
+    positionOverlay('#2', 200, 158, 446, 500);
+    positionOverlay('#3', 280, 218, 190, 735);
+    positionOverlay('#4', 160, 106, 715, 540);
+    setTimeout(drawLines, 0);
+    $(window).resize(function () {
+        positionOverlay('#1', 200, 160, 190, 455);
+        positionOverlay('#2', 200, 160, 446, 500);
+        positionOverlay('#3', 280, 220, 190, 735);
+        positionOverlay('#4', 160, 108, 715, 540);
+        setTimeout(drawLines, 0);
+    });
+});
+

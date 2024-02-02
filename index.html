@@ -6,43 +6,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artistic Portfolio</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/glitch.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+HK&family=Zen+Dots&display=swap"
         rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Bungee' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
+    <div id="background">
+        <img id="background-img" src="resource/photo/000083490020.JPG" alt="Background">
+        <div id="menu-title">Projects</div>
+        <div id="1">
+            <div class="menu-item">
+                <div class="menu-item-title">
+                    <h3 id="text" data-text="Game">Game</h3>
+                </div>
+            </div>
+            <div class="menu-item-background"></div>
+        </div>
+    </div>
+    <div id="2">
+        <div class="menu-item">
+            <div class="menu-item-title">
+                <img src="resource/icon/Name=GiSoundWaves.svg">
+            </div>
+            <div class="menu-item-background"></div>
+        </div>
+    </div>
+    <div id="3">
+        <div class="menu-item">
+            <div class="menu-item-title">
+                <img src="resource/icon/Name=GiPhotoCamera.svg">
+            </div>
+            <div class="menu-item-background"></div>
+        </div>
+    </div>
+    <div id="4">
+        <div class="menu-item">
+            <div class="menu-item-title">
+                <img src="resource/icon/Name=GiDiceTwentyFacesTwenty.svg">
+            </div>
+            <div class="menu-item-background"></div>
+        </div>
+    </div>
+    </div>
+
     <div id="title">
         <div class="sub-title text-shadow" id="sub1">游戏 | 音乐 | 摄影 | 设计</div>
         <i class="text-shadow">HAOXUAN MA</i>
         <div class="sub-title text-shadow" id="sub2">Game | Music | Photo | Design</div>
     </div>
-    <img src="resource/photo/000083490020.JPG" id="background">
-    <img id="prof-pic" src="resource/Me.png" alt="Profile Picture">
+    <!-- <img id="prof-pic" src="resource/Me.png" alt="Profile Picture"> -->
     <!-- <div id="speech-box">Speech Box</div> -->
     <div id="banner">
         <img src="resource/banner.png">
-    </div>
-    <!-- <div class="panel">Panel 1</div>
-    <div class="panel">Panel 2</div>
-    <div class="panel">Panel 3</div>
-    <div class="panel">Panel 4</div>
-    <div class="panel">Panel 5</div>
-    <div id="menu">Menu</div>-->
-    <div id="menu-title">Projects</div>
-    <div class="menu-item" id="menu-item-1">
-        <div class="menu-item-title">Game</div>
-        <div class="menu-item-icon">
-            <img src="resource/icon/game.png">
-        </div>
-        <div class="menu-item-background">
-            <img src="resource/photo/000083490020.JPG">
-        </div>
     </div>
 
     <img id="transition-screen" src="resource/noise.gif">
 </body>
 
 <script src="js/hero.js"></script>
+<script src="js/glitch.js"></script>
+
 
 </html>
