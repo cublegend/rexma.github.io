@@ -42,15 +42,6 @@ html {
     right: 20%;
 }
 
-#menu-title {
-    font-size: 6vw;
-    font-weight: 900;
-    color: white;
-    position: absolute;
-    top: 30%;
-    left: 20%;
-}
-
 .menu-item {
     position: absolute;
     top: 455px;
@@ -115,7 +106,7 @@ html {
 }
 
 #banner {
-    position: relative;
+    position: absolute;
     white-space: nowrap;
     z-index: 10;
     transform: rotate(-20deg);

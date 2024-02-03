@@ -95,7 +95,8 @@ $(document).ready(function () {
                 width: scaledImgWidth + 'px',
                 height: scaledImgHeight + 'px',
                 left: -dx + 'px',
-                top: -dy + 'px'
+                top: -dy + 'px',
+                zIndex: '-1'
             });
 
             $(id).css({

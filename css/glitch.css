@@ -4,7 +4,7 @@
     -webkit-box-sizing: border-box;
 }
 
-#text {
+.text {
     top: 0;
     left: 0;
     width: 100%;
@@ -20,20 +20,20 @@
     -webkit-filter: blur(1px);
     -moz-filter: blur(1px);
     filter: blur(1px);
-    -webkit-animation: skew 2s infinite, flash .04s infinite;
-    -moz-animation: skew 2s infinite, flash .04s infinite;
-    -o-animation: skew 2s infinite, flash .04s infinite;
-    animation: skew 2s infinite, flash .04s infinite;
+    -webkit-animation: skew 2s infinite;
+    -moz-animation: skew 2s infinite;
+    -o-animation: skew 2s infinite;
+    animation: skew 2s infinite;
 }
 
-#text:after,
-#text:before {
+.text:after,
+.text:before {
     content: attr(data-text);
     position: absolute;
     mix-blend-mode: normal;
 }
 
-#text:after {
+.text:after {
     transform: translate(-6px, -5px);
     color: blue;
     -webkit-animation: move 1.5s infinite;
@@ -42,7 +42,7 @@
     animation: move 1.5s infinite;
 }
 
-#text:before {
+.text:before {
     transform: translate(5px, 5px);
     color: limegreen;
 }
