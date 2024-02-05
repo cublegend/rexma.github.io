@@ -58,6 +58,7 @@
     -webkit-filter: blur(2px);
     -moz-filter: blur(2px);
     filter: blur(2px);
+    pointer-events: none;
 }
 
 .line:after,
@@ -504,58 +505,19 @@
     }
 }
 
-@-webkit-keyframes lines {
-    0% {
-        opacity: 0.1;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=10)";
-        filter: alpha(opacity=10);
-    }
-
-    50% {
-        opacity: 1;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-        filter: alpha(opacity=100);
-    }
-}
-
-@-moz-keyframes lines {
-    0% {
-        opacity: 0.1;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=10)";
-        filter: alpha(opacity=10);
-    }
-
-    50% {
-        opacity: 1;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-        filter: alpha(opacity=100);
-    }
-}
-
-@-o-keyframes lines {
-    0% {
-        opacity: 0.1;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=10)";
-        filter: alpha(opacity=10);
-    }
-
-    50% {
-        opacity: 1;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-        filter: alpha(opacity=100);
-    }
-}
-
 @keyframes lines {
-    0% {
-        opacity: 0.1;
+
+    0%,
+    100% {
+        opacity: 1;
         -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=10)";
-        filter: alpha(opacity=10);
+        filter: alpha(opacity=80);
     }
 
-    50% {
-        opacity: 1;
+    25%,
+    75% {
+        opacity: 0;
         -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-        filter: alpha(opacity=100);
+        filter: alpha(opacity=10);
     }
 }

@@ -1,7 +1,3 @@
-$(window).on('load', function () {
-    $('#transition-screen').delay(200).fadeOut(10);
-});
-
 $(document).ready(function () {
     // copy the banner 3 times to create the infinite effect
     var banner = $('#banner img');
@@ -112,13 +108,17 @@ $(document).ready(function () {
     positionOverlay('#2', 200, 158, 446, 500);
     positionOverlay('#3', 280, 218, 190, 735);
     positionOverlay('#4', 160, 106, 715, 540);
-    setTimeout(drawLines, 0);
+    setTimeout(() => {
+        drawLines('.menu-item');
+    }, 0);
     $(window).resize(function () {
         positionOverlay('#1', 200, 160, 190, 455);
         positionOverlay('#2', 200, 160, 446, 500);
         positionOverlay('#3', 280, 220, 190, 735);
         positionOverlay('#4', 160, 108, 715, 540);
-        setTimeout(drawLines, 0);
+        setTimeout(() => {
+            drawLines('.menu-item');
+        }, 0);
     });
 });
 

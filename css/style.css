@@ -52,6 +52,11 @@ html {
     overflow: hidden;
 }
 
+.menu-item:hover {
+    cursor: pointer;
+
+}
+
 .menu-item-title {
     transition: all 0.3s ease;
     font-size: 50px;
@@ -94,15 +99,39 @@ html {
     display: none;
 }
 
-#prof-pic {
+#profile-section {
     position: absolute;
-    width: 45%;
+    width: 60%;
     min-width: 400px;
     right: 0;
     bottom: 0;
-    height: auto;
+    height: 100%;
+}
+
+#prof-pic {
+    width: 80%;
+    bottom: 0;
+    right: 0;
+    position: absolute;
     object-fit: cover;
-    /* This will cover the whole div without stretching */
+}
+
+#speech-box {
+    position: absolute;
+    width: 60%;
+    bottom: 50%;
+    right: 50%;
+    z-index: 1000;
+}
+
+#dialog {
+    position: absolute;
+    font-size: 2.3vw;
+    transform: translate(10%, -170%) rotate(15deg);
+    width: 60%;
+    bottom: 50%;
+    right: 50%;
+    z-index: 1001;
 }
 
 #banner {
@@ -127,12 +156,6 @@ html {
 }
 
 /* Styles for other elements */
-.panel,
-#speech-box {
-    border: 1px solid #000;
-    padding: 10px;
-    margin-bottom: 10px;
-}
 
 #transition-screen {
     position: fixed;

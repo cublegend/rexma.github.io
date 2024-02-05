@@ -1,14 +1,14 @@
-function drawLines() {
+function drawLines(className) {
     $('.line').remove(); // Removes all elements with class 'line'
-    $('.menu-item').each(function () {
+    $(className).each(function () {
         const linesCount = $(this).height() / 10;
         for (let i = 0; i < linesCount; i++) {
-            const time = Math.random() * 5;
+            const time = Math.random() * 8 + 5;
             $('<div>', {
                 class: `line line-${i}`,
                 css: {
                     top: `${i * 10}px`,
-                    animation: `lines ${time}s infinite`
+                    animation: `lines cubic-bezier(0, 1, 1, 0) ${time}s infinite`
                 }
             }).appendTo($(this));
         }
