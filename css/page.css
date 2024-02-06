@@ -1,0 +1,44 @@
+.browser {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background-image: url("../resource/WindowsPanel.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.browser-header {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 2.35%;
+    left: 3%;
+    width: 94%;
+    height: 4%;
+}
+
+.browser-title {
+    font-size: 2vw;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.buttons-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    gap: 5%;
+}
+
+.button {
+    border: none;
+    cursor: pointer;
+    max-width: 42px;
+    max-height: 42px;
+    overflow: hidden;
+    padding: 0;
+}

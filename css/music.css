@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #000;
+    font-family: noto-sans, sans-serif;
+    overflow: hidden;
+}
+
+.scroll-container {
+    position: absolute;
+    top: 11.5%;
+    bottom: 2.5%;
+    right: 1.5%;
+    padding: 0;
+    width: 97%;
+    overflow-y: scroll;
+    font-family: noto-sans, sans-serif;
+    color: white;
+    background-color: #000;
+    opacity: 0.8;
+    z-index: 2;
+}
+
+.scroll-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.background-video {
+    position: fixed;
+    top: 11.5%;
+    bottom: 2.5%;
+    right: 1.5%;
+    padding: 0;
+    width: 97%;
+    height: 86%;
+    z-index: 1;
+}
+
+.scroll-content h1 {
+    font-size: 10vw;
+    margin: 0;
+    font-weight: 900;
+    text-align: center;
+    color: white;
+}
