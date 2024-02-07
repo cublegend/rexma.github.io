@@ -24,6 +24,7 @@
     -moz-animation: skew 2s infinite;
     -o-animation: skew 2s infinite;
     animation: skew 2s infinite;
+    pointer-events: none;
 }
 
 .text:after,
@@ -31,6 +32,7 @@
     content: attr(data-text);
     position: absolute;
     mix-blend-mode: normal;
+    pointer-events: none;
 }
 
 .text:after {
@@ -40,11 +42,13 @@
     -moz-animation: move 1.5s infinite;
     -o-animation: move 1.5s infinite;
     animation: move 1.5s infinite;
+    pointer-events: none;
 }
 
 .text:before {
     transform: translate(5px, 5px);
     color: limegreen;
+    pointer-events: none;
 }
 
 .line {

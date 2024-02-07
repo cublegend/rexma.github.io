@@ -52,73 +52,91 @@ $.fn.isInViewport = function () {
 };
 
 // position overlay menu items
-$(document).ready(function () {
-    $('.menu-item').hover(function () {
-        // When mouse enters
-        var hoverText = $(this).find('.menu-item-title').attr('data-hover-text');
-        $(this).find('.menu-item-title').addClass('glitch').text(hoverText);
-    }, function () {
-        // When mouse leaves
-        var originalText = $(this).find('.menu-item-title').attr('data-hover-text');
-        $(this).find('.menu-item-title').removeClass('glitch').text(originalText);
-    });
-});
 
 $(document).ready(function () {
-    function positionOverlay(id, initWidth, initHeight, initLeft, initTop) {
+
+    function positionImage() {
         var containerWidth = $('#background').width();
         var containerHeight = $('#background').height();
+        // make a copy of the original image to get the real dimensions
         var img = new Image();
-        id += ' .menu-item';
         img.src = $('#background-img').attr('src');
 
-        img.onload = function () {
+        img.onload = function () { // wait for the image to load
             var imgWidth = img.width;
             var imgHeight = img.height;
             var bgScale = Math.max(containerWidth / imgWidth, containerHeight / imgHeight);
 
-            var scaledImgWidth = imgWidth * bgScale;
-            var scaledImgHeight = imgHeight * bgScale;
+            $('#background-img').css({
+                width: imgWidth * bgScale + 'px',
+                height: imgHeight * bgScale + 'px'
+            });
+        };
+    }
 
-            var dx = (scaledImgWidth - containerWidth) / 2;
-            var dy = (scaledImgHeight - containerHeight);
 
+    function positionOverlay(id, initWidth, initHeight, initLeft, initBottom) {
+        var containerWidth = $('#background').width();
+        var containerHeight = $('#background').height();
+        id += ' .menu-item';
+        // make a copy of the original image to get the real dimensions
+        var img = new Image();
+        img.src = $('#background-img').attr('src');
+
+        img.onload = function () { // wait for the image to load
+            var imgWidth = img.width;
+            var imgHeight = img.height;
+            var bgScale = Math.max(containerWidth / imgWidth, containerHeight / imgHeight);
             // Now, calculate the overlay position
             var overlayX = initLeft * bgScale;
-            var overlayY = initTop * bgScale;
-
-            $('#background-img').css({
-                width: scaledImgWidth + 'px',
-                height: scaledImgHeight + 'px',
-                left: -dx + 'px',
-                top: -dy + 'px',
-                zIndex: '-1'
-            });
-
+            var overlayY = initBottom * bgScale;
+            console.log(overlayX, overlayY);
             $(id).css({
                 left: overlayX + 'px',
-                top: overlayY + 'px',
+                bottom: overlayY + 'px',
                 width: initWidth * bgScale + 'px',
                 height: initHeight * bgScale + 'px'
             });
         };
     }
-
-    positionOverlay('#1', 200, 158, 190, 455);
-    positionOverlay('#2', 200, 158, 446, 500);
-    positionOverlay('#3', 280, 218, 190, 735);
-    positionOverlay('#4', 160, 106, 715, 540);
+    positionImage();
+    positionOverlay('#1', 200, 158, 190, 420);
+    positionOverlay('#2', 200, 158, 446, 377);
+    positionOverlay('#3', 280, 218, 190, 87);
+    positionOverlay('#4', 160, 106, 715, 390);
     setTimeout(() => {
         drawLines('.menu-item');
     }, 0);
     $(window).resize(function () {
-        positionOverlay('#1', 200, 160, 190, 455);
-        positionOverlay('#2', 200, 160, 446, 500);
-        positionOverlay('#3', 280, 220, 190, 735);
-        positionOverlay('#4', 160, 108, 715, 540);
+        positionImage();
+        positionOverlay('#1', 200, 158, 190, 420);
+        positionOverlay('#2', 200, 158, 446, 377);
+        positionOverlay('#3', 280, 218, 190, 87);
+        positionOverlay('#4', 160, 106, 715, 390);
         setTimeout(() => {
             drawLines('.menu-item');
         }, 0);
+    });
+});
+
+$(document).ready(function () {
+    $('.menu-item').on('click', function () {
+        var id = $(this).parent().attr('id');
+        // switch to page
+        switch (id) {
+            case '1':
+                window.location.href = 'game.html';
+                break;
+            case '2':
+                window.location.href = 'music.html';
+                break;
+            case '3':
+                window.location.href = 'photo.html';
+                break;
+            case '4':
+                window.location.href = 'contact.html';
+                break;
+        }
     });
 });
 
