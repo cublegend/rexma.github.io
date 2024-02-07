@@ -15,17 +15,24 @@ body {
     padding: 0;
     width: 97%;
     overflow-y: scroll;
+    scroll-snap-type: y mandatory;
     font-family: noto-sans, sans-serif;
     color: white;
-    z-index: 2;
 }
 
 .scroll-content {
+    scroll-snap-align: start;
+    position: relative;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.scroll-content h1 {
+    z-index: 2;
+    pointer-events: none;
 }
 
 .background-video {
@@ -37,6 +44,8 @@ body {
     width: 97%;
     height: 86%;
     z-index: 1;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .scroll-content h1 {
