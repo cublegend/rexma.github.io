@@ -45,6 +45,7 @@ $(document).ready(function () {
         'opacity': 1,
         'pointer-events': 'auto'
     });
+    $('.scroll-content').first().find('.background-video')[0].play();
 
     // when fullscreen video events are detected, set opacity to 1
     $('.background-video').each(function () {
@@ -54,4 +55,16 @@ $(document).ready(function () {
         });
     });
 
+});
+
+// glitch effect
+$(document).ready(function () {
+    setTimeout(() => {
+        drawLines('body');
+    }, 0);
+    $(window).resize(function () {
+        setTimeout(() => {
+            drawLines('body');
+        }, 0);
+    });
 });

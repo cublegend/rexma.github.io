@@ -1,0 +1,83 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.section {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: noto-sans, sans-serif;
+    color: white;
+    background-color: black;
+}
+
+.scroll-container {
+    position: absolute;
+    top: 11.5%;
+    bottom: 2.5%;
+    right: 1.5%;
+    padding: 0;
+    width: 97%;
+    overflow-y: auto;
+    z-index: 10;
+}
+
+.parallax-container {
+    position: absolute;
+    pointer-events: none;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.text-element {
+    color: white;
+}
+
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.background-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 10em;
+    z-index: 1;
+}
+
+.text-container {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+}
+
+.text-element {
+    position: absolute;
+}
+
+.foreground-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.foreground-content img {
+    position: absolute;
+    width: 10vw;
+    border-radius: 20px;
+}
