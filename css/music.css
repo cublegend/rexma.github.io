@@ -30,11 +30,6 @@ body {
     align-items: center;
 }
 
-.scroll-content h1 {
-    z-index: 2;
-    pointer-events: none;
-}
-
 .background-video {
     position: fixed;
     top: 11.5%;
@@ -49,9 +44,16 @@ body {
 }
 
 .scroll-content h1 {
+    cursor: default;
+    z-index: 2;
     font-size: 5vw;
     margin: 0;
     font-weight: 900;
     text-align: center;
-    color: white;
+    filter: blur(0px);
+}
+
+.scroll-content h1:hover {
+    transition: filter 3s ease;
+    filter: blur(0px);
 }

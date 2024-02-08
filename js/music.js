@@ -9,11 +9,17 @@ $(document).ready(function () {
             if (scrollPosition >= sectionStart - sectionHeight &&
                 scrollPosition <= sectionStart) {
                 var scrollAmount = scrollPosition - sectionStart;
-                $this.find('h1').css('opacity', 1 + scrollAmount / sectionHeight);
+                $this.find('h1').css({
+                    'opacity': 1 + scrollAmount / sectionHeight,
+                    'filter': 'blur(' + (-scrollAmount / sectionHeight) * 10 + 'px)'
+                });
             } else if (scrollPosition > sectionStart &&
                 scrollPosition <= sectionEnd) {
                 var scrollAmount = scrollPosition - sectionStart;
-                $this.find('h1').css('opacity', 1 - scrollAmount / sectionHeight);
+                $this.find('h1').css({
+                    'opacity': 1 - scrollAmount / sectionHeight,
+                    'filter': 'blur(' + scrollAmount / sectionHeight * 10 + 'px)'
+                });
             }
 
             // video transitions
@@ -58,13 +64,13 @@ $(document).ready(function () {
 });
 
 // glitch effect
-$(document).ready(function () {
-    setTimeout(() => {
-        drawLines('body');
-    }, 0);
-    $(window).resize(function () {
-        setTimeout(() => {
-            drawLines('body');
-        }, 0);
-    });
-});
+// $(document).ready(function () {
+//     setTimeout(() => {
+//         drawLines('body');
+//     }, 0);
+//     $(window).resize(function () {
+//         setTimeout(() => {
+//             drawLines('body');
+//         }, 0);
+//     });
+// });

@@ -117,8 +117,6 @@ $(document).ready(function () {
     });
 });
 
-
-
 $('#transition-screen').on('onTransitionComplete', function () {
     function speak(text, callback) {
         var $box = $('#speech-box');
@@ -131,10 +129,8 @@ $('#transition-screen').on('onTransitionComplete', function () {
         }, 1500);
     }
     speak('Welcome to my website!', function () {
-        speak('Check out some projects I did!', function () {
-            speak('Enjoy your visit!', function () {
-                $('#speech-box').fadeOut(10);
-            });
+        speak('Enjoy your visit!', function () {
+            $('#speech-box').fadeOut(10);
         });
     });
 });
