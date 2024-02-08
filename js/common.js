@@ -3,7 +3,7 @@ var pages = ['music', 'game', 'photo', 'contact'];
 var currentPage = 0;
 
 $(window).on('load', function () {
-    $('#transition-screen').delay(200).fadeOut(10);
+    $('#transition-screen').delay(200).fadeOut(10).trigger('onTransitionComplete');
     var pageName = window.location.pathname.split('/').pop().split('.')[0];
     currentPage = pages.indexOf(pageName);
 });
@@ -26,3 +26,5 @@ $('#close-button').on('click', function () {
     // close the current page
     window.location.href = 'index.html';
 });
+
+

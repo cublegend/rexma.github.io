@@ -54,7 +54,6 @@ $.fn.isInViewport = function () {
 // position overlay menu items
 
 $(document).ready(function () {
-
     function positionImage() {
         var containerWidth = $('#background').width();
         var containerHeight = $('#background').height();
@@ -90,7 +89,6 @@ $(document).ready(function () {
             // Now, calculate the overlay position
             var overlayX = initLeft * bgScale;
             var overlayY = initBottom * bgScale;
-            console.log(overlayX, overlayY);
             $(id).css({
                 left: overlayX + 'px',
                 bottom: overlayY + 'px',
@@ -116,6 +114,28 @@ $(document).ready(function () {
         setTimeout(() => {
             drawLines('.menu-item');
         }, 0);
+    });
+});
+
+
+
+$('#transition-screen').on('onTransitionComplete', function () {
+    function speak(text, callback) {
+        var $box = $('#speech-box');
+        $box.find('#dialog').text(text);
+        $box.css('animation', 'bounce 0.5s');
+        setTimeout(() => {
+            $box.css('animation', '');
+            void $box[0].offsetWidth;
+            callback();
+        }, 1500);
+    }
+    speak('Welcome to my website!', function () {
+        speak('Check out some projects I did!', function () {
+            speak('Enjoy your visit!', function () {
+                $('#speech-box').fadeOut(10);
+            });
+        });
     });
 });
 

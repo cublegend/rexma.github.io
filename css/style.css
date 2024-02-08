@@ -121,6 +121,7 @@ html {
     bottom: 50%;
     right: 50%;
     z-index: 1000;
+    transform-origin: bottom right;
 }
 
 #dialog {
@@ -171,4 +172,19 @@ html {
 
 .text-shadow {
     text-shadow: 8px 2px 2px #8A20BC, 4px 2px 2px #65BC20, 0 0 1em #8A20BC;
+}
+
+/* speech box bounce animation */
+@keyframes bounce {
+    0% {
+        transform: rotate(60deg) translateY(50px);
+    }
+
+    50% {
+        transform: rotate(10deg) translateY(-10px);
+    }
+
+    100% {
+        transform: rotate(15deg) translateY(0);
+    }
 }
