@@ -1,5 +1,5 @@
 // list of pages
-var pages = ['music', 'game', 'photo'];
+var pages = ['music', 'game', 'photo', 'contact'];
 var currentPage = 0;
 
 $(window).on('load', function () {
