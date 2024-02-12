@@ -30,8 +30,9 @@ html {
     position: absolute;
     font-weight: 900;
     color: white;
-    top: 5%;
+    top: 0;
     line-height: 50%;
+    pointer-events: none;
 }
 
 .sub-title {
@@ -40,6 +41,7 @@ html {
     position: relative;
     font-weight: 300;
     color: white;
+    pointer-events: none;
 }
 
 #sub1 {
@@ -112,6 +114,7 @@ html {
     right: 0;
     position: absolute;
     object-fit: cover;
+    filter: drop-shadow(6px 2px 0px #8A20BC);
 }
 
 #speech-box {
@@ -128,7 +131,7 @@ html {
     position: absolute;
     font-size: 2.3em;
     width: 80%;
-    top: 35%;
+    top: 45%;
     left: 7%;
     z-index: 1001;
 }
@@ -180,11 +183,23 @@ html {
         transform: rotate(60deg) translateY(50px);
     }
 
-    50% {
+    5% {
+        transform: rotate(10deg) translateY(-10px);
+    }
+
+    15% {
+        transform: rotate(15deg) translateY(0);
+    }
+
+    85% {
+        transform: rotate(15deg) translateY(0px);
+    }
+
+    90% {
         transform: rotate(10deg) translateY(-10px);
     }
 
     100% {
-        transform: rotate(15deg) translateY(0);
+        transform: rotate(60deg) translateY(50px);
     }
 }

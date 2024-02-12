@@ -121,12 +121,12 @@ $('#transition-screen').on('onTransitionComplete', function () {
     function speak(text, callback) {
         var $box = $('#speech-box');
         $box.find('#dialog').text(text);
-        $box.css('animation', 'bounce 0.5s');
+        $box.css('animation', 'bounce 3s');
         setTimeout(() => {
             $box.css('animation', '');
             void $box[0].offsetWidth;
             callback();
-        }, 1500);
+        }, 3000);
     }
     speak('Welcome to my website!', function () {
         speak('Enjoy your visit!', function () {
