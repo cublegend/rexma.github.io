@@ -30,27 +30,40 @@ html {
     position: absolute;
     font-weight: 900;
     color: white;
-    top: 0;
+    top: 10%;
     line-height: 50%;
     pointer-events: none;
 }
 
 .sub-title {
     font-size: 2vw;
-    width: 100%;
-    position: relative;
+    width: 50%;
+    position: absolute;
     font-weight: 300;
     color: white;
     pointer-events: none;
 }
 
 #sub1 {
-    left: 30%;
+    top: -100%;
+    left: 50%;
     font-family: 'Noto HK', sans-serif;
 }
 
 #sub2 {
-    right: 20%;
+    right: 50%;
+}
+
+#sub3 {
+    font-style: italic;
+    font-weight: 600;
+    right: -15%;
+}
+
+#sub4 {
+    left: 10%;
+    top: 120%;
+    font-size: 1vw;
 }
 
 .menu-item {
