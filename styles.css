@@ -36,7 +36,7 @@ a {
 
 /* Navigation */
 header {
-    background: var(--color-black);
+    background: var(--color-light-gray);
     color: var(--color-white);
     position: fixed;
     width: 100%;
@@ -45,7 +45,8 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 20px 20px; /* Increase padding for larger height */
+    height: 80px; /* Fixed height for header */
 }
 
 nav {
@@ -56,7 +57,7 @@ nav {
 }
 
 .nav-left {
-    font-size: 1.5em;
+    font-size: 1.8em; /* Increase font size for left label */
 }
 
 .label-placeholder {
@@ -79,7 +80,7 @@ nav {
 }
 
 .nav-right ul li a {
-    font-size: 1.5em;
+    font-size: 1.8em; /* Increase size of social icons */
     color: var(--color-white);
     transition: color 0.3s ease;
 }
@@ -95,8 +96,8 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: calc(100vh - 60px); /* Full screen height minus header */
-    padding-top: 60px; /* Offset for fixed header */
+    height: calc(100vh - 80px); /* Full screen height minus header */
+    padding-top: 80px; /* Offset for fixed header */
     box-sizing: border-box;
 }
 
@@ -116,21 +117,32 @@ nav {
     justify-content: center;
 }
 
+/* Text Styles for Hero Section */
 .hero-left h1 {
     font-family: 'Helvetica', sans-serif;
-    font-size: 5em;
+    font-size: calc(6vw + 2vh); /* Viewport-based size for large text */
     font-weight: bold;
     margin-bottom: 20px;
     letter-spacing: 1px;
     line-height: 1.1;
+    animation: heartbeat 0.5s infinite; /* Heartbeat animation */
 }
 
 .keywords {
     font-family: 'Helvetica', sans-serif;
-    font-size: 1.5em;
+    font-size: calc(2vw + 1vh); /* Viewport-based size for smaller text */
     font-weight: 300; /* Lower weight for a lighter appearance */
     line-height: 1.4;
     color: var(--color-slate-blue);
+    animation: heartbeat 0.4s infinite; /* Heartbeat animation */
+}
+
+/* Heartbeat Animation Keyframes */
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    15% { transform: scale(1.02); } /* Quickly size up */
+    30% { transform: scale(1); }   /* Quickly size down */
+    100% { transform: scale(1); }  /* Hold at normal size */
 }
 
 /* Image Area */
@@ -171,7 +183,8 @@ nav {
 /* Responsive Styling */
 @media (max-width: 768px) {
     header {
-        padding: 10px;
+        padding: 15px;
+        height: 60px; /* Smaller height for mobile screens */
     }
 
     nav ul {

@@ -2,9 +2,7 @@
 
 // Function to loop through images in the 'img' folder with a specified speed
 function loopImages(imagePaths, speed = 50) { // Set speed to 50ms for fast transitions
-    // Placeholder div where images will be displayed
     const parentDiv = document.querySelector('.hero-right');
-
     let imageIndex = 0;
 
     // Create an image element with a class for jittering effect
@@ -13,8 +11,7 @@ function loopImages(imagePaths, speed = 50) { // Set speed to 50ms for fast tran
     imgElement.style.width = '100%';
     imgElement.style.height = '80%';
     imgElement.style.objectFit = 'cover';
-     // set the opacity of the image
-    imgElement.style.opacity = '0.1';
+    imgElement.style.opacity = '0.1'; // Set the opacity of the image
     parentDiv.appendChild(imgElement);
 
     // Function to update the image source
@@ -28,6 +25,16 @@ function loopImages(imagePaths, speed = 50) { // Set speed to 50ms for fast tran
     setInterval(updateImage, speed); // Update image at the given speed
 }
 
+// Function to randomly assign heart beat durations to text elements
+function randomizeHeartbeatDuration() {
+    const textElements = document.querySelectorAll('.hero-left h1, .keywords');
+
+    textElements.forEach(text => {
+        const randomDuration = Math.random() * (1.5 - 1) + 1; // Random duration between 0.8s to 1.2s
+        text.style.animationDuration = `${randomDuration}s`; // Apply random duration
+    });
+}
+
 // Example usage: List of image paths within the 'img' folder and loop speed in milliseconds
 const images = [
     'img/xny1.jpg',
@@ -37,3 +44,4 @@ const images = [
 ];
 
 loopImages(images, 50); // Set speed to 50ms for rapid transitions
+randomizeHeartbeatDuration(); // Apply random heartbeat duration
