@@ -71,6 +71,8 @@ body, html {
     width: 80%;
     max-width: 1200px;
     margin: 50px 0;
+    position: relative;
+    top: 20%;
 }
 
 /* Projects Section */
@@ -89,7 +91,7 @@ body, html {
 /* Projects Grid */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); /* Responsive grid */
     gap: 20px;
 }
 
@@ -101,6 +103,21 @@ body, html {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     cursor: pointer;
+}
+
+.project-image {
+    width: 100%; /* Full width */
+    overflow: hidden; /* Hide overflow to keep images inside the container */
+    margin-bottom: 15px; /* Spacing between image and content */
+    border-radius: 8px; /* Optional: Rounded corners for image container */
+    max-height: 300px;
+}
+
+.project-image img {
+    width: 100%; /* Scale image to fit the container */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove any default spacing */
+    transition: transform 0.3s ease-in-out; /* Smooth scaling on hover */
 }
 
 /* Project Card Hover Effect */

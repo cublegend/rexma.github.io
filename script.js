@@ -6,7 +6,6 @@ let isHovering = false; // Track if the hover event has already been triggered
 
 document.addEventListener("DOMContentLoaded", () => {
     // randomly switch between the names
-    
     // first name
     setInterval(() => {
         if (!isHovering) {
