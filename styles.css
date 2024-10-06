@@ -27,44 +27,20 @@ body, html {
     text-align: center;
     width: 90vw; /* Fixed width to keep bounding box consistent */
     height: 30vh; /* Fixed height for consistent height */
-    display: flex;
+    display: none;
     justify-content: center; /* Center text horizontally */
     align-items: center; /* Center text vertically */
     cursor: pointer; /* Change cursor to pointer to indicate interactivity */
     transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out; /* Smooth scaling and font size effect */
 }
 
-/* Background Container for Hover Effect */
-.background-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+.center-text.active {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    pointer-events: none; /* Allow clicks to pass through */
-}
-
-#background-text {
-    font-size: 20vw; /* Large background text */
-    font-optical-sizing: auto; /* Enable optical sizing for better rendering */
-    font-weight: 200;
-    font-family: 'Noto Sans SC', sans-serif;
-    color: var(--color-background);
-    opacity: 0; /* Hidden by default */
-    transition: opacity 0.3s ease; /* Smooth fade-in and fade-out */
 }
 
 /* Hover effect for scale */
 .center-text:hover {
     transform: scale(1.05); /* Slight scale-up on hover */
-}
-
-/* Option Hover Effect */
-.option:hover {
-    font-weight: 900;
 }
 
 /* Hover Line Effect */
@@ -90,13 +66,17 @@ body, html {
     width: 100%; /* Grow the line to full text width */
 }
 
-
-/* Projects Section */
 .projects-container {
     display: none; /* Hide the projects section by default */
     width: 80%;
     max-width: 1200px;
     margin: 50px 0;
+}
+
+/* Projects Section */
+.projects-container.active {
+    display: block; /* Show the active section */
+    opacity: 1;
 }
 
 .section-title {
@@ -150,94 +130,70 @@ body, html {
     opacity: 1;
 }
 
-/* snap to the top like a header, also everything should be aligned to the left */
-.menu-icon {
-    display: flex;
-    position: sticky;
-    font-weight: 700;
-    width: 80%;
-    z-index: 1000; /* Make sure it stays on top */
-    transition: background 0.3s ease, box-shadow 0.3s ease; /* Smooth transition effects */
-    cursor: pointer;
-}
-
-.option {
-    padding-left: 5px;
-    padding-right: 5px;
-}
-
-/* Sticky Top Bar */
-.sticky-top-bar {
-    position: sticky;
+.transparent-menu-bar {
+    position: absolute; /* Stick to the top of the viewport */
     top: 0;
-    width: 100%;
-    background: var(--color-black);
-    color: var(--color-white);
-    padding: 10px 30px;
-    z-index: 1000;
+    width: 90%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional shadow */
+    padding: 50px 20px;
+    background: var(--color-transparent); /* No background */
+    z-index: 1000; /* Stay above other elements */
 }
 
-/* Menu Container */
-.menu-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-/* Hamburger Icon */
+/* Menu Toggle Button */
 .menu-toggle {
-    font-size: 2em;
+    font-size: 1.5em;
     cursor: pointer;
+    margin-right: 20px; /* Add space between toggle and menu */
+    display: none; /* Hidden on larger screens */
 }
 
 /* Navigation Menu */
 .nav-menu {
-    display: flex; /* Horizontal menu */
-    gap: 30px; /* Spacing between menu items */
-    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Smooth transition */
+    display: flex;
+    gap: 2.5vw;
+    align-items: center;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.4s ease; /* Smooth transitions */
 }
 
-/* Menu Item */
+/* Navigation Links */
 .nav-menu a {
-    color: var(--color-white);
     text-decoration: none;
-    padding: 10px 15px;
-    transition: background 0.3s ease;
-}
-
-.nav-menu a:hover {
-    background: var(--color-background);
-    border-radius: 5px;
+    color: var(--color-black);
+    font-size: 1.2em;
+    padding: 10px 0;
+    transition: color 0.3s ease;
 }
 
 /* Responsive Styling for Smaller Screens */
 @media (max-width: 768px) {
-    .nav-menu {
-        flex-direction: column; /* Stack menu items vertically */
-        max-height: 0; /* Initially collapsed */
-        overflow: hidden; /* Hide overflowing content */
-        opacity: 0; /* Invisible by default */
-        display: none;
-    }
-
-    .nav-menu.active {
-        max-height: 500px; /* Expand height */
-        opacity: 1; /* Fully visible */
-        display: flex;
-    }
-
-    /* Show Hamburger Icon on Smaller Screens */
+    /* Show the menu toggle button on smaller screens */
     .menu-toggle {
-        display: block; /* Show the hamburger icon */
+        display: block; /* Show the toggle button */
     }
 
-    /* Hide the full menu on small screens */
+    /* Initially hide the menu options */
+    .nav-menu {
+        max-height: 0; /* Collapsed */
+        flex-direction: column; /* Stack items vertically */
+        position: absolute; /* Absolute positioning */
+        left: 10px; /* Keep menu close to the left */
+        top: 50px; /* Position it below the top bar */
+        background: var(--color-white); /* White background on mobile */
+        border-radius: 5px;
+        padding: 10px;
+        opacity: 0; /* Invisible by default */
+    }
+
+    /* Active class for menu */
+    .nav-menu.active {
+        max-height: 500px; /* Expand menu height */
+        opacity: 1; /* Fully visible */
+    }
+
     .nav-menu a {
-        padding: 15px;
+        padding: 10px; /* More padding for touch-friendly interaction */
     }
 }
