@@ -70,9 +70,9 @@ body, html {
     display: none; /* Hide the projects section by default */
     width: 80%;
     max-width: 1200px;
-    margin: 50px 0;
+    padding-bottom: 50px;
     position: relative;
-    top: 20%;
+    top: 40%;
 }
 
 /* Projects Section */
@@ -213,4 +213,85 @@ body, html {
     .nav-menu a {
         padding: 10px; /* More padding for touch-friendly interaction */
     }
+}
+
+.nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    padding: 8px 15px;
+    transition: background-color 0.3s ease;
+}
+
+.nav ul li a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+/* Blog Section Styling */
+
+.section-title {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #800E13;
+    text-align: center;
+}
+
+.section-description {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    text-align: center;
+    color: #666;
+}
+
+/* Blog Container */
+.blog-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Space between each blog post */
+}
+
+/* Blog Post Styling */
+.blog-post {
+    padding: 20px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-post:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Shadow effect */
+}
+
+.blog-title {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.blog-description {
+    font-size: 1em;
+    color: #666;
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 15px;
+    text-decoration: none;
+    color: #800E13;
+    font-weight: 700;
+}
+
+.read-more:hover {
+    text-decoration: underline;
 }
