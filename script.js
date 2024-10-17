@@ -1,7 +1,7 @@
 // script.js
 const nameText = document.getElementById("home");
-const firstName = ["Jacob", "Rex", "浩轩", "Haoxuan", "浩軒", "🍉", "MusicLover", "GameLover"];
-const lastName = ["马", "Ma", "🐴", "🐎", "馬", "GameDesigner", "Engineer", "Designer"];
+const firstName = ["Rex", "浩轩", "Haoxuan", "浩軒", "🍉", "HX"];
+const lastName = ["马", "Ma", "🐴", "🐎", "馬", "GameDesigner", "Engineer", "Designer", "Creator"];
 let isHovering = false; // Track if the hover event has already been triggered
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -35,7 +35,7 @@ nameText.addEventListener("mouseover", () => {
 });
 
 nameText.addEventListener("mouseleave", () => {
-    isHovering = false; 
+    isHovering = false;
 });
 
 // Get the elements for toggling

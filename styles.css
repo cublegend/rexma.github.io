@@ -2,11 +2,13 @@
 :root {
     --color-black: #000000;
     --color-white: #FFFFFF;
-    --color-background: rgba(0, 0, 0, 0.05); /* Light black for background */
+    --color-background: rgba(0, 0, 0, 0.05);
+    /* Light black for background */
 }
 
 /* General Styling */
-body, html {
+body,
+html {
     margin: 0;
     padding: 0;
     height: 100%;
@@ -20,18 +22,34 @@ body, html {
     align-items: center;
 }
 
+a {
+    text-decoration: none;
+    /* Removes underline */
+    color: inherit;
+    /* Inherits the color from the parent element */
+    cursor: default;
+    /* Optional: Prevents pointer cursor */
+}
+
 /* Centered Text Styling */
 .center-text {
-    font-size: 5vw; /* Adjust font size to 5% of the viewport width */
+    font-size: 5vw;
+    /* Adjust font size to 5% of the viewport width */
     font-weight: bold;
     text-align: center;
-    width: 90vw; /* Fixed width to keep bounding box consistent */
-    height: 30vh; /* Fixed height for consistent height */
+    width: 90vw;
+    /* Fixed width to keep bounding box consistent */
+    height: 30vh;
+    /* Fixed height for consistent height */
     display: none;
-    justify-content: center; /* Center text horizontally */
-    align-items: center; /* Center text vertically */
-    cursor: pointer; /* Change cursor to pointer to indicate interactivity */
-    transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out; /* Smooth scaling and font size effect */
+    justify-content: center;
+    /* Center text horizontally */
+    align-items: center;
+    /* Center text vertically */
+    cursor: pointer;
+    /* Change cursor to pointer to indicate interactivity */
+    transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out;
+    /* Smooth scaling and font size effect */
 }
 
 .center-text.active {
@@ -40,34 +58,45 @@ body, html {
 
 /* Hover effect for scale */
 .center-text:hover {
-    transform: scale(1.05); /* Slight scale-up on hover */
+    transform: scale(1.05);
+    /* Slight scale-up on hover */
 }
 
 /* Hover Line Effect */
 .hover-underline-effect {
-    position: relative; /* Required for positioning the pseudo-element */
-    cursor: pointer; /* Optional: Changes the cursor to indicate interactivity */
+    position: relative;
+    /* Required for positioning the pseudo-element */
+    cursor: pointer;
+    /* Optional: Changes the cursor to indicate interactivity */
 }
 
 /* Pseudo-element for the underline */
 .hover-underline-effect::after {
-    content: ''; /* No text content, only a line */
+    content: '';
+    /* No text content, only a line */
     position: absolute;
     left: 0;
-    bottom: 0; /* Place the line at the bottom of the element */
-    width: 0; /* Start with a width of 0 */
-    height: 0.05em; /* Line height */
-    background: #000000; /* Line color */
-    transition: width 0.2s ease-in-out; /* Animation for line growth */
+    bottom: 0;
+    /* Place the line at the bottom of the element */
+    width: 0;
+    /* Start with a width of 0 */
+    height: 0.05em;
+    /* Line height */
+    background: #000000;
+    /* Line color */
+    transition: width 0.2s ease-in-out;
+    /* Animation for line growth */
 }
 
 /* Hover state to animate the line */
 .hover-underline-effect:hover::after {
-    width: 100%; /* Grow the line to full text width */
+    width: 100%;
+    /* Grow the line to full text width */
 }
 
 .projects-container {
-    display: none; /* Hide the projects section by default */
+    display: none;
+    /* Hide the projects section by default */
     width: 80%;
     max-width: 1200px;
     padding-bottom: 50px;
@@ -77,7 +106,8 @@ body, html {
 
 /* Projects Section */
 .projects-container.active {
-    display: block; /* Show the active section */
+    display: block;
+    /* Show the active section */
     opacity: 1;
 }
 
@@ -91,7 +121,8 @@ body, html {
 /* Projects Grid */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); /* Responsive grid */
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    /* Responsive grid */
     gap: 20px;
 }
 
@@ -100,36 +131,92 @@ body, html {
     background: var(--color-light-gray);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Soft shadow effect */
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     cursor: pointer;
 }
 
+.project-card p {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 15px;
+}
+
 .project-image {
-    width: 100%; /* Full width */
-    overflow: hidden; /* Hide overflow to keep images inside the container */
-    margin-bottom: 15px; /* Spacing between image and content */
-    border-radius: 8px; /* Optional: Rounded corners for image container */
+    width: 100%;
+    /* Full width */
+    overflow: hidden;
+    /* Hide overflow to keep images inside the container */
+    margin-bottom: 15px;
+    /* Spacing between image and content */
+    border-radius: 8px;
+    /* Optional: Rounded corners for image container */
     max-height: 300px;
 }
 
 .project-image img {
-    width: 100%; /* Scale image to fit the container */
-    height: auto; /* Maintain aspect ratio */
-    display: block; /* Remove any default spacing */
-    transition: transform 0.3s ease-in-out; /* Smooth scaling on hover */
+    width: 100%;
+    /* Scale image to fit the container */
+    height: auto;
+    /* Maintain aspect ratio */
+    display: block;
+    /* Remove any default spacing */
+    transition: transform 0.3s ease-in-out;
+    /* Smooth scaling on hover */
+}
+
+/* Overlay */
+.overlay {
+    position: absolute;
+    /* Overlay covers the entire card */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    /* Semi-transparent black background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    /* Initially hidden */
+    transition: opacity 0.3s ease-in-out;
+    /* Smooth fade-in effect */
+    pointer-events: none;
+    /* Disable interaction with underlying elements */
+}
+
+/* Overlay Text */
+.overlay span {
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Show Overlay on Hover */
+.project-card:hover .overlay {
+    opacity: 1;
+    /* Fade in the overlay */
+    pointer-events: auto;
+    /* Enable interaction with overlay when visible */
 }
 
 /* Project Card Hover Effect */
 .project-card:hover {
-    transform: translateY(-5px); /* Slight upward lift on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+    transform: translateY(-5px);
+    /* Slight upward lift on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    /* Stronger shadow on hover */
 }
 
 /* Responsive Styling */
 @media (max-width: 768px) {
     .center-text {
-        font-size: 7vw; /* Increase font size on smaller screens */
+        font-size: 7vw;
+        /* Increase font size on smaller screens */
     }
 
     .section-title {
@@ -143,27 +230,33 @@ body, html {
 
 
 .projects-container.active {
-    display: block; /* Show the active section */
+    display: block;
+    /* Show the active section */
     opacity: 1;
 }
 
 .transparent-menu-bar {
-    position: absolute; /* Stick to the top of the viewport */
+    position: absolute;
+    /* Stick to the top of the viewport */
     top: 0;
     width: 90%;
     display: flex;
     align-items: center;
     padding: 50px 20px;
-    background: var(--color-transparent); /* No background */
-    z-index: 1000; /* Stay above other elements */
+    background: var(--color-transparent);
+    /* No background */
+    z-index: 1000;
+    /* Stay above other elements */
 }
 
 /* Menu Toggle Button */
 .menu-toggle {
     font-size: 1.5em;
     cursor: pointer;
-    margin-right: 20px; /* Add space between toggle and menu */
-    display: none; /* Hidden on larger screens */
+    margin-right: 20px;
+    /* Add space between toggle and menu */
+    display: none;
+    /* Hidden on larger screens */
 }
 
 /* Navigation Menu */
@@ -172,7 +265,8 @@ body, html {
     gap: 2.5vw;
     align-items: center;
     overflow: hidden;
-    transition: max-height 0.4s ease, opacity 0.4s ease; /* Smooth transitions */
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+    /* Smooth transitions */
 }
 
 /* Navigation Links */
@@ -186,32 +280,44 @@ body, html {
 
 /* Responsive Styling for Smaller Screens */
 @media (max-width: 768px) {
+
     /* Show the menu toggle button on smaller screens */
     .menu-toggle {
-        display: block; /* Show the toggle button */
+        display: block;
+        /* Show the toggle button */
     }
 
     /* Initially hide the menu options */
     .nav-menu {
-        max-height: 0; /* Collapsed */
-        flex-direction: column; /* Stack items vertically */
-        position: absolute; /* Absolute positioning */
-        left: 10px; /* Keep menu close to the left */
-        top: 50px; /* Position it below the top bar */
-        background: var(--color-white); /* White background on mobile */
+        max-height: 0;
+        /* Collapsed */
+        flex-direction: column;
+        /* Stack items vertically */
+        position: absolute;
+        /* Absolute positioning */
+        left: 10px;
+        /* Keep menu close to the left */
+        top: 50px;
+        /* Position it below the top bar */
+        background: var(--color-white);
+        /* White background on mobile */
         border-radius: 5px;
         padding: 10px;
-        opacity: 0; /* Invisible by default */
+        opacity: 0;
+        /* Invisible by default */
     }
 
     /* Active class for menu */
     .nav-menu.active {
-        max-height: 500px; /* Expand menu height */
-        opacity: 1; /* Fully visible */
+        max-height: 500px;
+        /* Expand menu height */
+        opacity: 1;
+        /* Fully visible */
     }
 
     .nav-menu a {
-        padding: 10px; /* More padding for touch-friendly interaction */
+        padding: 10px;
+        /* More padding for touch-friendly interaction */
     }
 }
 
@@ -256,7 +362,8 @@ body, html {
 .blog-container {
     display: flex;
     flex-direction: column;
-    gap: 30px; /* Space between each blog post */
+    gap: 30px;
+    /* Space between each blog post */
 }
 
 /* Blog Post Styling */
@@ -269,8 +376,10 @@ body, html {
 }
 
 .blog-post:hover {
-    transform: translateY(-5px); /* Lift effect on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    transform: translateY(-5px);
+    /* Lift effect on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    /* Shadow effect */
 }
 
 .blog-title {
