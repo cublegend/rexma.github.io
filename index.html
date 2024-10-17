@@ -2,283 +2,138 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="GeTheme">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Minimalistic Portfolio">
+    <meta name="keywords" content="Portfolio, Minimalist, Clean Design">
+    <meta name="author" content="Haoxuan Ma">
     <title>Haoxuan Ma</title>
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-
-    <!-- Main css -->
-    <link rel="stylesheet" href="css/style.css">
-
-    <!-- Animate CSS -->
-    <link rel="stylesheet" href="css/animate.css">
-
-    <!-- Font Awesome Icons CSS -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-
-    <!-- Magnific-popup CSS -->
-    <link rel="stylesheet" href="css/magnific-popup.css">
-
-    <!-- Google Fonts Link -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet"
-        type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900" rel="stylesheet" type="text/css">
-
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap" rel="stylesheet">
+    <!-- Noto Sans Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <!-- Sticky Top Bar with Navigation Menu -->
+    <div class="transparent-menu-bar">
+        <!-- Toggle Button -->
+        <div class="menu-toggle" id="menu-toggle">☰</div>
 
-
-    <!-- PRE LOADER -->
-
-    <div class="preloader">
-        <div class="sk-spinner sk-spinner-pulse"></div>
+        <!-- Navigation Menu -->
+        <nav class="nav-menu" id="nav-menu">
+            <div class="menu-toggle" id="menu-exit">×</div>
+            <a href="#home" class="hover-underline-effect">Home</a>
+            <a href="#games" class="hover-underline-effect">Games</a>
+            <!-- <a href="#blogs" class="hover-underline-effect">Blogs</a> -->
+        </nav>
     </div>
 
+    <!-- Centered Text Container -->
+    <a href="https://www.linkedin.com/in/haoxuan-ma-221b94223/" target="_blank">
+        <div class="center-text" id="home">
+            Haoxuan, Ma
+        </div>
+    </a>
 
-
-    <!-- Navigation Section -->
-
-    <div class="navbar navbar-default navbar-static-top">
-        <div class="container">
-
-            <div class="navbar-header">
-                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon icon-bar"></span>
-                    <span class="icon icon-bar"></span>
-                    <span class="icon icon-bar"></span>
-                </button>
-                <a href="index.html" class="navbar-brand">Haoxuan Ma</a>
+    <!-- Hidden Sections for Game, Music, and Contact -->
+    <div class="projects-container" id="games">
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Treat Team</h3>
+                <p>Puzzle, Mental Health</p>
+                <p>Unity, Mobile</p>
+                <div class="project-image">
+                    <a href="https://bluebirdstudios.net/" target="_blank">
+                        <img src="./img/treatteam.png" alt="Treat Team">
+                    </a>
+                </div>
             </div>
-
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="index.html">Home</a></li>
-                    <li><a href="music.html">Music</a></li>
-                    <li><a href="game.html">Game</a></li>
-                </ul>
+            <div class="project-card">
+                <h3>Theseus Orbital Station</h3>
+                <p>Experimental, VR, Story Rich, Sci-fi</p>
+                <p>Unreal, PC</p>
+                <div class="project-image">
+                    <a href="https://andixu1111.wixsite.com/498studio6" target="_blank">
+                        <img src="./img/theseus.png" alt="Theseus Orbital Station">
+                    </a>
+                </div>
             </div>
+            <div class="project-card">
+                <h3>Ragnarok TD</h3>
+                <p>Tower Defense, Strategy</p>
+                <p>Unity, PC</p>
+                <div class="project-image">
+                    <a href="https://wolverinesoft-studio.itch.io/ragnarok-td" target="_blank">
+                        <img src="./img/ragnarok.png" alt="Ragnarok TD">
+                    </a>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>Prism of You</h3>
+                <p>Resource Management, Mental Health</p>
+                <p>Unity, Mobie</p>
+                <div class="project-image">
+                    <img src="./img/pofu.jpg" alt="Prism of You">
+                </div>
 
+                <div class="overlay">
+                    <span>🚧 Work in Progress 🚧</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>Alibi</h3>
+                <p>Puzzle, Visual Novel, Side Scroller, Story Rich</p>
+                <p>Unity, PC</p>
+                <div class="project-image">
+                    <img src="./img/alibi.png" alt="Alibi">
+                </div>
+
+                <div class="overlay">
+                    <span>🚧 Work in Progress 🚧</span>
+                </div>
+            </div>
         </div>
     </div>
+    <!-- Main Blog Section -->
+    <section class="projects-container" id="blogs">
+        <h1 class="section-title">Design Blogs</h1>
+        <p class="section-description">Welcome to my blog section where I share my thoughts on design, tutorials, and
+            case studies. Stay tuned for updates!</p>
 
-
-    <!-- Home Section -->
-
-    <section id="home" class="main">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-md-12 col-sm-12">
-                    <h1 class="wow fadeInUp head" data-wow-delay="0.6s">Hi! I'm Haoxuan Ma</h1>
-                    <p class="wow fadeInUp lr-pd" data-wow-delay="0.8s">I'm a game developer, programmer, and electronic
-                        musician.</p>
-                </div>
-
+        <!-- Blog Post Previews -->
+        <div class="blog-container">
+            <!-- Blog Post 1 -->
+            <div class="blog-post">
+                <h2 class="blog-title">How to Create Minimalistic UI Designs</h2>
+                <p class="blog-description">Learn the key principles of minimalistic UI design and how to apply them in
+                    your projects to achieve a clean and modern look.</p>
+                <a href="post1.html" class="read-more">Read More</a>
             </div>
+
+            <!-- Blog Post 2 -->
+            <div class="blog-post">
+                <h2 class="blog-title">Color Theory in Game Design</h2>
+                <p class="blog-description">Understand how to use color effectively in game design to create engaging
+                    environments and convey emotions.</p>
+                <a href="post2.html" class="read-more">Read More</a>
+            </div>
+
+            <!-- Blog Post 3 -->
+            <div class="blog-post">
+                <h2 class="blog-title">Responsive Design Tips for Portfolios</h2>
+                <p class="blog-description">Optimize your portfolio website for different screen sizes with these best
+                    practices in responsive design.</p>
+                <a href="post3.html" class="read-more">Read More</a>
+            </div>
+
+            <!-- Add more blog posts as needed -->
         </div>
     </section>
-
-
-    <!-- Portfolio Section -->
-
-    <section id="portfolio">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-md-12 col-sm-12">
-
-                    <!-- work section -->
-                    <div class="work-section wow fadeInUp" data-wow-delay="1s">
-
-                        <ul class="filter-wrapper clearfix">
-                            <li><a href="#" data-filter="*" class="selected opc-main-bg">Show All</a></li>
-                            <li><a href="#" class="opc-main-bg" data-filter=".game">Game</a></li>
-                            <li><a href="#" class="opc-main-bg" data-filter=".music">Music</a></li>
-                        </ul>
-
-                        <!-- work box section -->
-                        <div class="work-box-section wow fadeInUp" data-wow-delay="1.4s">
-                            <div class="work-box-wrapper col4-work-box">
-
-                                <div class="work-box game col-md-4 col-sm-6">
-                                    <div class="portfolio-thumb">
-                                        <a href="./game.html#g1">
-                                            <div class="portfolio-item-hover">
-                                                <i class="fa fa-plus"></i>
-                                            </div>
-                                            <img src="resource/fluffy.jpg" class="img-responsive" alt="Portfolio">
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="work-box music col-md-4 col-sm-6">
-                                    <div class="portfolio-thumb">
-                                        <a href="./music.html#m1">
-                                            <div class="portfolio-item-hover">
-                                                <i class="fa fa-plus"></i>
-                                            </div>
-                                            <img src="resource/staff.png" class="img-responsive" alt="Portfolio">
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="work-box game col-md-4 col-sm-6">
-                                    <div class="portfolio-thumb">
-                                        <a href="./game.html#g2">
-                                            <div class="portfolio-item-hover">
-                                                <i class="fa fa-plus"></i>
-                                            </div>
-                                            <img src="resource/ragnarok-td.png" class="img-responsive" alt="Portfolio">
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="work-box game col-md-4 col-sm-6">
-                                    <div class="portfolio-thumb">
-                                        <a href="./game.html#g3">
-                                            <div class="portfolio-item-hover">
-                                                <i class="fa fa-plus"></i>
-                                            </div>
-                                            <img src="resource/treat-team.png" class="img-responsive" alt="Portfolio">
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="work-box music col-md-4 col-sm-6">
-                                    <div class="portfolio-thumb">
-                                        <a href="./music.html#m2">
-                                            <div class="portfolio-item-hover">
-                                                <i class="fa fa-plus"></i>
-                                            </div>
-                                            <img src="resource/factory.png" class="img-responsive" alt="Portfolio">
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="work-box game col-md-4 col-sm-6">
-                                    <div class="portfolio-thumb">
-                                        <a href="./game.html#g4">
-                                            <div class="portfolio-item-hover">
-                                                <i class="fa fa-plus"></i>
-                                            </div>
-                                            <img src="resource/a-maze-in.png" class="img-responsive" alt="Portfolio">
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="work-box music col-md-4 col-sm-6">
-                                    <div class="portfolio-thumb">
-                                        <a href="./music.html#m3">
-                                            <div class="portfolio-item-hover">
-                                                <i class="fa fa-plus"></i>
-                                            </div>
-                                            <img src="resource/turntable.png" class="img-responsive" alt="Portfolio">
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="work-box game col-md-4 col-sm-6">
-                                    <div class="portfolio-thumb">
-                                        <a href="./game.html#g5">
-                                            <div class="portfolio-item-hover">
-                                                <i class="fa fa-plus"></i>
-                                            </div>
-                                            <img src="resource/smash.png" class="img-responsive" alt="Portfolio">
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="work-box game col-md-4 col-sm-6">
-                                    <div class="portfolio-thumb">
-                                        <a href="./game.html#g8">
-                                            <div class="portfolio-item-hover">
-                                                <i class="fa fa-plus"></i>
-                                            </div>
-                                            <img src="resource/theseus.png" class="img-responsive" alt="Portfolio">
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-
-    <!-- CTA Section -->
-
-    <section id="cta" class="bg-gray">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <p class="wow fadeInUp" data-wow-delay="0.4s"><strong>Contact me!</strong></p>
-                    <p class="wow fadeInUp" data-wow-delay="0.4s">Email: crescely@umich.edu</p>
-                    <a href="./resource/Resume_Haoxuan Ma.pdf" target="_blank" class="wow fadeInUp btn btn-success"
-                        data-wow-delay="0.8s">Resume</a>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Footer Section -->
-
-    <footer>
-        <div class="container">
-            <div class="row">
-
-                <div class="col-md-12 col-sm-12">
-                    <div class="footer-copyright">
-                        <ul class="social-icon" id="ft">
-                            <li><a href="#ft" class="fa fa-facebook wow fadeInUp" data-wow-delay="0.2s"></a></li>
-                            <li><a href="#ft" class="fa fa-twitter wow fadeInUp" data-wow-delay="0.4s"></a></li>
-                            <li><a href="#ft" class="fa fa-linkedin wow fadeInUp" data-wow-delay="0.6s"></a></li>
-                            <li><a href="#ft" class="fa fa-google-plus wow fadeInUp" data-wow-delay="0.8s"></a></li>
-                            <li><a href="#ft" class="fa fa-dribbble wow fadeInUp" data-wow-delay="1s"></a></li>
-                        </ul>
-                        <p class="small">&copy Copyright 2018 Miniml HTML Template - All Rights Reserved</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </footer>
-
-
-    <!-- Back top -->
-
-    <a href="#" class="go-top"><i class="fa fa-angle-up"></i></a>
-
-
-    <!-- SCRIPTS -->
-
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="js/isotope.js"></script>
-    <script src="js/imagesloaded.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/magnific-popup-options.js"></script>
-    <script src="js/custom.js"></script>
-
-
+    <script src="script.js"></script>
 </body>
 
 </html>
