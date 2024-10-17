@@ -1,7 +1,7 @@
 /* Define Color Palette Variables */
 :root {
     --color-black: #000000;
-    --color-white: #FFFFFF;
+    --color-white: #FFFFF8;
     --color-background: rgba(0, 0, 0, 0.05);
     /* Light black for background */
 }
