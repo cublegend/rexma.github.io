@@ -157,6 +157,7 @@ a {
     border-radius: 8px;
     /* Optional: Rounded corners for image container */
     max-height: 300px;
+    position: relative;
 }
 
 .project-image img {
@@ -173,7 +174,6 @@ a {
 /* Overlay */
 .overlay {
     position: absolute;
-    /* Overlay covers the entire card */
     top: 0;
     left: 0;
     width: 100%;
@@ -185,11 +185,8 @@ a {
     justify-content: center;
     align-items: center;
     opacity: 0;
-    /* Initially hidden */
     transition: opacity 0.3s ease-in-out;
-    /* Smooth fade-in effect */
     pointer-events: none;
-    /* Disable interaction with underlying elements */
 }
 
 /* Overlay Text */
@@ -201,7 +198,7 @@ a {
 }
 
 /* Show Overlay on Hover */
-.project-card:hover .overlay {
+.project-image:hover .overlay {
     opacity: 1;
     /* Fade in the overlay */
     pointer-events: auto;
@@ -211,9 +208,7 @@ a {
 /* Project Card Hover Effect */
 .project-card:hover {
     transform: translateY(-5px);
-    /* Slight upward lift on hover */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    /* Stronger shadow on hover */
 }
 
 /* Responsive Styling */
@@ -338,66 +333,16 @@ a {
     border-radius: 5px;
 }
 
-/* Blog Section Styling */
-
-.section-title {
-    font-size: 2.5em;
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: #800E13;
-    text-align: center;
+.typing {
+    border-right: 2px solid #000;
+    animation: blink-caret 0.3s step-end infinite;
 }
 
-.section-description {
-    font-size: 1.2em;
-    margin-bottom: 40px;
-    text-align: center;
-    color: #666;
-}
-
-/* Blog Container */
-.blog-container {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    /* Space between each blog post */
-}
-
-/* Blog Post Styling */
-.blog-post {
-    padding: 20px;
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.blog-post:hover {
-    transform: translateY(-5px);
-    /* Lift effect on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    /* Shadow effect */
-}
-
-.blog-title {
-    font-size: 1.8em;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.blog-description {
-    font-size: 1em;
-    color: #666;
-}
-
-.read-more {
-    display: inline-block;
-    margin-top: 15px;
-    text-decoration: none;
-    color: #800E13;
-    font-weight: 700;
-}
-
-.read-more:hover {
-    text-decoration: underline;
+@keyframes blink-caret {
+    from, to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: #000;
+    }
 }
